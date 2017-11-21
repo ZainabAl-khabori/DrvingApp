@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="worldontheotherside.wordpress.com.drvingapp.SignUpActivity">
+
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="@string/NewTrainee"
+        android:id="@+id/buttonNewTrainee"
+        android:textColor="#f9f4f4"
+        android:background="@drawable/circle_button"
+        android:drawableTop="@drawable/ic_newtrainee"
+        android:layout_marginTop="23dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"/>
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="@string/PreviousTrainee"
+        android:paddingTop="15dp"
+        android:id="@+id/buttonPreviousTrainee"
+        android:textColor="#f9f4f4"
+        android:background="@drawable/circle_button"
+        android:drawableTop="@drawable/ic_prevtrainee"
+        android:layout_below="@+id/buttonNewTrainee"
+        android:layout_alignStart="@+id/buttonNewTrainee" />
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="@string/Trainer"
+        android:id="@+id/buttonTrainer"
+        android:textColor="#f9f4f4"
+        android:background="@drawable/circle_button"
+        android:paddingTop="20dp"
+        android:drawableTop="@drawable/ic_instructor"
+        android:layout_below="@+id/buttonPreviousTrainee"
+        android:layout_alignStart="@+id/buttonPreviousTrainee"
+        android:paddingBottom="15dp"/>
+</RelativeLayout>

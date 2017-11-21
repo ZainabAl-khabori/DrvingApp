@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="worldontheotherside.wordpress.com.drvingapp.SignUpNewTraineeActivity">
+
+
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextUsername"
+        android:drawableStart="@drawable/ic_username"
+        android:hint="@string/Username"
+        android:layout_marginEnd="70dp"
+        android:textSize="16sp"
+        android:inputType="text"
+        android:layout_marginStart="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextEmail"
+        android:hint="@string/EmailAddress"
+        android:textSize="16sp"
+        android:inputType="textEmailAddress"
+        android:drawableStart="@drawable/ic_email"
+        android:layout_below="@+id/editTextUsername"
+        android:layout_centerHorizontal="true"
+        />
+
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextAge"
+        android:textSize="16sp"
+        android:hint="@string/Age"
+        android:inputType="number"
+        android:drawableStart="@drawable/ic_age"
+        android:layout_below="@+id/editTextEmail"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="250sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextMobileNo"
+        android:hint="@string/MobileNumber"
+        android:textSize="16sp"
+        android:inputType="phone"
+        android:drawableStart="@drawable/ic_phone"
+        android:layout_below="@+id/editTextAge"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayoutGender"
+        android:layout_below="@+id/editTextAge"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp">
+
+
+        <RadioGroup
+            android:id="@+id/radioGroupGender"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="28dp"
+            android:paddingTop="8dp"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Gender"
+                android:textSize="16sp"
+                android:paddingTop="8dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="5dp"
+                android:id="@+id/textViewGender"
+                android:drawableStart="@drawable/ic_gender"
+                />
+
+            <RadioButton
+                android:id="@+id/radioFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:drawableStart="@drawable/ic_female"
+
+                />
+
+            <RadioButton
+                android:id="@+id/radioMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:drawableStart="@drawable/ic_male"
+                android:layout_marginStart="18dp"
+
+
+                />
+        </RadioGroup>
+
+    </LinearLayout>
+    <View
+        android:layout_width="243dp"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine"
+        android:background="#8b8b8b"
+        android:layout_marginStart="5dp"
+        android:layout_below="@+id/linearLayoutGender"
+        android:layout_alignStart="@+id/linearLayoutGender" />
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextPassword"
+        android:hint="@string/Password"
+        android:drawableStart="@drawable/ic_pass"
+        android:inputType="textPassword"
+        android:textSize="16sp"
+        android:layout_below="@+id/editTextMobileNo"
+        android:layout_alignStart="@+id/editTextMobileNo"
+        android:layout_marginTop="40dp" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextCivilNo"
+        android:hint="@string/CivilNo"
+        android:drawableStart="@drawable/ic_civil"
+        android:inputType="number"
+        android:textSize="16sp"
+        android:layout_below="@+id/editTextPassword"
+        android:layout_alignStart="@+id/editTextPassword"
+        />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextDrivingLicense"
+        android:hint="@string/DrivingLicense"
+        android:drawableStart="@drawable/ic_license"
+        android:inputType="number"
+        android:textSize="16sp"
+        android:layout_below="@+id/editTextCivilNo"
+        android:layout_alignStart="@+id/editTextCivilNo"
+        />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="@string/signUp"
+        android:id="@+id/buttonLogin"
+        android:layout_below="@+id/editTextDrivingLicense"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textColor="#fef4f4"
+        android:background="#9D3F3F"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/AlreadyHaveAccount"
+        android:id="@+id/textViewAlreadyHaveAccount"
+        android:layout_below="@+id/buttonLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        />
+
+
+
+</RelativeLayout>

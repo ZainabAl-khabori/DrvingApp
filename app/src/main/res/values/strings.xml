@@ -1,3 +1,27 @@
 <resources>
-    <string name="app_name">DrvingApp</string>
+    <string name="app_name">DrivingApp</string>
+
+    <string name="Trainer">Trainer</string>
+    <string name="PreviousTrainee">Previous\nTrainee"</string>
+    <string name="NewTrainee">New Trainee</string>
+    <string name="Username">\tUsername</string>
+    <string name="EmailAddress">\tEmail Address</string>
+    <string name="Age">\tAge</string>
+    <string name="MobileNumber">\tMobile Number</string>
+    <string name="Gender">"  "Gender</string>
+    <string name="Password">\tPassword</string>
+    <string name="Login">Login</string>
+    <string name="CreateAccountSignUp">Create Account ? signUp</string>
+    <string name="contentDescriptionLogo">Logo Image</string>
+    <string name="signUp">signUp</string>
+    <string name="AlreadyHaveAccount">Already have an Account ?</string>
+    <string name="VehicleType">\tVehicle Type</string>
+    <string name="Automatic">Automatic</string>
+    <string name="Manual">Manual</string>
+    <string name="PaymentMethod">\tPayment Method</string>
+    <string name="ByHours">By Hours</string>
+    <string name="Contract">Contract</string>
+    <string name="CivilNo">\tCivil No</string>
+    <string name="DrivingLicense">\tDriving License</string>
+    <string name="CarNo">\tCar Number</string>
 </resources>
