@@ -18,4 +18,8 @@ public class Section {
     ////
     public String getQuantitative(){return quantitative;}
     public String getQualitative(){return qualitative;}
+
+
+    ////
+    public void View(){}
 }
