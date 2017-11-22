@@ -19,7 +19,9 @@
         <activity android:name=".SignUpNewTraineeActivity" />
         <activity android:name=".SignUpPrevTraineeActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".SignUpTrainerActivity"></activity>
+        <activity android:name=".SignUpTrainerActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".LogoActivity"></activity>
     </application>
 
 </manifest>

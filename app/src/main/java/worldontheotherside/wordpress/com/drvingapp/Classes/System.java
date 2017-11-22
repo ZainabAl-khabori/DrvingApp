@@ -1,4 +1,4 @@
-package worldontheotherside.wordpress.com.drvingapp;
+package worldontheotherside.wordpress.com.drvingapp.Classes;
 
 /**
  * Created by u106543 on 11/19/2017.
@@ -29,7 +29,8 @@ public class System {
     public void Login (){}
     public void Delete (){}
     public void Block (){}
-    //public void  (){}
+    public void ViewState (){}
+    public void ViewRate (){}
 
 
 }
