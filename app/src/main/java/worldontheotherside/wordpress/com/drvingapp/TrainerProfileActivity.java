@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import worldontheotherside.wordpress.com.drvingapp.Fragments.InfoTabFragment;
+import worldontheotherside.wordpress.com.drvingapp.Fragments.ReviewsTabFragment;
 
 
 public class TrainerProfileActivity extends AppCompatActivity {
@@ -21,6 +22,10 @@ public class TrainerProfileActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private int[] tabIcons = {
+            R.drawable.ic_reviews,
+            R.drawable.ic_trainer_info
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +41,19 @@ public class TrainerProfileActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        setupTabIcons();
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new InfoTabFragment(), "ONE");
-        adapter.addFragment(new TwoFragment(), "TWO");
+        adapter.addFragment(new InfoTabFragment(), "Info");
+        adapter.addFragment(new ReviewsTabFragment(), "Reviews");
         viewPager.setAdapter(adapter);
+    }
+
+    private void setupTabIcons() {
+        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

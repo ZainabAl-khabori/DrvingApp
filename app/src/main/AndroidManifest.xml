@@ -12,11 +12,11 @@
         <activity
             android:name=".HomeActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity android:name=".SignUpNewTraineeActivity" />
         <activity android:name=".SignUpPrevTraineeActivity" />
@@ -24,9 +24,17 @@
         <activity android:name=".SignUpTrainerActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".LogoActivity" />
-        <activity android:name=".Fragments.InfoTabFragment" />
-        <activity android:name=".TrainerProfileActivity" />
-        <activity android:name=".Fragments.ReviewsTabFragment"></activity>
+
+        <activity android:name=".TrainerProfileActivity"
+            android:theme="@style/MyMaterialTheme"
+            android:label="TrainerProfile">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            </activity>
+
     </application>
 
 </manifest>

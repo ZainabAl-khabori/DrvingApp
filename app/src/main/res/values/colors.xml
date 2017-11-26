@@ -3,4 +3,12 @@
     <color name="colorPrimary">#9D3F3F</color>
     <color name="colorPrimaryDark">#9D3F3F</color>
     <color name="colorAccent">#9D3F3F</color>
+
+
+
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+
+
 </resources>
