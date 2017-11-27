@@ -24,4 +24,5 @@
     <string name="CivilNo">\tCivil No</string>
     <string name="DrivingLicense">\tDriving License</string>
     <string name="CarNo">\tCar Number</string>
+    <string name="CarType">"  "Car Type</string>
 </resources>
