@@ -1,5 +1,7 @@
 package worldontheotherside.wordpress.com.drvingapp.Classes;
 
+import com.google.firebase.database.DataSnapshot;
+
 /**
  * Created by u106543 on 11/19/2017.
  */
@@ -11,6 +13,19 @@ public class TrainerRate {
     private String dealing;
     private String learningEfficiency;
     private String others;
+
+    public TrainerRate(){ /* */ }
+
+    public TrainerRate(DataSnapshot dataSnapshot)
+    {
+        TrainerRate rate = dataSnapshot.getValue(TrainerRate.class);
+
+        attendance = rate.attendance;
+        respectTime = rate.respectTime;
+        dealing = rate.dealing;
+        learningEfficiency = rate.learningEfficiency;
+        others = rate.others;
+    }
 
 
     ////////

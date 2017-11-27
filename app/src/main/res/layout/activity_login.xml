@@ -13,15 +13,15 @@
         android:id="@+id/imageViewLogo"
         android:contentDescription="@string/contentDescriptionLogo"
         android:background="@drawable/ic_logo"
-        android:layout_above="@+id/editTextUsername"
+        android:layout_above="@+id/editTextEmail"
         android:layout_centerHorizontal="true" />
 
     <AutoCompleteTextView
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextUsername"
-        android:drawableStart="@drawable/ic_username"
-        android:hint="@string/Username"
+        android:id="@+id/editTextEmail"
+        android:drawableStart="@drawable/ic_email"
+        android:hint="@string/EmailAddress"
         android:layout_marginEnd="70dp"
         android:layout_above="@+id/editTextPassword"
         android:layout_centerHorizontal="true"
@@ -55,7 +55,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="69dp"
         android:textColor="#fef4f4"
-        android:background="#9D3F3F" />
+        android:background="#9D3F3F"
+        android:onClick="loginAction"/>
 
     <TextView
         android:layout_width="wrap_content"

@@ -14,7 +14,7 @@ public class NewTrainee {
     private String password;
     private long civilNo;
     private long drivingLicense;
-    private String place;
+    private String place;      // TODO: fix this to map
 
 
 

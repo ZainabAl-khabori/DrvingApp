@@ -153,7 +153,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:textColor="#fef4f4"
-        android:background="#9D3F3F"/>
+        android:background="#9D3F3F"
+        android:onClick="signUpAction"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -163,7 +164,7 @@
         android:layout_below="@+id/buttonLogin"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        />
+        android:onClick="goLoginAction"/>
 
 
 </RelativeLayout>

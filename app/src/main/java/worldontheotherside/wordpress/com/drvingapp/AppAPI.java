@@ -14,11 +14,12 @@ public class AppAPI {
     public static String TRAINEES = db.child("trainees").toString();
     public static String CURRENT_TRAINEES = db.child("trainees").child("current_trainees").toString();
     public static String FORMER_TRAINEES = db.child("trainees").child("former_trainees").toString();
-    public static String CURRENT_TRAINEE_BY_NAME = db.child("current_trainees").orderByChild("name").getRef().toString();
+    public static String FORMER_TRAINEE_BY_ID = db.child("trainees").child("former_trainees").orderByChild("civilNo").getRef().toString();
+    //public static String CURRENT_TRAINEE_BY_NAME = db.child("trainees").child("current_trainees").orderByChild("name").getRef().toString();
 
     public static String TRAINERS = db.child("trainers").toString();
-    public static String TRAINER_BY_NAME = db.child("trainers").orderByChild("name").getRef().toString();
-    public static String TRAINER_BY_AREA = db.child("trainers").orderByChild("places").getRef().toString();
+    //public static String TRAINER_BY_NAME = db.child("trainers").orderByChild("name").getRef().toString();
+    //public static String TRAINER_BY_AREA = db.child("trainers").orderByChild("places").getRef().toString();
 
     public static String CONTRACTS = db.child("contracts").toString();
     public static String CONTRACT_BY_TRAINEE = db.child("contracts").orderByChild("traineeId").getRef().toString();

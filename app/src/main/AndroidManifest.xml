@@ -9,32 +9,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".HomeActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".HomeActivity">
             <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>-->
         </activity>
-        <activity android:name=".SignUpNewTraineeActivity" />
-        <activity android:name=".SignUpPrevTraineeActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".SignUpTrainerActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".LogoActivity" />
 
-        <activity android:name=".TrainerProfileActivity"
-            android:theme="@style/MyMaterialTheme"
-            android:label="TrainerProfile">
+        <activity android:name=".SignUpNewTraineeActivity">
+
+        </activity>
+
+        <activity android:name=".SignUpPrevTraineeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            </activity>
+        </activity>
 
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".SignUpTrainerActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".LogoActivity"></activity>
     </application>
 
 </manifest>

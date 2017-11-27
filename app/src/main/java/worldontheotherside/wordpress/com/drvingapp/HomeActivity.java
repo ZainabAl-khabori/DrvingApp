@@ -2,7 +2,11 @@ package worldontheotherside.wordpress.com.drvingapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+
+import worldontheotherside.wordpress.com.drvingapp.Classes.Contract;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -11,30 +15,20 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        enableFullScreen(true);
+        Contract contract = new Contract();
 
+        contract.setEnd("12/1/2017");
+        contract.setStart("1/7/2016");
+        contract.setPrice(6.000);
+        contract.setTraineeId(1234);
+        contract.setTrainerId(5678);
+        contract.setType("by hour");
+
+        DatabaseManip.addData(AppAPI.CONTRACTS, contract, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                //
+            }
+        });
     }
-
-
-    //hide the navigation and enable full-screen
-    protected void enableFullScreen(boolean enabled) {
-        int newVisibility =  View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-
-        if(enabled) {
-            newVisibility |= View.SYSTEM_UI_FLAG_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_IMMERSIVE;
-        }
-
-        getDecorView().setSystemUiVisibility(newVisibility);
-    }
-
-    //set the new visibility on the decor view
-    private View getDecorView() {
-        return getWindow().getDecorView();
-    }
-
-
 }
