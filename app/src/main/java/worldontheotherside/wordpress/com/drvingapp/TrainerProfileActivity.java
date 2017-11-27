@@ -19,13 +19,13 @@ import worldontheotherside.wordpress.com.drvingapp.Fragments.ReviewsTabFragment;
 
 public class TrainerProfileActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    //private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private int[] tabIcons = {
+    /*private int[] tabIcons = {
             R.drawable.ic_reviews,
             R.drawable.ic_trainer_info
-    };
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +33,8 @@ public class TrainerProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_trainer_profile);
 
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+      /*  toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);*/
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -42,7 +42,7 @@ public class TrainerProfileActivity extends AppCompatActivity {
         setupViewPager(viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-        setupTabIcons();
+        //setupTabIcons();
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -52,11 +52,11 @@ public class TrainerProfileActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
-    private void setupTabIcons() {
+    /*private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);
         tabLayout.getTabAt(1).setIcon(tabIcons[1]);
     }
-
+*/
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();

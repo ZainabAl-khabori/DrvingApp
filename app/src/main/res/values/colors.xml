@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#9D3F3F</color>
+    <color name="colorPrimary">#9d3f3f</color>
     <color name="colorPrimaryDark">#9D3F3F</color>
-    <color name="colorAccent">#9D3F3F</color>
+    <color name="colorAccent">#9d3f3f</color>
 
 
 
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowBackground">#FFFFFF</color>
-    <color name="navigationBarColor">#000000</color>
+    <color name="tabIndicatorColor">#4e85a9</color>
 
 
 </resources>
