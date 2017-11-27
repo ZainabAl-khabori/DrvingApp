@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Trainer {
 
     private String name;
-    private int civilId;
+    private long civilId;
     private String email;
     private int age;
     private String phone;
@@ -31,26 +31,29 @@ public class Trainer {
 
     public Trainer(DataSnapshot dataSnapshot)
     {
-        Trainer trainer = dataSnapshot.getValue(Trainer.class);
+        for(DataSnapshot snapshot: dataSnapshot.getChildren())
+        {
+            Trainer trainer = snapshot.getValue(Trainer.class);
 
-        name = trainer.name;
-        civilId = trainer.civilId;
-        email = trainer.email;
-        age = trainer.age;
-        phone = trainer.phone;
-        gender = trainer.gender;
-        password = trainer.password;
-        carNo = trainer.carNo;
-        places = trainer.places;
-        vehicleType = trainer.vehicleType;
-        languages = trainer.languages;
-        rate = trainer.rate;
-        price = trainer.price;
+            name = trainer.name;
+            civilId = trainer.civilId;
+            email = trainer.email;
+            age = trainer.age;
+            phone = trainer.phone;
+            gender = trainer.gender;
+            password = trainer.password;
+            carNo = trainer.carNo;
+            places = trainer.places;
+            vehicleType = trainer.vehicleType;
+            languages = trainer.languages;
+            rate = trainer.rate;
+            price = trainer.price;
+        }
     }
 
     ///////
     public void setName(String name){this.name = name;}
-    public void setCivilId(int civilId){this.civilId = civilId;}
+    public void setCivilId(long civilId){this.civilId = civilId;}
     public void setEmail(String email){this.email = email;}
     public void setAge(int age){this.age = age;}
     public void setPhone(String phone){this.phone = phone;}
@@ -65,7 +68,7 @@ public class Trainer {
 
     /////
     public String getName(){return name;}
-    public int getCivilId(){return civilId;}
+    public long getCivilId(){return civilId;}
     public String getEmail(){return email;}
     public int getAge(){return age;}
     public String getPhone(){return phone;}
