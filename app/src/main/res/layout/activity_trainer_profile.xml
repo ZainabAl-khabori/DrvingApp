@@ -39,19 +39,35 @@
                     android:id="@+id/textViewTrainerName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/TrainerName" />
+                    android:text="@string/TrainerName"
+                    android:textSize="20sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
 
                 <RatingBar
                     android:id="@+id/ratingBar1"
-
-                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:isIndicator="false"
+                    android:isIndicator="true"
                     android:progressBackgroundTint="@android:color/darker_gray"
                     android:progressTint="@color/colorPrimary"
-                    android:secondaryProgressTint="@color/colorPrimary" />
+                    android:secondaryProgressTint="@color/colorPrimary"
+                    android:paddingTop="10dp"/>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/EvaluationsNo"
+                        android:text="@string/EvaluationsNo"
+                        android:paddingTop="10dp"
+                        android:paddingLeft="10dp"/>
+
+                </LinearLayout>
             </LinearLayout>
 
             </LinearLayout>

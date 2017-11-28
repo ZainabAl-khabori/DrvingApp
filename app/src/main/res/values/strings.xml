@@ -26,4 +26,5 @@
     <string name="CarNo">\tCar Number</string>
     <string name="TrainerName">Trainer Name</string>
     <string name="CarType">\tCar Type</string>
+    <string name="EvaluationsNo">(0)</string>
 </resources>

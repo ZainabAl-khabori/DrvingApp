@@ -1,19 +1,351 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="worldontheotherside.wordpress.com.drvingapp.Fragments.InfoTabFragment">
 
-
-    <TextView
-        android:text="Hello"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="33dp"
-        android:id="@+id/textView" />
-</RelativeLayout>
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp">
+
+        <TextView
+            android:text="Area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewArea"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewArea"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine1"
+        android:background="#dfdbdb"
+    />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp">
+
+        <TextView
+            android:text="Age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewAge"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewAge"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine4"
+        android:background="#dfdbdb"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp">
+
+        <TextView
+            android:text="Gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewGender"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewGender"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine5"
+        android:background="#dfdbdb"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp">
+
+        <TextView
+            android:text="Status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewStatus"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewStatus"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine2"
+        android:background="#dfdbdb"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp">
+
+        <TextView
+            android:text="Language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewLanguage"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewLanguage"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine3"
+        android:background="#dfdbdb"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp">
+
+        <TextView
+            android:text="Vehicle Type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewVehicleType"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="vehicle type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewVehicleType"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine6"
+        android:background="#dfdbdb"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp">
+
+        <TextView
+            android:text="Contract Type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewContractType"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="contract type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewContractType"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine7"
+        android:background="#dfdbdb"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp">
+
+        <TextView
+            android:text="Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewPrice"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPrice"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine8"
+        android:background="#dfdbdb"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp">
+
+        <TextView
+            android:text="Phone Number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewPhone"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="phone number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewPhone"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine9"
+        android:background="#dfdbdb"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp">
+
+        <TextView
+            android:text="Available Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewAvailableTime"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="available time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewAvailableTime"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine10"
+        android:background="#dfdbdb"
+        />
+
+</LinearLayout>
