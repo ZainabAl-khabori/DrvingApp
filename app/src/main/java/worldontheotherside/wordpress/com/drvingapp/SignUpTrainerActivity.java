@@ -38,6 +38,9 @@ public class SignUpTrainerActivity extends AppCompatActivity {
     private RadioButton radioButtonAutomatic;
     private RadioButton radioButtonManual;
 
+    // TODO: change car type icons to ones suitable
+    // TODO: remove car type from layout
+
     private FirebaseAuth auth;
 
     @Override
@@ -64,53 +67,63 @@ public class SignUpTrainerActivity extends AppCompatActivity {
 
     public void signUpAction(View view)
     {
-        auth.createUserWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful())
-                        {
-                            FirebaseUser user = auth.getCurrentUser();
+        if(editTextUsername.getText().toString().isEmpty() || editTextEmail.getText().toString().isEmpty() ||
+                editTextAge.getText().toString().isEmpty() || editTextMobileNo.getText().toString().isEmpty() ||
+                editTextPassword.getText().toString().isEmpty() || editTextCivilNo.getText().toString().isEmpty() ||
+                editTextCarNo.getText().toString().isEmpty() || ((!radioButtonMale.isChecked()) && (!radioButtonFemale.isChecked())))
+        {
+            Toast.makeText(this, "Please fill all of the fields first", Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            auth.createUserWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful())
+                            {
+                                FirebaseUser user = auth.getCurrentUser();
 
-                            DatabaseManip.updateUserProfile(user, editTextCivilNo.getText().toString(), null, null, null,
-                                    new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            // Do nothing
-                                        }
-                                    });
+                                DatabaseManip.updateUserProfile(user, editTextCivilNo.getText().toString(), null, null, null,
+                                        new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                // Do nothing
+                                            }
+                                        });
 
-                            Trainer trainer = new Trainer();
-                            trainer.setName(editTextUsername.getText().toString());
-                            trainer.setCivilId(Long.valueOf(editTextCivilNo.getText().toString()));
-                            trainer.setEmail(editTextEmail.getText().toString());
-                            trainer.setAge(Integer.valueOf(editTextAge.getText().toString()));
-                            trainer.setPhone(editTextMobileNo.getText().toString());
-                            if(radioButtonFemale.isChecked())
-                                trainer.setGender("Female");
-                            else if(radioButtonMale.isChecked())
-                                trainer.setGender("Male");
-                            trainer.setPassword(editTextPassword.getText().toString());
-                            trainer.setCarNo(editTextCarNo.getText().toString());
-                            if(radioButtonAutomatic.isChecked())
-                                trainer.setVehicleType("Automatic");
-                            else if(radioButtonManual.isChecked())
-                                trainer.setVehicleType("Manual");
+                                Trainer trainer = new Trainer();
+                                trainer.setName(editTextUsername.getText().toString());
+                                trainer.setCivilId(Long.valueOf(editTextCivilNo.getText().toString()));
+                                trainer.setEmail(editTextEmail.getText().toString());
+                                trainer.setAge(Integer.valueOf(editTextAge.getText().toString()));
+                                trainer.setPhone(editTextMobileNo.getText().toString());
+                                if(radioButtonFemale.isChecked())
+                                    trainer.setGender("Female");
+                                else if(radioButtonMale.isChecked())
+                                    trainer.setGender("Male");
+                                trainer.setPassword(editTextPassword.getText().toString());
+                                trainer.setCarNo(editTextCarNo.getText().toString());
+                                if(radioButtonAutomatic.isChecked())
+                                    trainer.setVehicleType("Automatic");
+                                else if(radioButtonManual.isChecked())
+                                    trainer.setVehicleType("Manual");
 
-                            DatabaseManip.addData(AppAPI.TRAINERS, trainer, new DatabaseReference.CompletionListener() {
-                                @Override
-                                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                                    Toast.makeText(SignUpTrainerActivity.this, "Trainer added", Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                                DatabaseManip.addData(AppAPI.TRAINERS, trainer, new DatabaseReference.CompletionListener() {
+                                    @Override
+                                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                        Toast.makeText(SignUpTrainerActivity.this, "Trainer added", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                            else
+                            {
+                                Toast.makeText(SignUpTrainerActivity.this, "Signup failed", Toast.LENGTH_SHORT).show();
+                                Log.v("SIGNUP FAILED", task.getException().getMessage());
+                            }
                         }
-                        else
-                        {
-                            Toast.makeText(SignUpTrainerActivity.this, "Signup failed", Toast.LENGTH_SHORT).show();
-                            Log.v("SIGNUP FAILED", task.getException().getMessage());
-                        }
-                    }
-                });
+                    });
+        }
     }
 
     public void goLoginAction(View view)
