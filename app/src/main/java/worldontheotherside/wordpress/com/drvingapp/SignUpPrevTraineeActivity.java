@@ -25,6 +25,8 @@ import worldontheotherside.wordpress.com.drvingapp.Classes.PreviousTrainee;
 
 public class SignUpPrevTraineeActivity extends AppCompatActivity {
 
+    // TODO: remove age from layout
+
     private EditText editTextUsername;
     private EditText editTextEmail;
     private EditText editTextAge;
@@ -61,52 +63,62 @@ public class SignUpPrevTraineeActivity extends AppCompatActivity {
 
     public void signUpAction(View v)
     {
-        //Create new user using auth with the email and password obtained from user
-        auth.createUserWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() { //Add a listener that activates on task completion
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) //If task (that is signing up) completed successfully
-                        {
-                            //User will be automatically logged in. Obtain current logged in user's info
-                            //FirebaseUser is a class that contains default firebase user's info (unique name, email, password, photo)
-                            FirebaseUser user = auth.getCurrentUser();
+        if(editTextUsername.getText().toString().isEmpty() || editTextEmail.getText().toString().isEmpty() ||
+                editTextAge.getText().toString().isEmpty() || editTextMobileNo.getText().toString().isEmpty() ||
+                editTextPassword.getText().toString().isEmpty() || editTextCivilNo.getText().toString().isEmpty() ||
+                ((!radioButtonMale.isChecked()) && (!radioButtonFemale.isChecked())))
+        {
+            Toast.makeText(this, "Please fill all of the fields first", Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            //Create new user using auth with the email and password obtained from user
+            auth.createUserWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() { //Add a listener that activates on task completion
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()) //If task (that is signing up) completed successfully
+                            {
+                                //User will be automatically logged in. Obtain current logged in user's info
+                                //FirebaseUser is a class that contains default firebase user's info (unique name, email, password, photo)
+                                FirebaseUser user = auth.getCurrentUser();
 
-                            //Complete the rest of the user profile
-                            DatabaseManip.updateUserProfile(user, editTextCivilNo.getText().toString(), null,
-                                    null, null, new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            //Do nothing
-                                        }
-                                    });
+                                //Complete the rest of the user profile
+                                DatabaseManip.updateUserProfile(user, editTextCivilNo.getText().toString(), null,
+                                        null, null, new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                //Do nothing
+                                            }
+                                        });
 
-                            //Create new previous trainee using obtained info
-                            PreviousTrainee previousTrainee = new PreviousTrainee();
-                            previousTrainee.setUsername(editTextUsername.getText().toString());
-                            previousTrainee.setEmail(editTextEmail.getText().toString());
-                            previousTrainee.setPhone(editTextMobileNo.getText().toString());
-                            if(radioButtonFemale.isChecked())
-                                previousTrainee.setGender("Female");
-                            else if(radioButtonMale.isChecked())
-                                previousTrainee.setGender("Male");
-                            previousTrainee.setPassword(editTextPassword.getText().toString());
-                            previousTrainee.setCivilNo(Long.valueOf(editTextCivilNo.getText().toString()));
+                                //Create new previous trainee using obtained info
+                                PreviousTrainee previousTrainee = new PreviousTrainee();
+                                previousTrainee.setUsername(editTextUsername.getText().toString());
+                                previousTrainee.setEmail(editTextEmail.getText().toString());
+                                previousTrainee.setPhone(editTextMobileNo.getText().toString());
+                                if(radioButtonFemale.isChecked())
+                                    previousTrainee.setGender("Female");
+                                else if(radioButtonMale.isChecked())
+                                    previousTrainee.setGender("Male");
+                                previousTrainee.setPassword(editTextPassword.getText().toString());
+                                previousTrainee.setCivilNo(Long.valueOf(editTextCivilNo.getText().toString()));
 
-                            DatabaseManip.addData(AppAPI.FORMER_TRAINEES, previousTrainee, new DatabaseReference.CompletionListener() {
-                                @Override
-                                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                                    Toast.makeText(SignUpPrevTraineeActivity.this, "User added", Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                                DatabaseManip.addData(AppAPI.FORMER_TRAINEES, previousTrainee, new DatabaseReference.CompletionListener() {
+                                    @Override
+                                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                        Toast.makeText(SignUpPrevTraineeActivity.this, "Previous trainee added", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                            else //If task failed
+                            {
+                                Toast.makeText(SignUpPrevTraineeActivity.this, "Signup failed", Toast.LENGTH_SHORT).show();
+                                Log.v("SIGNUP FAILED", task.getException().getMessage());
+                            }
                         }
-                        else //If task failed
-                        {
-                            Toast.makeText(SignUpPrevTraineeActivity.this, "Signup failed", Toast.LENGTH_SHORT).show();
-                            Log.v("SIGNUP FAILED", task.getException().getMessage());
-                        }
-                    }
-                });
+                    });
+        }
     }
 
     public void goLoginAction(View view)
