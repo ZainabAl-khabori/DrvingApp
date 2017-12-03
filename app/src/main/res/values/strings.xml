@@ -27,4 +27,18 @@
     <string name="TrainerName">Trainer Name</string>
     <string name="CarType">\tCar Type</string>
     <string name="EvaluationsNo">(0)</string>
+    <string name="gearup">GearUp</string>
+    <string name="gear_up_to_drive">Gear Up to drive</string>
+    <string name="training_area">Training Area:</string>
+    <string name="age_between">Age: Between</string>
+    <string name="and">and</string>
+    <string name="gender">Gender:</string>
+    <string name="contract_type">Contract Type:</string>
+    <string name="language">Language:</string>
+    <string name="get_list_of_instructors">Get list of instructors</string>
+    <string name="my_instructors">My Instructors</string>
+    <string name="instructor_s_name">Instructor\'s name</string>
+    <string name="drums_test">Drums test</string>
+    <string name="slope_test">Slope test</string>
+    <string name="road_test">Road test</string>
 </resources>

@@ -15,6 +15,9 @@ public class NewTrainee {
     private long civilNo;
     private long drivingLicense;
     private String place;      // TODO: fix this to map
+    private Boolean drumsPass;
+    private Boolean slopePass;
+    private Boolean roadPass;
 
 
 
@@ -28,6 +31,9 @@ public class NewTrainee {
     public void setCivilNo(long civilNo){this.civilNo = civilNo;}
     public void setDrivingLicense(long drivingLicense){this.drivingLicense = drivingLicense;}
     public void setPlace(String place){this.place = place;}
+    public void setDrumsPass(Boolean drumsPass) {this.drumsPass = drumsPass;}
+    public void setSlopePass(Boolean slopePass) {this.slopePass = slopePass;}
+    public void setRoadPass(Boolean roadPass) {this.roadPass = roadPass;}
 
     ////
     public String getUsername(){return username;}
@@ -39,7 +45,9 @@ public class NewTrainee {
     public long getCivilNo(){return civilNo;}
     public long getDrivingLicense(){return drivingLicense;}
     public String getPlace(){return place;}
-
+    public Boolean getDrumsPass() {return drumsPass;}
+    public Boolean getSlopePass() {return slopePass;}
+    public Boolean getRoadPass() {return roadPass;}
 
     ////
     public void BookTainer(){}

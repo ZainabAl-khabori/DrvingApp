@@ -1,34 +1,106 @@
 package worldontheotherside.wordpress.com.drvingapp;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
+import worldontheotherside.wordpress.com.drvingapp.Adapters.MyInstructorsRecyclerAdapter;
+import worldontheotherside.wordpress.com.drvingapp.Classes.Areas;
 import worldontheotherside.wordpress.com.drvingapp.Classes.Contract;
+import worldontheotherside.wordpress.com.drvingapp.Classes.Languages;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements MyInstructorsRecyclerAdapter.OnItemClickListener {
+
+    private Spinner spinnerTrainingAreas;
+    private EditText editTextAgeFrom;
+    private EditText editTextAgeTo;
+    private RadioButton radioButtonFemale;
+    private RadioButton radioButtonMale;
+    private RadioButton radioButtonHour;
+    private RadioButton radioButtonPeriod;
+    private Spinner spinnerLanguages;
+    private Button buttonGetInstructors;
+    private RecyclerView recyclerViewMyInstructors;
+
+    private MyInstructorsRecyclerAdapter adapter;
+    private MyInstructorsRecyclerAdapter.OnItemClickListener onItemClickListener;
+    private RecyclerView.LayoutManager layoutManager;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Contract contract = new Contract();
+        spinnerTrainingAreas = (Spinner) findViewById(R.id.spinnerTrainingAreas);
+        editTextAgeFrom = (EditText) findViewById(R.id.editTextAgeFrom);
+        editTextAgeTo = (EditText) findViewById(R.id.editTextAgeTo);
+        radioButtonFemale = (RadioButton) findViewById(R.id.radioButtonFemale);
+        radioButtonMale = (RadioButton) findViewById(R.id.radioButtonMale);
+        radioButtonHour = (RadioButton) findViewById(R.id.radioButtonHour);
+        radioButtonPeriod = (RadioButton) findViewById(R.id.radioButtonPeriod);
+        spinnerLanguages = (Spinner) findViewById(R.id.spinnerLanguages);
+        buttonGetInstructors = (Button) findViewById(R.id.buttonGetInstructors);
+        recyclerViewMyInstructors = (RecyclerView) findViewById(R.id.recyclerViewMyInstructors);
 
-        contract.setEnd("12/1/2017");
-        contract.setStart("1/7/2016");
-        contract.setPrice(6.000);
-        contract.setTraineeId(1234);
-        contract.setTrainerId(5678);
-        contract.setType("by hour");
+        context = this;
+        onItemClickListener = this;
 
-        DatabaseManip.addData(AppAPI.CONTRACTS, contract, new DatabaseReference.CompletionListener() {
+        layoutManager = new LinearLayoutManager(this);
+        recyclerViewMyInstructors.setLayoutManager(layoutManager);
+
+        DatabaseManip.getData(AppAPI.AREAS, new ValueEventListener() {
             @Override
-            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                //
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<String> areasList = new Areas(dataSnapshot).getAreas();
+                areasList.add(0, "Any area");
+                spinnerTrainingAreas.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item,
+                        areasList.toArray(new String[areasList.size()])));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.v("AREAS_ERROR", databaseError.getMessage());
             }
         });
+
+        DatabaseManip.getData(AppAPI.LANGUAGES, new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<String> languagesList = new Languages(dataSnapshot).getLanguages();
+                languagesList.add(0, "Any language");
+                spinnerLanguages.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item,
+                        languagesList.toArray(new String[languagesList.size()])));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.v("LANGUAGES_ERROR", databaseError.getMessage());
+            }
+        });
+
+
+    }
+
+    @Override
+    public void OnClick(View view, int position) {
+
     }
 }
