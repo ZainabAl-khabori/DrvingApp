@@ -1,8 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="164dp"
+        app:cardBackgroundColor="@color/cardViewProgressBarBackground">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="25"
+                android:progressDrawable="@drawable/circular_progress_bar"
+                android:secondaryProgress="100"
+                android:id="@+id/progressBarDealing"
+                android:background="@color/progressBarBackground"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25%"
+                android:textColor="#9d3f3f"
+                android:textSize="20sp"
+                android:id="@+id/textViewDealingPercentage"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="36dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="90dp"
+                android:paddingStart="20dp"
+                android:text="Dealing"
+                android:textSize="16sp"
+                android:id="@+id/textViewDealing"
+                />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="25"
+                android:progressDrawable="@drawable/circular_progress_bar"
+                android:secondaryProgress="100"
+                android:layout_marginStart="90dp"
+                android:id="@+id/progressBarRespectTime"
+                android:background="@color/progressBarBackground"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25%"
+                android:textColor="#9d3f3f"
+                android:textSize="20sp"
+                android:id="@+id/textViewRespectTimePercentage"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="125dp"
+                android:layout_marginTop="36dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="90dp"
+                android:paddingStart="110dp"
+                android:text="Respect\n  Time"
+                android:textSize="16sp"
+                android:id="@+id/textViewRespectTime"
+                />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="25"
+                android:progressDrawable="@drawable/circular_progress_bar"
+                android:secondaryProgress="100"
+                android:layout_marginStart="185dp"
+                android:id="@+id/progressBarAttendance"
+                android:background="@color/progressBarBackground"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25%"
+                android:textColor="#9d3f3f"
+                android:textSize="20sp"
+                android:id="@+id/textViewAttendancePercentage"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="220dp"
+                android:layout_marginTop="36dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="90dp"
+                android:paddingStart="190dp"
+                android:text="Attendance"
+                android:textSize="16sp"
+                android:id="@+id/textViewAttendance"
+                />
+
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="25"
+                android:progressDrawable="@drawable/circular_progress_bar"
+                android:secondaryProgress="100"
+                android:layout_marginStart="280dp"
+                android:id="@+id/progressBarEfficiency"
+                android:background="@color/progressBarBackground"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25%"
+                android:textColor="#9d3f3f"
+                android:textSize="20sp"
+                android:id="@+id/textViewEfficiencyPercentage"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="315dp"
+                android:layout_marginTop="36dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="90dp"
+                android:paddingStart="295dp"
+                android:text="Efficiency"
+                android:textSize="16sp"
+                android:id="@+id/textViewEfficiency"
+                />
+
+
+
+
+        </RelativeLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardViewReviews"
@@ -20,7 +186,7 @@
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:isIndicator="false"
+                android:isIndicator="true"
                 android:progressBackgroundTint="@android:color/darker_gray"
                 android:progressTint="@color/colorPrimary"
                 android:secondaryProgressTint="@color/colorPrimary"
@@ -67,6 +233,7 @@
     </android.support.v7.widget.CardView>
 
     <View
+
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:id="@+id/viewHorizontalLineReviews"

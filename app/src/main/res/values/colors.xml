@@ -9,6 +9,9 @@
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowBackground">#FFFFFF</color>
     <color name="tabIndicatorColor">#4e85a9</color>
+    <color name="cardViewProgressBarBackground">#FFF6F6F6</color>
+    <color name="progressBarBackground">#FFFFF1F1</color>
+
 
 
 </resources>
