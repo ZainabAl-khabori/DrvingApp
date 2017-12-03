@@ -21,7 +21,7 @@
             </intent-filter>
             -->
         </activity>
-        <activity android:name=".SignUpNewTraineeActivity"></activity>
+        <activity android:name=".SignUpNewTraineeActivity" />
         <activity android:name=".SignUpPrevTraineeActivity">
 
             <!--
@@ -49,7 +49,7 @@
             -->
         </activity>
         <activity
-            android:name=".TrainerProfileActivity"
+            android:name=".TrainerViewActivity"
             android:label="TrainerProfileActivity">
 
             <!--
@@ -67,6 +67,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".EditingTrainerProfileActivity" />
+        <activity android:name=".TrainerProfileActivity"></activity>
     </application>
 
 </manifest>
