@@ -12,22 +12,31 @@ public class Contract {
     private String end;
     private double price;
     private String type;
-    private int traineeId;
-    private int trainerId;
+    private long traineeId;
+    private long trainerId;
+    private Boolean drumsPass;
+    private Boolean slopePass;
+    private Boolean roadPass;
 
 
     public Contract(){ /* */ }
 
     public Contract(DataSnapshot dataSnapshot)
     {
-        Contract contract = dataSnapshot.getValue(Contract.class);
+        for(DataSnapshot snapshot: dataSnapshot.getChildren())
+        {
+            Contract contract = snapshot.getValue(Contract.class);
 
-        start = contract.start;
-        end = contract.end;
-        price = contract.price;
-        type = contract.type;
-        traineeId = contract.traineeId;
-        trainerId = contract.trainerId;
+            start = contract.start;
+            end = contract.end;
+            price = contract.price;
+            type = contract.type;
+            traineeId = contract.traineeId;
+            trainerId = contract.trainerId;
+            drumsPass = contract.drumsPass;
+            slopePass = contract.slopePass;
+            roadPass = contract.roadPass;
+        }
     }
 
 
@@ -36,16 +45,22 @@ public class Contract {
     public void setEnd(String end){this.end = end;}
     public void setPrice(double price){this.price = price;}
     public void setType(String type){this.type = type;}
-    public void setTraineeId(int id){traineeId = id;}
-    public void setTrainerId(int trainerId){this.trainerId = trainerId;}
+    public void setTraineeId(long id){traineeId = id;}
+    public void setTrainerId(long trainerId){this.trainerId = trainerId;}
+    public void setDrumsPass(Boolean drumsPass) {this.drumsPass = drumsPass;}
+    public void setSlopePass(Boolean slopePass) {this.slopePass = slopePass;}
+    public void setRoadPass(Boolean roadPass) {this.roadPass = roadPass;}
 
     //////
     public double getPrice(){return price;}
     public String getType(){return type;}
     public String getStart(){return start;}
     public String getEnd(){return end;}
-    public int getTraineeId(){return traineeId;}
-    public int getTrainerId(){return trainerId;}
+    public long getTraineeId(){return traineeId;}
+    public long getTrainerId(){return trainerId;}
+    public Boolean getDrumsPass() {return drumsPass;}
+    public Boolean getSlopePass() {return slopePass;}
+    public Boolean getRoadPass() {return roadPass;}
 
     //////
     public void Select(){}

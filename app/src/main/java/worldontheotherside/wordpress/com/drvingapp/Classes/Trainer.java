@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Trainer {
 
     private String name;
-    private long civilId;
+    private long civilNo;
     private String email;
     private int age;
     private String phone;
@@ -36,7 +36,7 @@ public class Trainer {
             Trainer trainer = snapshot.getValue(Trainer.class);
 
             name = trainer.name;
-            civilId = trainer.civilId;
+            civilNo = trainer.civilNo;
             email = trainer.email;
             age = trainer.age;
             phone = trainer.phone;
@@ -53,7 +53,7 @@ public class Trainer {
 
     ///////
     public void setName(String name){this.name = name;}
-    public void setCivilId(long civilId){this.civilId = civilId;}
+    public void setCivilId(long civilId){this.civilNo = civilId;}
     public void setEmail(String email){this.email = email;}
     public void setAge(int age){this.age = age;}
     public void setPhone(String phone){this.phone = phone;}
@@ -68,7 +68,7 @@ public class Trainer {
 
     /////
     public String getName(){return name;}
-    public long getCivilId(){return civilId;}
+    public long getCivilId(){return civilNo;}
     public String getEmail(){return email;}
     public int getAge(){return age;}
     public String getPhone(){return phone;}

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "801412353792",
+    "firebase_url": "https://drivingapp-5d80c.firebaseio.com",
+    "project_id": "drivingapp-5d80c",
+    "storage_bucket": "drivingapp-5d80c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801412353792:android:9017617f50b5bf21",
+        "android_client_info": {
+          "package_name": "worldontheotherside.wordpress.com.drvingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "801412353792-d5ceg4utprk28rs69rcd23kf121q90eb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "worldontheotherside.wordpress.com.drvingapp",
+            "certificate_hash": "6dbd10bc5e090fe7592529ee2a297864d5def8d2"
+          }
+        },
+        {
+          "client_id": "801412353792-1don57ap542gbt3kc81s8pk01vf30a07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIaUJeAH_ffkn8tl-CxZiuQP1sICOr1x0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "801412353792-1don57ap542gbt3kc81s8pk01vf30a07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
