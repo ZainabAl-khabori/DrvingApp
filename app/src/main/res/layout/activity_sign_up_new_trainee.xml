@@ -140,8 +140,7 @@
         android:inputType="number"
         android:textSize="16sp"
         android:layout_below="@+id/editTextPassword"
-        android:layout_alignStart="@+id/editTextPassword"
-        />
+        android:layout_alignStart="@+id/editTextPassword" />
 
     <EditText
         android:layout_width="250dp"

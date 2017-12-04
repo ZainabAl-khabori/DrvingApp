@@ -41,4 +41,6 @@
     <string name="drums_test">Drums test</string>
     <string name="slope_test">Slope test</string>
     <string name="road_test">Road test</string>
+
+    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 </resources>

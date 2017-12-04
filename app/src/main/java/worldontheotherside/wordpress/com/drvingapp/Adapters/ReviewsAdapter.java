@@ -48,8 +48,8 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-/*
-        Picasso.with(holder.itemView.getContext())
+
+       /* Picasso.with(holder.itemView.getContext())
                 .load(CartProductsList.get(position).getThumb())
                 .into(holder.imageViewProductImage);
         holder.textViewProductName.setText(CartProductsList.get(position).getName());

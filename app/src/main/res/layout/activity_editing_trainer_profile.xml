@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="worldontheotherside.wordpress.com.drvingapp.EditingTrainerProfileActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutProfileHeader"
+        android:layout_width="match_parent"
+        android:layout_height="156dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/edit_profile_picture"
+        android:id="@+id/circleImageViewProfile"/>
+
+    <EditText
+        android:id="@+id/editTextProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:paddingTop="10dp"
+        android:hint="Name"
+        android:layout_gravity="center" />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTrainingRegion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="10dp"
+            android:layout_below="@+id/linearLayoutProfileHeader"
+           >
+
+            <TextView
+                android:text="Training Region"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/staticTextViewTrainingRegion"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/spinnerTrainingRegion"/>
+
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/viewHorizontalLine1"
+            android:background="#dfdbdb"
+            android:layout_below="@+id/linearLayoutTrainingRegion"
+            />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayoutTrainingRegion"
+        android:orientation="horizontal"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        >
+
+        <TextView
+            android:text="Age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewAge"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <EditText
+            android:hint="age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextAge"
+            android:textSize="16sp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine4"
+        android:background="#dfdbdb"
+        android:layout_below="@id/linearLayoutAge"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp"
+        android:layout_below="@+id/linearLayoutAge"
+        >
+
+        <TextView
+            android:text="Language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewLanguage"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/spinnerLanguage"/>
+
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine2"
+        android:background="#dfdbdb"
+        android:layout_below="@+id/linearLayoutLanguage"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutVehicleType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp"
+        android:layout_below="@+id/linearLayoutLanguage"
+        >
+
+        <TextView
+            android:text="Vehicle Type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewVehicleType"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/spinnerVehicleType"/>
+
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine3"
+        android:background="#dfdbdb"
+        android:layout_below="@+id/linearLayoutVehicleType"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutVehiclePlate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayoutVehicleType"
+        android:orientation="horizontal"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        >
+
+        <TextView
+            android:text="Vehicle Plate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewVehiclePlate"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <EditText
+            android:hint="Vehicle Plate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextVehiclePlate"
+            android:textSize="16sp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dfdbdb"
+        android:layout_below="@id/linearLayoutVehiclePlate"
+        />
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

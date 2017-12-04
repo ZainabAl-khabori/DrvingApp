@@ -17,7 +17,7 @@
         android:paddingEnd="10dp">
 
         <TextView
-            android:text="Area"
+            android:text="Training Region"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/staticTextViewArea"
@@ -26,7 +26,7 @@
             />
 
         <TextView
-            android:text="area"
+            android:text="training region"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewArea"
@@ -111,39 +111,6 @@
         android:background="#dfdbdb"
         />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="10dp">
-
-        <TextView
-            android:text="Status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/staticTextViewStatus"
-            android:textSize="16sp"
-            android:layout_weight="1"
-            />
-
-        <TextView
-            android:text="status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewStatus"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:layout_weight="1"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:id="@+id/viewHorizontalLine2"
-        android:background="#dfdbdb"
-        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -189,6 +156,40 @@
         android:paddingEnd="10dp">
 
         <TextView
+            android:text="Civil No"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewCivilNo"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="CivilNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewCivilNo"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine11"
+        android:background="#dfdbdb"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp">
+
+        <TextView
             android:text="Vehicle Type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -212,6 +213,39 @@
         android:id="@+id/viewHorizontalLine6"
         android:background="#dfdbdb"
         />
+ <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp">
+
+        <TextView
+            android:text="Vehicle Plate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewVehiclePlate"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="vehicle plate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewVehiclePlate"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine13"
+        android:background="#dfdbdb"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -223,7 +257,7 @@
         android:paddingEnd="10dp">
 
         <TextView
-            android:text="Contract Type"
+            android:text="Payment Options"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/staticTextViewContractType"
@@ -232,7 +266,7 @@
             />
 
         <TextView
-            android:text="contract type"
+            android:text="payment options"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewContractType"
@@ -257,19 +291,52 @@
         android:paddingEnd="10dp">
 
         <TextView
-            android:text="Price"
+            android:text="Hour Price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/staticTextViewPrice"
+            android:id="@+id/staticTextViewHourPrice"
             android:textSize="16sp"
             android:layout_weight="1"
             />
 
         <TextView
-            android:text="price"
+            android:text="hour price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textViewPrice"
+            android:id="@+id/textViewHourPrice"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine12"
+        android:background="#dfdbdb"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp">
+
+        <TextView
+            android:text="Contract Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewContractPrice"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="contract price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewContractPrice"
             android:textSize="16sp"
             android:textColor="@android:color/black"
             android:layout_weight="1"/>
@@ -347,5 +414,39 @@
         android:id="@+id/viewHorizontalLine10"
         android:background="#dfdbdb"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp">
+
+        <TextView
+            android:text="Status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewStatus"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:text="status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewStatus"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine2"
+        android:background="#dfdbdb"
+        />
+
 
 </LinearLayout>
