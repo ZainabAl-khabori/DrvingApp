@@ -30,6 +30,7 @@ public class AppAPI {
 
     public static String TRAINEE_RATE = db.child("trainee_rate").toString();
 
+
     public static String AREAS = db.child("areas").toString();
     public static String AREASCHILD = db.child("areas").child("-L-QY9EKooKWx_nM2JH9").toString();
 

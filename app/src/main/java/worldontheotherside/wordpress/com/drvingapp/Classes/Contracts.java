@@ -1,5 +1,7 @@
 package worldontheotherside.wordpress.com.drvingapp.Classes;
 
+import android.util.Log;
+
 import com.google.firebase.database.DataSnapshot;
 
 import java.util.ArrayList;
@@ -22,7 +24,9 @@ public class Contracts
         contracts = new ArrayList<>();
 
         for(DataSnapshot snapshot: dataSnapshot.getChildren())
+        {
             contracts.add(new Contract(snapshot));
+        }
     }
 
     public ArrayList<Contract> getContracts() {

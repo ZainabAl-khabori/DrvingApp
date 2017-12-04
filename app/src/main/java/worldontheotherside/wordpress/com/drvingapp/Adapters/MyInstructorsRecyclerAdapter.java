@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import worldontheotherside.wordpress.com.drvingapp.AppAPI;
+import worldontheotherside.wordpress.com.drvingapp.AppKeys;
 import worldontheotherside.wordpress.com.drvingapp.Classes.Contract;
 import worldontheotherside.wordpress.com.drvingapp.Classes.NewTrainee;
 import worldontheotherside.wordpress.com.drvingapp.Classes.PreviousTrainee;
@@ -31,7 +32,7 @@ import worldontheotherside.wordpress.com.drvingapp.R;
 public class MyInstructorsRecyclerAdapter extends RecyclerView.Adapter<MyInstructorsRecyclerAdapter.ViewHolder> {
 
     private ArrayList<Contract> contractsList;
-    private Object user;
+    private String user;
     private OnItemClickListener onItemClickListener;
 
     public interface OnItemClickListener { public void OnClick(View view, int position); }
@@ -39,6 +40,7 @@ public class MyInstructorsRecyclerAdapter extends RecyclerView.Adapter<MyInstruc
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        private TextView textViewName;
         private TextView textViewInstructorName;
         private ImageView imageViewDrumsTest;
         private ImageView imageViewSlopeTest;
@@ -49,6 +51,7 @@ public class MyInstructorsRecyclerAdapter extends RecyclerView.Adapter<MyInstruc
         public ViewHolder(View itemView) {
             super(itemView);
 
+            textViewName = (TextView) itemView.findViewById(R.id.textViewName);
             textViewInstructorName = (TextView) itemView.findViewById(R.id.textViewInstructorName);
             imageViewDrumsTest = (ImageView) itemView.findViewById(R.id.imageViewDrumsTest);
             imageViewSlopeTest = (ImageView) itemView.findViewById(R.id.imageViewSlopeTest);
@@ -70,9 +73,9 @@ public class MyInstructorsRecyclerAdapter extends RecyclerView.Adapter<MyInstruc
         this.onItemClickListener = onItemClickListener;
     }
 
-    public MyInstructorsRecyclerAdapter(ArrayList<Contract> data, Object object) {
+    public MyInstructorsRecyclerAdapter(ArrayList<Contract> data, String userType) {
         contractsList = data;
-        user = object;
+        user = userType;
     }
 
     @Override
@@ -83,20 +86,59 @@ public class MyInstructorsRecyclerAdapter extends RecyclerView.Adapter<MyInstruc
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        DatabaseManip.findData(AppAPI.TRAINER_BY_ID, "civilNo", contractsList.get(position).getTrainerId(), new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Trainer trainer = new Trainer(dataSnapshot);
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-                holder.textViewInstructorName.setText(trainer.getName());
-            }
+        if((user.equals(AppKeys.PREV_TRAINEE)) || (user.equals(AppKeys.NEW_TRAINEE)))
+        {
+            DatabaseManip.findData(AppAPI.TRAINER_BY_ID, "civilNo", contractsList.get(position).getTrainerId(),
+                    new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Trainer trainer = new Trainer(dataSnapshot);
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.v("TRAINER_FINDING_ERROR", databaseError.getMessage());
-            }
-        });
+                    holder.textViewInstructorName.setText(trainer.getName());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.v("TRAINER_FINDING_ERROR", databaseError.getMessage());
+                }
+            });
+        }
+        else if(user.equals(AppKeys.INSTRUCTOR))
+        {
+            holder.textViewName.setText("Trainee's name");
+
+            DatabaseManip.getData(AppAPI.TRAINEES, new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    ArrayList<DataSnapshot> snapshots = new ArrayList<>();
+                    for(DataSnapshot snapshot: dataSnapshot.getChildren())
+                        snapshots.add(snapshot);
+
+                    ArrayList<Long> ids = new ArrayList<>();
+                    ArrayList<String> names = new ArrayList<>();
+                    for(int i = 0; i < snapshots.size(); i++)
+                    {
+                        for(DataSnapshot snapshot: snapshots.get(i).getChildren())
+                        {
+                            ids.add(snapshot.child("civilNo").getValue(Long.class));
+                            names.add(snapshot.child("username").getValue(String.class));
+                        }
+                    }
+
+                    if(ids.contains(contractsList.get(position).getTraineeId()))
+                        holder.textViewInstructorName.setText(names.get(ids.indexOf(contractsList.get(position).getTraineeId())));
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+        Log.v("DRUMS", String.valueOf(contractsList.get(position).getDrumsPass()));
 
         if(contractsList.get(position).getDrumsPass())
             holder.imageViewDrumsTest.setVisibility(View.VISIBLE);
@@ -105,10 +147,8 @@ public class MyInstructorsRecyclerAdapter extends RecyclerView.Adapter<MyInstruc
         if(contractsList.get(position).getRoadPass())
             holder.imageViewRoadTest.setVisibility(View.VISIBLE);
 
-        if(user instanceof PreviousTrainee)
+        if((user.equals(AppKeys.PREV_TRAINEE)) || (user.equals(AppKeys.INSTRUCTOR)))
             holder.linearLayoutRate.setVisibility(View.VISIBLE);
-        else if(!(user instanceof NewTrainee))
-            Toast.makeText(holder.itemView.getContext(), "Error: not prev or new trainee", Toast.LENGTH_SHORT).show();
     }
 
     @Override

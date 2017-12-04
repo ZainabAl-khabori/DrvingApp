@@ -3,6 +3,7 @@ package worldontheotherside.wordpress.com.drvingapp.Classes;
 import com.google.firebase.database.DataSnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by u106543 on 11/19/2017.
@@ -18,9 +19,9 @@ public class Trainer {
     private String gender;
     private String password;
     private String carNo;
-    private ArrayList<String> places;
+    private HashMap<String, String> places;
     private String vehicleType;
-    private ArrayList<String> languages;
+    private HashMap<String, String> languages;
     private TrainerRate rate;
     private Price price;
 
@@ -60,9 +61,9 @@ public class Trainer {
     public void setGender(String gender){this.gender = gender;}
     public void setPassword(String password){this.password = password;}
     public void setCarNo(String carNo){this.carNo = carNo;}
-    public void setPlaces(ArrayList<String> places){this.places = places;}
+    public void setPlaces(HashMap<String, String> places){this.places = places;}
     public void setVehicleType(String vehicleType){this.vehicleType = vehicleType;}
-    public void setLanguages(ArrayList<String> languages){this.languages = languages;}
+    public void setLanguages(HashMap<String, String> languages){this.languages = languages;}
     public void setRate(TrainerRate rate){this.rate = rate;}
     public void setPrice(Price price){this.price = price;}
 
@@ -75,9 +76,9 @@ public class Trainer {
     public String getGender(){return gender;}
     public String getPassword(){return password;}
     public String getCarNo(){return carNo;}
-    public ArrayList<String> getPlaces(){return places;}
+    public HashMap<String, String> getPlaces(){return places;}
     public String getVehicleType(){return vehicleType;}
-    public ArrayList<String> getLanguages(){return languages;}
+    public HashMap<String, String> getLanguages(){return languages;}
     public TrainerRate getRate(){return rate;}
     public Price getPrice(){return price;}
 

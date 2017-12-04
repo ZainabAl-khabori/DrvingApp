@@ -10,6 +10,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 /**
  * Created by زينب on 11/20/2017.
  */
@@ -59,10 +61,28 @@ public class DatabaseManip {
         q.addValueEventListener(valueEventListener);
     }
 
-    public static void getData(String url, String param1, String secondField, String param2, ValueEventListener valueEventListener)
+    public static void findData(String parent, HashMap<String, String> params, ValueEventListener valueEventListener)
     {
-        db = FirebaseDatabase.getInstance().getReferenceFromUrl(url);
-        Query q = db.equalTo(param1).orderByChild(secondField).equalTo(param2);
+        db = FirebaseDatabase.getInstance().getReferenceFromUrl(parent);
+        Query q = db;
+
+        if(params.containsKey("Area"))
+            q = q.orderByChild("places/"+params.get("Area")).equalTo(true);
+        if(params.containsKey("From") || params.containsKey("To"))
+        {
+            q = q.orderByChild("age");
+            if(params.containsKey("From"))
+                q = q.startAt(Integer.valueOf(params.get("From")));
+            if(params.containsKey("To"))
+                q = q.endAt(Integer.valueOf(params.get("To")));
+        }
+        if(params.containsKey("Gender"))
+            q = q.orderByChild("gender").equalTo(params.get("Gender"));
+        if(params.containsKey("Contract"))
+            q = q.orderByChild("price/"+params.get("Contract")).startAt("");
+        if(params.containsKey("Language"))
+            q = q.orderByChild("languages/"+params.get("Language")).equalTo(true);
+
         q.addValueEventListener(valueEventListener);
     }
 

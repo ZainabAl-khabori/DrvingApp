@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cardViewInstructors"
+    android:layout_margin="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@android:color/black"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"/>
+
+        <RatingBar
+            android:id="@+id/ratingBarRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+            android:numStars="5"
+            style="?android:attr/ratingBarStyleSmall"/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
