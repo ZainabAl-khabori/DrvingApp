@@ -38,78 +38,46 @@
 
     </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linearLayoutTrainingRegion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="10dp"
-            android:paddingBottom="5dp"
-            android:paddingStart="15dp"
-            android:paddingEnd="10dp"
-            android:layout_below="@+id/linearLayoutProfileHeader"
-           >
 
-            <TextView
-                android:text="Training Region"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/staticTextViewTrainingRegion"
-                android:textSize="16sp"
-                android:layout_weight="1"
-                />
-
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/spinnerTrainingRegion"/>
-
-
-
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:id="@+id/viewHorizontalLine1"
-            android:background="#dfdbdb"
-            android:layout_below="@+id/linearLayoutTrainingRegion"
-            />
 
     <LinearLayout
-        android:id="@+id/linearLayoutAge"
+        android:id="@+id/linearLayoutTrainingRegion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayoutTrainingRegion"
         android:orientation="horizontal"
-        android:paddingEnd="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
         android:paddingStart="15dp"
+        android:paddingEnd="10dp"
+        android:layout_below="@+id/linearLayoutProfileHeader"
         >
 
         <TextView
-            android:text="Age"
+            android:text="Training Region"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/staticTextViewAge"
+            android:id="@+id/staticTextViewTrainingRegion"
             android:textSize="16sp"
             android:layout_weight="1"
             />
 
-        <EditText
-            android:hint="age"
+        <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editTextAge"
-            android:textSize="16sp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:id="@+id/spinnerTrainingRegion"/>
+
+
+
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:id="@+id/viewHorizontalLine4"
+        android:id="@+id/viewHorizontalLine1"
         android:background="#dfdbdb"
-        android:layout_below="@id/linearLayoutAge"
+        android:layout_below="@+id/linearLayoutTrainingRegion"
         />
+
 
     <LinearLayout
         android:id="@+id/linearLayoutLanguage"
@@ -120,7 +88,7 @@
         android:paddingBottom="5dp"
         android:paddingStart="15dp"
         android:paddingEnd="10dp"
-        android:layout_below="@+id/linearLayoutAge"
+        android:layout_below="@+id/linearLayoutTrainingRegion"
         >
 
         <TextView
@@ -188,11 +156,125 @@
         android:layout_below="@+id/linearLayoutVehicleType"
         />
 
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutPaymentOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp"
+        android:layout_below="@+id/linearLayoutVehicleType"
+        >
+
+        <TextView
+            android:text="Payment Option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewPaymentOption"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/spinnerPaymentOption"/>
+
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dfdbdb"
+        android:layout_below="@+id/linearLayoutPaymentOption"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutTrainingTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayoutPaymentOption"
+        android:orientation="horizontal"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        >
+
+        <TextView
+            android:text="Training Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewTrainingTime"
+            android:textSize="16sp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_weight="1"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="SET"
+            android:textAlignment="center"
+            android:textColor="#fef4f4"
+            android:background="#9D3F3F"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dfdbdb"
+        android:layout_below="@id/linearLayoutTrainingTime"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayoutTrainingTime"
+        android:orientation="horizontal"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        >
+
+        <TextView
+            android:text="Age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewAge"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <EditText
+            android:hint="age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextAge"
+            android:textSize="16sp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/viewHorizontalLine4"
+        android:background="#dfdbdb"
+        android:layout_below="@id/linearLayoutAge"
+        />
+
     <LinearLayout
         android:id="@+id/linearLayoutVehiclePlate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayoutVehicleType"
+        android:layout_below="@+id/linearLayoutAge"
         android:orientation="horizontal"
         android:paddingEnd="15dp"
         android:paddingStart="15dp"
@@ -221,6 +303,108 @@
         android:background="#dfdbdb"
         android:layout_below="@id/linearLayoutVehiclePlate"
         />
+
+<LinearLayout
+        android:id="@+id/linearLayoutPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayoutVehiclePlate"
+        android:orientation="horizontal"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        >
+
+        <TextView
+            android:text="Phone Number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewPhone"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <EditText
+            android:hint="Phone Number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextPhone"
+            android:textSize="16sp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dfdbdb"
+        android:layout_below="@id/linearLayoutPhone"
+        />
+<LinearLayout
+        android:id="@+id/linearLayoutHourPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayoutPhone"
+        android:orientation="horizontal"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        >
+
+        <TextView
+            android:text="Hour Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewHourPrice"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <EditText
+            android:hint="Hour Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextHourPrice"
+            android:textSize="16sp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dfdbdb"
+        android:layout_below="@id/linearLayoutHourPrice"
+        />
+<LinearLayout
+        android:id="@+id/linearLayoutContractPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayoutHourPrice"
+        android:orientation="horizontal"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        >
+
+        <TextView
+            android:text="Contract Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/staticTextViewContractPrice"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            />
+
+        <EditText
+            android:hint="Contract Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextContractPrice"
+            android:textSize="16sp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dfdbdb"
+        android:layout_below="@id/linearLayoutContractPrice"
+        />
+
+
 
 
 
