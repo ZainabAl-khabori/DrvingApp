@@ -127,9 +127,8 @@
         android:drawableStart="@drawable/ic_pass"
         android:inputType="textPassword"
         android:textSize="16sp"
-        android:layout_below="@+id/editTextMobileNo"
-        android:layout_alignStart="@+id/editTextMobileNo"
-        android:layout_marginTop="40dp" />
+        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/viewHorizontalLine" />
 
     <EditText
         android:layout_width="250dp"

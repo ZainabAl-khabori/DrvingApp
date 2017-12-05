@@ -4,6 +4,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -16,9 +18,11 @@ import worldontheotherside.wordpress.com.drvingapp.R;
  * Created by زينب on 12/4/2017.
  */
 
-public class InstructorsRecyclerAdapter extends RecyclerView.Adapter<InstructorsRecyclerAdapter.ViewHolder> {
+public class InstructorsRecyclerAdapter extends RecyclerView.Adapter<InstructorsRecyclerAdapter.ViewHolder> implements Filterable {
 
     private ArrayList<Trainer> list;
+    private ArrayList<Trainer> filterList;
+    private ValueFilter valueFilter;
     private OnItemClickListener onItemClickListener;
 
     public interface OnItemClickListener { public void onClick(View view, int position); }
@@ -44,7 +48,45 @@ public class InstructorsRecyclerAdapter extends RecyclerView.Adapter<Instructors
         }
     }
 
-    public InstructorsRecyclerAdapter(ArrayList<Trainer> data) { list = data; }
+    private class ValueFilter extends Filter
+    {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results = new FilterResults();
+
+            if((constraint != null) && (constraint.length() > 0))
+            {
+                ArrayList<Trainer> trainers = new ArrayList<>();
+
+                for(int i = 0; i < filterList.size(); i++)
+                {
+                    if(filterList.get(i).getName().toUpperCase().contains(constraint.toString().toUpperCase()))
+                        trainers.add(filterList.get(i));
+                }
+
+                results.count = trainers.size();
+                results.values = trainers;
+            }
+            else
+            {
+                results.count = filterList.size();
+                results.values = filterList;
+            }
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            list = (ArrayList<Trainer>) filterResults.values;
+            notifyDataSetChanged();
+        }
+    }
+
+    public InstructorsRecyclerAdapter(ArrayList<Trainer> data) {
+        list = data;
+        filterList = data;
+    }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) { this.onItemClickListener = onItemClickListener; }
 
@@ -62,4 +104,11 @@ public class InstructorsRecyclerAdapter extends RecyclerView.Adapter<Instructors
 
     @Override
     public int getItemCount() { return list.size(); }
+
+    @Override
+    public Filter getFilter() {
+        if(valueFilter == null)
+            valueFilter = new ValueFilter();
+        return valueFilter;
+    }
 }

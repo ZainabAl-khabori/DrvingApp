@@ -18,6 +18,7 @@ public class NewTrainee {
     private Boolean drumsPass;
     private Boolean slopePass;
     private Boolean roadPass;
+    private Trainer currentTrainer;
 
 
 
@@ -34,6 +35,7 @@ public class NewTrainee {
     public void setDrumsPass(Boolean drumsPass) {this.drumsPass = drumsPass;}
     public void setSlopePass(Boolean slopePass) {this.slopePass = slopePass;}
     public void setRoadPass(Boolean roadPass) {this.roadPass = roadPass;}
+    public void setCurrentTrainer(Trainer currentTrainer) {this.currentTrainer = currentTrainer;}
 
     ////
     public String getUsername(){return username;}
@@ -48,6 +50,7 @@ public class NewTrainee {
     public Boolean getDrumsPass() {return drumsPass;}
     public Boolean getSlopePass() {return slopePass;}
     public Boolean getRoadPass() {return roadPass;}
+    public Trainer getCurrentTrainer() {return currentTrainer;}
 
     ////
     public void BookTainer(){}
