@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">DrivingApp</string>
 
-    <string name="Trainer">Trainer</string>
+    <string name="Trainer">Instructor</string>
     <string name="PreviousTrainee">Previous\nTrainee"</string>
     <string name="NewTrainee">New Trainee</string>
     <string name="Username">\tUsername</string>
@@ -22,10 +22,10 @@
     <string name="ByHours">By Hours</string>
     <string name="Contract">Contract</string>
     <string name="CivilNo">\tCivil No</string>
-    <string name="DrivingLicense">\tDriving License</string>
-    <string name="CarNo">\tCar Number</string>
+    <string name="DrivingLicense">\t Learner License Booklet NO</string>
+    <string name="CarNo">\tVehicle Plate</string>
     <string name="TrainerName">Trainer Name</string>
-    <string name="CarType">\tCar Type</string>
+    <string name="CarType">\tVehicle Type</string>
     <string name="EvaluationsNo">(0)</string>
     <string name="gearup">GearUp</string>
     <string name="gear_up_to_drive">Gear Up to drive</string>
