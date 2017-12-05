@@ -157,54 +157,30 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/linearLayoutVehicleType"
-        android:layout_below="@+id/editTextCarNo"
+        android:layout_below="@+id/editTextCivilNo"
         android:layout_centerHorizontal="true"
-        android:paddingTop="15dp">
+        android:layout_marginTop="10dp">
 
-        <TextView
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/VehicleType"
+        android:textSize="16sp"
+        android:id="@+id/textViewVehicleType"
+        android:drawableStart="@drawable/ic_gear"
+        android:layout_marginStart="5dp"
+        android:paddingBottom="5dp"
+        android:layout_weight="1"
+        />
+
+        <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/CarType"
-            android:textSize="16sp"
-            android:id="@+id/textViewVehicleType"
-            android:drawableStart="@drawable/ic_gender"
-            android:layout_marginTop="40dp"
-            android:layout_marginStart="5dp"
-            />
-
-        <RadioGroup
-            android:id="@+id/radioGroupVehicleType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="28dp"
-            android:paddingTop="8dp"
-            android:layout_marginStart="13dp"
-            >
-
-
-            <RadioButton
-                android:id="@+id/radioAutomatic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:drawableStart="@drawable/ic_female"
-                android:layout_marginStart="18dp"
-                />
-
-            <RadioButton
-                android:id="@+id/radioManual"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:drawableStart="@drawable/ic_male"
-                android:layout_marginStart="10dp"
-
-
-                />
-        </RadioGroup>
-
+            android:layout_weight="1"
+            android:id="@+id/spinnerVehicleType"/>
     </LinearLayout>
+
+
     <View
         android:layout_width="243dp"
         android:layout_height="1dp"
@@ -219,9 +195,9 @@
         android:layout_height="30dp"
         android:text="@string/signUp"
         android:id="@+id/buttonLogin"
-        android:layout_below="@+id/editTextCivilNo"
+        android:layout_below="@+id/linearLayoutVehicleType"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="25dp"
         android:textColor="#fef4f4"
         android:background="#9D3F3F"
         android:onClick="signUpAction"/>
@@ -231,7 +207,7 @@
         android:layout_height="wrap_content"
         android:text="@string/AlreadyHaveAccount"
         android:id="@+id/textViewAlreadyHaveAccount"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/buttonLogin"
         android:layout_centerHorizontal="true"
         android:onClick="goLoginAction"/>

@@ -114,13 +114,15 @@
             android:layout_marginRight="10dp"
             android:text="@string/gender"
             android:textColor="@android:color/black"
-            android:textSize="16dp" />
+            android:textSize="16dp"
+            android:layout_weight="1"/>
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:id="@+id/radioGroupGender">
+            android:id="@+id/radioGroupGender"
+            android:layout_weight="1">
 
             <RadioButton
                 android:id="@+id/radioButtonFemale"
@@ -156,20 +158,22 @@
             android:layout_marginRight="10dp"
             android:text="@string/contract_type"
             android:textColor="@android:color/black"
-            android:textSize="16dp" />
+            android:textSize="16dp"
+            android:layout_weight="1"/>
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:id="@+id/radioGroupContractType">
+            android:id="@+id/radioGroupContractType"
+            android:layout_weight="1">
 
             <RadioButton
                 android:id="@+id/radioButtonHour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="25dp"
                 android:layout_weight="1"
                 android:drawableStart="@drawable/ic_hour" />
 
@@ -177,8 +181,8 @@
                 android:id="@+id/radioButtonPeriod"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="30dp"
                 android:layout_weight="1"
                 android:drawableStart="@drawable/ic_period" />
 
@@ -213,14 +217,15 @@
 
     <Button
         android:id="@+id/buttonGetInstructors"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+       android:paddingRight="10dp"
+        android:paddingLeft="10dp"
         android:background="@color/colorPrimary"
         android:text="@string/get_list_of_instructors"
         android:textColor="@android:color/white"
         android:textSize="16dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
         android:onClick="getInstructorsAction"/>
 
@@ -238,5 +243,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
         android:id="@+id/recyclerViewMyInstructors"/>
 </LinearLayout>

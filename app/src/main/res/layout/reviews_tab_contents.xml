@@ -187,6 +187,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:isIndicator="true"
+                android:rating="5"
                 android:progressBackgroundTint="@android:color/darker_gray"
                 android:progressTint="@color/colorPrimary"
                 android:secondaryProgressTint="@color/colorPrimary"
