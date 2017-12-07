@@ -21,13 +21,11 @@
         <activity android:name=".SignUpNewTraineeActivity" />
         <activity android:name=".SignUpPrevTraineeActivity">
 
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SignUpTrainerActivity" />
@@ -59,7 +57,11 @@
         </activity>
         <activity android:name=".EditingTrainerProfileActivity" />
         <activity android:name=".TrainerProfileActivity" />
-        <activity android:name=".Fragments.TrainerProfileFragment"></activity>
+        <!--<activity android:name=".Fragments.TrainerProfileFragment"></activity>-->
+
+        <activity android:name=".TrainersActivity">
+
+        </activity>
     </application>
 
 </manifest>

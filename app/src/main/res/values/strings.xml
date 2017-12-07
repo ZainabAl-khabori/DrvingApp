@@ -4,7 +4,7 @@
     <string name="Trainer">Instructor</string>
     <string name="PreviousTrainee">Previous\nTrainee"</string>
     <string name="NewTrainee">New Trainee</string>
-    <string name="Username">\tUsername</string>
+    <string name="Username">\tYour name</string>
     <string name="EmailAddress">\tEmail Address</string>
     <string name="Age">\tAge</string>
     <string name="MobileNumber">\tMobile Number</string>
