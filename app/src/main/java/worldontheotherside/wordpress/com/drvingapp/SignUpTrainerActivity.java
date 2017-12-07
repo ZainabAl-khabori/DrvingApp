@@ -59,8 +59,6 @@ public class SignUpTrainerActivity extends AppCompatActivity {
         textViewAlreadyHaveAccount = (TextView) findViewById(R.id.textViewAlreadyHaveAccount);
         radioButtonMale = (RadioButton) findViewById(R.id.radioMale);
         radioButtonFemale = (RadioButton) findViewById(R.id.radioFemale);
-        radioButtonAutomatic = (RadioButton) findViewById(R.id.radioAutomatic);
-        radioButtonManual = (RadioButton) findViewById(R.id.radioManual);
 
         auth = FirebaseAuth.getInstance();
     }

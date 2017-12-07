@@ -35,4 +35,6 @@ public class AppAPI {
     public static String AREASCHILD = db.child("areas").child("-L-QY9EKooKWx_nM2JH9").toString();
 
     public static String LANGUAGES = db.child("languages").toString();
+
+    public static String STARTUP_IMAGES = db.child("startupImages").toString();
 }
