@@ -31,11 +31,11 @@
         <activity android:name=".SignUpPrevTraineeActivity"
             android:label="SignUpPrevTraineeActivity">
 
-            <intent-filter>
+           <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SignUpTrainerActivity" />
@@ -53,20 +53,30 @@
             </intent-filter>
             -->
         </activity>
-        <activity
+        <!--<activity
             android:name=".TrainerViewActivity"
             android:label="TrainerProfileActivity">
+&lt;!&ndash;
 
-            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>&ndash;&gt;
+
+        </activity>-->
+        <activity android:name=".EditingTrainerProfileActivity" />
+        <activity android:name=".TrainerProfileActivity"
+            android:label="TrainerProfileActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
-        <activity android:name=".EditingTrainerProfileActivity" />
-        <activity android:name=".TrainerProfileActivity" />
         <!--<activity android:name=".Fragments.TrainerProfileFragment"></activity>-->
 
         <activity android:name=".TrainersActivity">

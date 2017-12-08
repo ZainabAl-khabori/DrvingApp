@@ -1,5 +1,6 @@
 package worldontheotherside.wordpress.com.drvingapp;
 
+import android.content.Intent;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import worldontheotherside.wordpress.com.drvingapp.Classes.FirebaseDatabaseHelper;
+import worldontheotherside.wordpress.com.drvingapp.Classes.Trainer;
 import worldontheotherside.wordpress.com.drvingapp.Fragments.TrainerProfileFragment;
 
 public class TrainerProfileActivity extends AppCompatActivity {
@@ -41,6 +47,7 @@ public class TrainerProfileActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.main_container_wrapper, fragment);
         fragmentTransaction.commit();
 
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         disableNavigationViewScrollbars(navigationView);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -67,8 +74,26 @@ public class TrainerProfileActivity extends AppCompatActivity {
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             }
+
+
         });
 
+       /* FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Intent firebaseUserIntent = new Intent(TrainerProfileActivity.this, LoginActivity.class);
+            startActivity(firebaseUserIntent);
+            finish();
+        } else {
+            String userId = user.getProviderId();
+            String id = user.getUid();
+            String profileEmail = user.getEmail();
+
+            Trainer trainer = new Trainer();
+
+            FirebaseDatabaseHelper firebaseDatabaseHelper = new FirebaseDatabaseHelper();
+            firebaseDatabaseHelper.createUserInFirebaseDatabase(id, trainer);
+
+        }*/
     }
 
     @Override
