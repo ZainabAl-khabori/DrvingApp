@@ -12,25 +12,30 @@
         <activity
             android:name=".HomeActivity"
             android:label="HomeActivity">
-<!--            <intent-filter>
+         <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>-->
         </activity>
-        <activity android:name=".SignUpNewTraineeActivity">
+        <activity android:name=".SignUpNewTraineeActivity"
+            android:label="SignUpNewTraineeActivity">
+
+           <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+
+        <activity android:name=".SignUpPrevTraineeActivity"
+            android:label="SignUpPrevTraineeActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".SignUpPrevTraineeActivity">
-<!--            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
         </activity>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SignUpTrainerActivity" />
@@ -62,15 +67,10 @@
         </activity>
         <activity android:name=".EditingTrainerProfileActivity" />
         <activity android:name=".TrainerProfileActivity" />
-        <!-- <activity android:name=".Fragments.TrainerProfileFragment"></activity> -->
+        <!--<activity android:name=".Fragments.TrainerProfileFragment"></activity>-->
 
-        <activity android:name=".TrainersActivity"></activity>
-        <activity android:name=".StartupActivity">
-<!--            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".TrainersActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
         </activity>
     </application>
 

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -41,7 +41,7 @@ public class StartupSliderAdapter extends PagerAdapter {
         View view = inflater.inflate(R.layout.images_pager_viewholder, container, false);
 
         ImageView imageViewImage = (ImageView) view.findViewById(R.id.imageViewImage);
-        Picasso.with(context).load(imagesList.get(position)).into(imageViewImage);
+        //Picasso.with(context).load(imagesList.get(position)).into(imageViewImage);
 
         container.addView(view);
 

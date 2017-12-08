@@ -10,7 +10,6 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
 import worldontheotherside.wordpress.com.drvingapp.Classes.Trainer;
 import worldontheotherside.wordpress.com.drvingapp.R;
 
