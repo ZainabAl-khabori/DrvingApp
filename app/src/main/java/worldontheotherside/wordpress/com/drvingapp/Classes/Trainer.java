@@ -26,6 +26,7 @@ public class Trainer {
     private Price price;
     private String contractType;
     private String spokenLanguage;
+    private String trainingAreas;
 
     public Trainer()
     {
@@ -53,6 +54,7 @@ public class Trainer {
             price = trainer.price;
             contractType = trainer.contractType;
             spokenLanguage = trainer.spokenLanguage;
+            trainingAreas=trainer.trainingAreas;
         }
     }
 
@@ -101,5 +103,13 @@ public class Trainer {
 
     public void setSpokenLanguage(String spokenLanguage) {
         this.spokenLanguage = spokenLanguage;
+    }
+
+    public String getTrainingAreas() {
+        return trainingAreas;
+    }
+
+    public void setTrainingAreas(String trainingAreas) {
+        this.trainingAreas = trainingAreas;
     }
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context="worldontheotherside.wordpress.com.drvingapp.EditingTrainerProfileActivity">
 
 
@@ -33,7 +34,8 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:paddingTop="10dp"
-        android:hint="Name"
+        android:hint="Edit Name"
+        android:drawableEnd="@android:drawable/ic_menu_edit"
         android:layout_gravity="center" />
 
     </LinearLayout>
@@ -61,10 +63,11 @@
             android:layout_weight="1"
             />
 
-        <Spinner
-            android:layout_width="wrap_content"
+        <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.8"
+            android:layout_weight="1.1"
+            app:hintText="Select Training Region"
             android:id="@+id/spinnerTrainingRegion" />
 
 
@@ -409,7 +412,18 @@
         android:layout_below="@id/linearLayoutContractPrice"
         />
 
-
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="submit"
+        android:id="@+id/buttonLogin"
+        android:layout_alignTop="@+id/editTextPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textColor="#fef4f4"
+        android:background="#9D3F3F"
+        android:onClick="submitAction"
+        android:layout_below="@id/linearLayoutContractPrice"/>
 
 
 
