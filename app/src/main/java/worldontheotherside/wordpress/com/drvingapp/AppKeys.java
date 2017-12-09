@@ -1,5 +1,8 @@
 package worldontheotherside.wordpress.com.drvingapp;
 
+import android.content.Context;
+import android.widget.Toast;
+
 /**
  * Created by زينب on 12/3/2017.
  */
@@ -26,5 +29,16 @@ public class AppKeys {
     public static final String VEHICLE_TYPE = "vehicleType";
     public static final String PRICE = "Price";
     public static final String PHONE_NUMBER = "Phone Number";
+
+    public static boolean isValidEmail(String email){
+        if(email.contains("@")){
+            return true;
+        }
+        return false;
+    }
+
+    public static void displayMessageToast(Context context, String displayMessage){
+        Toast.makeText(context, displayMessage, Toast.LENGTH_LONG).show();
+    }
 
 }

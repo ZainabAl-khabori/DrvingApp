@@ -7,6 +7,7 @@
     android:id="@android:id/text1"
     android:textColor="#AAAAAA"
     android:textSize="16sp"
+    android:padding="10dp"
     android:layout_weight="1"
 
     />

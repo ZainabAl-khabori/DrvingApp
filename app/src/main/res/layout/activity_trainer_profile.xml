@@ -26,5 +26,7 @@
         app:headerLayout="@layout/nav_header_profile"
         app:menu="@menu/activity_drawer" />
 
+
+
 </android.support.v4.widget.DrawerLayout>
 

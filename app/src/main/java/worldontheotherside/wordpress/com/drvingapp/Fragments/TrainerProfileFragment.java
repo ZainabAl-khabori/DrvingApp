@@ -30,6 +30,7 @@ import java.util.ArrayList;
 
 import worldontheotherside.wordpress.com.drvingapp.AppAPI;
 import worldontheotherside.wordpress.com.drvingapp.AppKeys;
+import worldontheotherside.wordpress.com.drvingapp.Classes.FirebaseApplication;
 import worldontheotherside.wordpress.com.drvingapp.Classes.FirebaseDatabaseHelper;
 import worldontheotherside.wordpress.com.drvingapp.Classes.FirebaseStorageHelper;
 import worldontheotherside.wordpress.com.drvingapp.Classes.SimpleDividerItemDecoration;
@@ -84,6 +85,9 @@ public class TrainerProfileFragment extends Fragment {
         recyclerViewTrainerProfile.setLayoutManager(linearLayoutManager);
         recyclerViewTrainerProfile.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
 
+        /*firebaseAuth =((FirebaseApplication)getActivity().getApplication()).getFirebaseAuth();
+        id = ((FirebaseApplication)getActivity().getApplication()).getFirebaseUserAuthenticateId();
+*/
         firebaseAuth = FirebaseAuth.getInstance();
         id = getFirebaseUserAuthenticateId();
 

@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="worldontheotherside.wordpress.com.drvingapp.EditingTrainerProfileActivity">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
 
     <LinearLayout
         android:id="@+id/linearLayoutProfileHeader"
         android:layout_width="match_parent"
-        android:layout_height="156dp"
+        android:layout_height="165dp"
         android:orientation="vertical"
         android:gravity="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
         android:background="@color/colorPrimary">
 
 
@@ -35,7 +41,7 @@
         android:textSize="20sp"
         android:paddingTop="10dp"
         android:hint="Edit Name"
-        android:drawableEnd="@android:drawable/ic_menu_edit"
+        android:drawableEnd="@drawable/ic_edit"
         android:layout_gravity="center" />
 
     </LinearLayout>
@@ -143,7 +149,7 @@
             />
 
         <Spinner
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.2"
             android:id="@+id/spinnerVehicleType"/>
@@ -184,9 +190,9 @@
             />
 
         <Spinner
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.2"
+            android:layout_weight="1.4"
             android:id="@+id/spinnerContractType"/>
 
 
@@ -224,6 +230,7 @@
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:text="SET"
+            android:id="@+id/buttonSetTime"
             android:textAlignment="center"
             android:textColor="#fef4f4"
             android:background="#9D3F3F"
@@ -416,22 +423,14 @@
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:text="submit"
-        android:id="@+id/buttonLogin"
-        android:layout_alignTop="@+id/editTextPassword"
+        android:id="@+id/buttonSaveEdit"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_margin="25dp"
         android:textColor="#fef4f4"
         android:background="#9D3F3F"
-        android:onClick="submitAction"
+        android:onClick="save_edit"
         android:layout_below="@id/linearLayoutContractPrice"/>
 
-
-
-
-
-
-
-
-
-
 </RelativeLayout>
+
+</ScrollView>

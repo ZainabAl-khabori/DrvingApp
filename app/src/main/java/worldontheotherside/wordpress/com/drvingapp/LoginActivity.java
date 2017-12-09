@@ -1,5 +1,6 @@
 package worldontheotherside.wordpress.com.drvingapp;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,6 +63,9 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     PreviousTrainee previousTrainee = new PreviousTrainee(dataSnapshot);
                                     Toast.makeText(LoginActivity.this, "Name: "+previousTrainee.getUsername(), Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(LoginActivity.this, TrainerProfileActivity.class);
+                                    startActivity(intent);
+                                    finish();
                                 }
 
                                 @Override
