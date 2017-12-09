@@ -24,6 +24,8 @@ public class Trainer {
     private HashMap<String, String> languages;
     private TrainerRate rate;
     private Price price;
+    private String contractType;
+    private String spokenLanguage;
 
     public Trainer()
     {
@@ -49,6 +51,8 @@ public class Trainer {
             languages = trainer.languages;
             rate = trainer.rate;
             price = trainer.price;
+            contractType = trainer.contractType;
+            spokenLanguage = trainer.spokenLanguage;
         }
     }
 
@@ -66,6 +70,7 @@ public class Trainer {
     public void setLanguages(HashMap<String, String> languages){this.languages = languages;}
     public void setRate(TrainerRate rate){this.rate = rate;}
     public void setPrice(Price price){this.price = price;}
+    public void setContractType(String contractType) {this.contractType = contractType;}
 
     /////
     public String getName(){return name;}
@@ -81,6 +86,7 @@ public class Trainer {
     public HashMap<String, String> getLanguages(){return languages;}
     public TrainerRate getRate(){return rate;}
     public Price getPrice(){return price;}
+    public String getContractType() {return contractType;}
 
     ////
     public void Login(){}
@@ -89,5 +95,11 @@ public class Trainer {
     public void Rate(){}
 
 
+    public String getSpokenLanguage() {
+        return spokenLanguage;
+    }
 
+    public void setSpokenLanguage(String spokenLanguage) {
+        this.spokenLanguage = spokenLanguage;
+    }
 }

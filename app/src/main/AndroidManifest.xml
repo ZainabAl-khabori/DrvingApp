@@ -65,17 +65,25 @@
             </intent-filter>&ndash;&gt;
 
         </activity>-->
-        <activity android:name=".EditingTrainerProfileActivity" />
-        <activity android:name=".TrainerProfileActivity"
-            android:label="TrainerProfileActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
+        <activity android:name=".EditingTrainerProfileActivity"
+            android:label="EditingTrainerProfileActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".TrainerProfileActivity"
+            android:label="TrainerProfileActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+
+
+           <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
         <!--<activity android:name=".Fragments.TrainerProfileFragment"></activity>-->
 

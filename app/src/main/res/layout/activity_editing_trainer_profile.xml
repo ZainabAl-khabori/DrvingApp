@@ -64,8 +64,8 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/spinnerTrainingRegion"/>
+            android:layout_weight="1.8"
+            android:id="@+id/spinnerTrainingRegion" />
 
 
 
@@ -100,13 +100,13 @@
             android:layout_weight="1"
             />
 
-        <Spinner
-            android:layout_width="wrap_content"
+        <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
+            android:id="@+id/spinnerLanguage"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/spinnerLanguage"/>
-
-
+            android:layout_weight="0.75"
+            app:hintText="Select Language"
+            />
 
     </LinearLayout>
     <View
@@ -142,7 +142,7 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:id="@+id/spinnerVehicleType"/>
 
 
@@ -160,7 +160,7 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayoutPaymentOption"
+        android:id="@+id/linearLayoutContractType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -172,10 +172,10 @@
         >
 
         <TextView
-            android:text="Payment Option"
+            android:text="Contract Type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/staticTextViewPaymentOption"
+            android:id="@+id/staticTextViewContractType"
             android:textSize="16sp"
             android:layout_weight="1"
             />
@@ -183,8 +183,8 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/spinnerPaymentOption"/>
+            android:layout_weight="1.2"
+            android:id="@+id/spinnerContractType"/>
 
 
 
@@ -193,7 +193,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#dfdbdb"
-        android:layout_below="@+id/linearLayoutPaymentOption"
+        android:layout_below="@+id/linearLayoutContractType"
         />
 
 
@@ -201,7 +201,7 @@
         android:id="@+id/linearLayoutTrainingTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayoutPaymentOption"
+        android:layout_below="@+id/linearLayoutContractType"
         android:orientation="horizontal"
         android:paddingEnd="15dp"
         android:paddingStart="15dp"
@@ -225,6 +225,7 @@
             android:textColor="#fef4f4"
             android:background="#9D3F3F"
             android:layout_weight="1"
+            android:onClick="setTrainingTime"
             />
 
     </LinearLayout>
@@ -260,6 +261,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/editTextAge"
             android:textSize="16sp"
+            android:inputType="number"
             android:layout_weight="1"/>
     </LinearLayout>
     <View
@@ -329,6 +331,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/editTextPhone"
             android:textSize="16sp"
+            android:inputType="phone"
             android:layout_weight="1"/>
     </LinearLayout>
     <View
@@ -362,6 +365,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/editTextHourPrice"
             android:textSize="16sp"
+            android:inputType="number"
             android:layout_weight="1"/>
     </LinearLayout>
     <View
@@ -395,6 +399,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/editTextContractPrice"
             android:textSize="16sp"
+            android:inputType="number"
             android:layout_weight="1"/>
     </LinearLayout>
     <View
