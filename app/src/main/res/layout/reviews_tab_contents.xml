@@ -21,7 +21,7 @@
 
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="100dp"
+                android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:indeterminate="false"
                 android:max="100"
@@ -41,14 +41,14 @@
                 android:id="@+id/textViewDealingPercentage"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="35dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="36dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="90dp"
-                android:paddingStart="20dp"
+                android:paddingTop="85dp"
+                android:paddingStart="18dp"
                 android:text="Dealing"
                 android:textSize="16sp"
                 android:id="@+id/textViewDealing"
@@ -56,14 +56,14 @@
 
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="100dp"
+                android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:indeterminate="false"
                 android:max="100"
                 android:progress="25"
                 android:progressDrawable="@drawable/circular_progress_bar"
                 android:secondaryProgress="100"
-                android:layout_marginStart="90dp"
+                android:layout_marginStart="85dp"
                 android:id="@+id/progressBarRespectTime"
                 android:background="@color/progressBarBackground"/>
 
@@ -76,29 +76,29 @@
                 android:id="@+id/textViewRespectTimePercentage"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="125dp"
+                android:layout_marginStart="115dp"
                 android:layout_marginTop="36dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="90dp"
-                android:paddingStart="110dp"
-                android:text="Respect\n  Time"
+                android:paddingTop="86dp"
+                android:paddingStart="85dp"
+                android:text="Respect Time"
                 android:textSize="16sp"
                 android:id="@+id/textViewRespectTime"
                 />
 
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="100dp"
+                android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:indeterminate="false"
                 android:max="100"
                 android:progress="25"
                 android:progressDrawable="@drawable/circular_progress_bar"
                 android:secondaryProgress="100"
-                android:layout_marginStart="185dp"
+                android:layout_marginStart="175dp"
                 android:id="@+id/progressBarAttendance"
                 android:background="@color/progressBarBackground"/>
 
@@ -111,14 +111,14 @@
                 android:id="@+id/textViewAttendancePercentage"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="220dp"
+                android:layout_marginStart="205dp"
                 android:layout_marginTop="36dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="90dp"
-                android:paddingStart="190dp"
+                android:paddingTop="86dp"
+                android:paddingStart="185dp"
                 android:text="Attendance"
                 android:textSize="16sp"
                 android:id="@+id/textViewAttendance"
@@ -127,14 +127,14 @@
 
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="100dp"
+                android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:indeterminate="false"
                 android:max="100"
                 android:progress="25"
                 android:progressDrawable="@drawable/circular_progress_bar"
                 android:secondaryProgress="100"
-                android:layout_marginStart="280dp"
+                android:layout_marginStart="260dp"
                 android:id="@+id/progressBarEfficiency"
                 android:background="@color/progressBarBackground"/>
 
@@ -147,18 +147,19 @@
                 android:id="@+id/textViewEfficiencyPercentage"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="315dp"
+                android:layout_marginStart="290dp"
                 android:layout_marginTop="36dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="90dp"
-                android:paddingStart="295dp"
+                android:paddingTop="86dp"
+                android:paddingStart="275dp"
                 android:text="Efficiency"
                 android:textSize="16sp"
                 android:id="@+id/textViewEfficiency"
-                />
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
 
 
 

@@ -23,12 +23,15 @@ public class AppKeys {
     public static final String AGE = "Age";
     public static final String CIVIL_NO = "CivilNo";
     public static final String GENDER = "Gender";
-    public static final String CAR_NO = "CarNo";
+    public static final String CAR_PLATE = "CarPlate";
     public static final String PLACES = "Places";
     public static final String LANGUAGES = "Language";
     public static final String VEHICLE_TYPE = "vehicleType";
     public static final String PRICE = "Price";
     public static final String PHONE_NUMBER = "Phone Number";
+    public static final String CONTRACT_TYPE = "Contract Type";
+    public static final String HOUR_PRICE = "Hour Price";
+    public static final String CONTRACT_PRICE = "Contract Price";
 
     public static boolean isValidEmail(String email){
         if(email.contains("@")){

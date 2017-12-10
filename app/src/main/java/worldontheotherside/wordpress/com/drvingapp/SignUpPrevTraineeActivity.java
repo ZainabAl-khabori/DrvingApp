@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import worldontheotherside.wordpress.com.drvingapp.Classes.FirebaseApplication;
 import worldontheotherside.wordpress.com.drvingapp.Classes.PreviousTrainee;
 
 public class SignUpPrevTraineeActivity extends AppCompatActivity {
@@ -108,6 +109,14 @@ public class SignUpPrevTraineeActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                                         Toast.makeText(SignUpPrevTraineeActivity.this, "Previous trainee added", Toast.LENGTH_SHORT).show();
+
+                                        //added to test !!!!!!!!!!!!!!!!!!!!!
+                                      /*  FirebaseApplication firebaseApplication = new FirebaseApplication();
+                                        firebaseApplication.createNewUser(SignUpPrevTraineeActivity.this, editTextEmail.getText().toString(), editTextPassword.getText().toString());*/
+                                        //((FirebaseApplication)getApplication()).createNewUser(SignUpPrevTraineeActivity.this, editTextEmail.getText().toString(), editTextPassword.getText().toString());
+                                        Intent intent = new Intent(SignUpPrevTraineeActivity.this, TrainerProfileActivity.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
                                 });
                             }
