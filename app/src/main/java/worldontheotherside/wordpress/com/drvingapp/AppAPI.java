@@ -18,6 +18,8 @@ public class AppAPI {
     //public static String CURRENT_TRAINEE_BY_NAME = db.child("trainees").child("current_trainees").orderByChild("name").getRef().toString();
 
     public static String TRAINERS = db.child("trainers").toString();
+    //public static String TRAINER_NAME = db.child("trainers").child("trainerName").toString();
+    public static String TRAINER_GENDER= db.child("trainers").child("trainerGender").toString();
     //public static String TRAINER_BY_NAME = db.child("trainers").orderByChild("name").getRef().toString();
     //public static String TRAINER_BY_AREA = db.child("trainers").orderByChild("places").getRef().toString();
     public static String TRAINER_BY_ID = db.child("trainers").orderByChild("civilNo").getRef().toString();
@@ -39,4 +41,6 @@ public class AppAPI {
 
 
     public static String STARTUP_IMAGES = db.child("startupImages").toString();
+    //public static String TRAINER_NAME = db.child("trainerName").toString();
+
 }

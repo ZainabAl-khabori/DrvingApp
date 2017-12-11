@@ -1,9 +1,9 @@
 package worldontheotherside.wordpress.com.drvingapp;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,9 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import worldontheotherside.wordpress.com.drvingapp.Classes.FirebaseApplication;
 import worldontheotherside.wordpress.com.drvingapp.Classes.PreviousTrainee;
 
 public class SignUpPrevTraineeActivity extends AppCompatActivity {
@@ -110,13 +108,9 @@ public class SignUpPrevTraineeActivity extends AppCompatActivity {
                                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                                         Toast.makeText(SignUpPrevTraineeActivity.this, "Previous trainee added", Toast.LENGTH_SHORT).show();
 
-                                        //added to test !!!!!!!!!!!!!!!!!!!!!
-                                      /*  FirebaseApplication firebaseApplication = new FirebaseApplication();
-                                        firebaseApplication.createNewUser(SignUpPrevTraineeActivity.this, editTextEmail.getText().toString(), editTextPassword.getText().toString());*/
-                                        //((FirebaseApplication)getApplication()).createNewUser(SignUpPrevTraineeActivity.this, editTextEmail.getText().toString(), editTextPassword.getText().toString());
-                                        Intent intent = new Intent(SignUpPrevTraineeActivity.this, TrainerProfileActivity.class);
+                                      /*  Intent intent = new Intent(SignUpPrevTraineeActivity.this, TrainerProfileActivity.class);
                                         startActivity(intent);
-                                        finish();
+                                        finish();*/
                                     }
                                 });
                             }

@@ -1,10 +1,9 @@
 package worldontheotherside.wordpress.com.drvingapp;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -19,8 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import worldontheotherside.wordpress.com.drvingapp.Classes.PreviousTrainee;
@@ -73,6 +70,21 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "Finding user failed", Toast.LENGTH_SHORT).show();
                                 }
                             });
+                            /*DatabaseManip.findData(AppAPI.TRAINERS, "trainees", Long.valueOf(user.getDisplayName()), new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    Trainer trainer = new Trainer(dataSnapshot);
+                                    Toast.makeText(LoginActivity.this, "Name: "+trainer.getName(), Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(LoginActivity.this, TrainerProfileActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    Toast.makeText(LoginActivity.this, "Finding user failed", Toast.LENGTH_SHORT).show();
+                                }
+                            });*/
                         }
                         else
                         {

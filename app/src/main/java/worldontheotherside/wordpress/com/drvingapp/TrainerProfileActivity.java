@@ -1,6 +1,6 @@
 package worldontheotherside.wordpress.com.drvingapp;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -10,22 +10,18 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-import worldontheotherside.wordpress.com.drvingapp.Classes.FirebaseDatabaseHelper;
-import worldontheotherside.wordpress.com.drvingapp.Classes.Trainer;
 import worldontheotherside.wordpress.com.drvingapp.Fragments.TrainerProfileFragment;
 
 public class TrainerProfileActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
-
+    FirebaseAuth firebaseAuth;
     private Fragment fragment = null;
 
     @Override
@@ -50,6 +46,7 @@ public class TrainerProfileActivity extends AppCompatActivity {
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         disableNavigationViewScrollbars(navigationView);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
@@ -78,22 +75,7 @@ public class TrainerProfileActivity extends AppCompatActivity {
 
         });
 
-       /* FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) {
-            Intent firebaseUserIntent = new Intent(TrainerProfileActivity.this, LoginActivity.class);
-            startActivity(firebaseUserIntent);
-            finish();
-        } else {
-            String userId = user.getProviderId();
-            String id = user.getUid();
-            String profileEmail = user.getEmail();
 
-            Trainer trainer = new Trainer();
-
-            FirebaseDatabaseHelper firebaseDatabaseHelper = new FirebaseDatabaseHelper();
-            firebaseDatabaseHelper.createUserInFirebaseDatabase(id, trainer);
-
-        }*/
     }
 
     @Override
@@ -135,6 +117,13 @@ public class TrainerProfileActivity extends AppCompatActivity {
                 navigationMenuView.setVerticalScrollBarEnabled(false);
             }
         }
+    }
+    public String getFirebaseUserAuthenticateId() {
+        String userId = null;
+        if(firebaseAuth.getCurrentUser() != null){
+            userId = firebaseAuth.getCurrentUser().getUid();
+        }
+        return userId;
     }
 
 }

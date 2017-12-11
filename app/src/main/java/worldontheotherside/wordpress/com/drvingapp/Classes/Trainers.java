@@ -23,6 +23,8 @@ public class Trainers {
 
         for(DataSnapshot snapshot: dataSnapshot.getChildren())
             trainers.add(new Trainer(snapshot));
+
+
     }
 
     public ArrayList<Trainer> getTrainers() {

@@ -2,8 +2,8 @@ package worldontheotherside.wordpress.com.drvingapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -16,11 +16,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.androidbuts.multispinnerfilter.KeyPairBoolData;
 import com.androidbuts.multispinnerfilter.MultiSpinnerSearch;
-import com.androidbuts.multispinnerfilter.SingleSpinner;
 import com.androidbuts.multispinnerfilter.SpinnerListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,13 +27,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 import worldontheotherside.wordpress.com.drvingapp.Classes.Areas;
 import worldontheotherside.wordpress.com.drvingapp.Classes.FirebaseDatabaseHelper;
 import worldontheotherside.wordpress.com.drvingapp.Classes.Languages;
+import worldontheotherside.wordpress.com.drvingapp.Classes.PreviousTrainee;
 import worldontheotherside.wordpress.com.drvingapp.Classes.Trainer;
 
 public class EditingTrainerProfileActivity extends AppCompatActivity {
@@ -59,6 +56,7 @@ public class EditingTrainerProfileActivity extends AppCompatActivity {
     private EditText editTextHourPrice;
     private EditText editTextContractPrice;
     private Button save_edit_button;
+    private String nameFromDataB;
 
 
 
@@ -69,6 +67,7 @@ public class EditingTrainerProfileActivity extends AppCompatActivity {
 
 
         trainer = new Trainer();
+
         spinnerTrainingAreas = (MultiSpinnerSearch) findViewById(R.id.spinnerTrainingRegion);
         spinnerLanguages = (MultiSpinnerSearch) findViewById(R.id.spinnerLanguage);
         spinnerVehicleType = (Spinner) findViewById(R.id.spinnerVehicleType);
@@ -89,6 +88,21 @@ public class EditingTrainerProfileActivity extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         appData = new AppData(this);
+
+
+        DatabaseManip.findData(AppAPI.FORMER_TRAINEE_BY_ID, "civilNo", Long.valueOf(user.getDisplayName()), new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                PreviousTrainee previousTrainee = new PreviousTrainee(dataSnapshot);
+                nameFromDataB = previousTrainee.getUsername();
+                //Toast.makeText(EditingTrainerProfileActivity.this, previousTrainee.getUsername(), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         DatabaseManip.getData(AppAPI.AREAS, new ValueEventListener() {
             @Override
@@ -257,35 +271,42 @@ public class EditingTrainerProfileActivity extends AppCompatActivity {
                 String contractPrice = editTextContractPrice.getText().toString();
 
 
-              /*  if (TextUtils.isEmpty(name) || TextUtils.isEmpty(age) || TextUtils.isEmpty(vehiclePlate)
+             /* if (TextUtils.isEmpty(name) || TextUtils.isEmpty(age) || TextUtils.isEmpty(vehiclePlate)
                         || TextUtils.isEmpty(phone) || TextUtils.isEmpty(hourPrice) || TextUtils.isEmpty(contractPrice)) {
                     AppKeys.displayMessageToast(EditingTrainerProfileActivity.this, "All fields must be filled");
                 }*/
+                //else {
 
 
-                if (user == null) {
-                    Intent firebaseUserIntent = new Intent(EditingTrainerProfileActivity.this, LoginActivity.class);
-                    startActivity(firebaseUserIntent);
-                    finish();
-                } else {
-                    String userId = user.getProviderId();
-                    String id = user.getUid();
-                    String profileEmail = user.getEmail();
+                  if (user == null) {
+                      Intent firebaseUserIntent = new Intent(EditingTrainerProfileActivity.this, LoginActivity.class);
+                      startActivity(firebaseUserIntent);
+                      finish();
+                  } else {
+                      String userId = user.getProviderId();
+                      String id = user.getUid();
+                      String profileEmail = user.getEmail();
 
-                    trainer.setName(name);
-                    trainer.setEmail(profileEmail);
-                    trainer.setAge(Integer.valueOf(age));
-                    trainer.setVehicleType(vehiclePlate);
-                    trainer.setPhone(phone);
-                    trainer.setHourPrice(hourPrice);
-                    trainer.setContractPrice(contractPrice);
-                    FirebaseDatabaseHelper firebaseDatabaseHelper = new FirebaseDatabaseHelper();
-                    firebaseDatabaseHelper.createUserInFirebaseDatabase(id, trainer);
 
-                  /*  Intent intent = new Intent(EditingTrainerProfileActivity.this, TrainerProfileActivity.class);
+                      if (TextUtils.isEmpty(name))
+                          trainer.setName(nameFromDataB);
+                      else
+                          trainer.setName(name);
+
+                      trainer.setEmail(profileEmail);
+                      trainer.setAge(Integer.valueOf(age));
+                      trainer.setVehicleType(vehiclePlate);
+                      trainer.setPhone(phone);
+                      trainer.setHourPrice(hourPrice);
+                      trainer.setContractPrice(contractPrice);
+                      FirebaseDatabaseHelper firebaseDatabaseHelper = new FirebaseDatabaseHelper();
+                      firebaseDatabaseHelper.createUserInFirebaseDatabase(id, trainer);
+
+                    Intent intent = new Intent(EditingTrainerProfileActivity.this, TrainerProfileActivity.class);
                     startActivity(intent);
-                    finish();*/
-                }
+                    finish();
+                  }
+              //}
             }
 
         });

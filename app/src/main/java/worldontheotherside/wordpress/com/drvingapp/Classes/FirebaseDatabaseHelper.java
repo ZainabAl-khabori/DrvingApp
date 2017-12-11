@@ -10,14 +10,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.lang.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import worldontheotherside.wordpress.com.drvingapp.Adapters.TrainerProfileRecyclerAdapter;
-import worldontheotherside.wordpress.com.drvingapp.AppAPI;
 import worldontheotherside.wordpress.com.drvingapp.AppKeys;
 
 /**
@@ -34,9 +32,9 @@ public class FirebaseDatabaseHelper {
             databaseReference = FirebaseDatabase.getInstance().getReference();
         }
 
-        public void createUserInFirebaseDatabase(String userId, Trainer firebaseUserEntity){
+        public void createUserInFirebaseDatabase(String userId, Trainer trainer){
             Map<String, Trainer> user = new HashMap<String, Trainer>();
-            user.put(userId, firebaseUserEntity);
+            user.put(userId, trainer);
             databaseReference.child("users").setValue(user);
         }
 
@@ -79,6 +77,7 @@ public class FirebaseDatabaseHelper {
         private List<UserProfile> adapterSourceData(DataSnapshot dataSnapshot, String uId){
             List<UserProfile> trainerData = new ArrayList<UserProfile>();
             if(dataSnapshot.getKey().equals(uId)){
+
                 Trainer trainerInfo = dataSnapshot.getValue(Trainer.class);
                 String getAge = String.valueOf(trainerInfo.getAge());
                 String getCivilId = String.valueOf(trainerInfo.getCivilId());

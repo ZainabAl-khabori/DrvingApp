@@ -1,17 +1,13 @@
 package worldontheotherside.wordpress.com.drvingapp.Fragments;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -26,15 +22,9 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
-
-import worldontheotherside.wordpress.com.drvingapp.AppAPI;
 import worldontheotherside.wordpress.com.drvingapp.AppKeys;
-import worldontheotherside.wordpress.com.drvingapp.Classes.FirebaseApplication;
 import worldontheotherside.wordpress.com.drvingapp.Classes.FirebaseDatabaseHelper;
-import worldontheotherside.wordpress.com.drvingapp.Classes.FirebaseStorageHelper;
 import worldontheotherside.wordpress.com.drvingapp.Classes.SimpleDividerItemDecoration;
-import worldontheotherside.wordpress.com.drvingapp.Classes.Trainer;
 import worldontheotherside.wordpress.com.drvingapp.EditingTrainerProfileActivity;
 import worldontheotherside.wordpress.com.drvingapp.R;
 
@@ -118,7 +108,7 @@ public class TrainerProfileFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         System.out.println("user id has entered onActivityResult ");
-        if (requestCode == AppKeys.SELECT_PICTURE) {
+      /*  if (requestCode == AppKeys.SELECT_PICTURE) {
             Uri selectedImageUri = data.getData();
             String imagePath = getPath(selectedImageUri);
             FirebaseStorageHelper storageHelper = new FirebaseStorageHelper(getActivity());
@@ -128,7 +118,7 @@ public class TrainerProfileFragment extends Fragment {
                 return;
             }
             storageHelper.saveProfileImageToCloud(id, selectedImageUri, profile_image);
-        }
+        }*/
     }
     public String getPath(Uri uri) {
 
