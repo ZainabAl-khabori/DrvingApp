@@ -81,6 +81,7 @@ public class TrainerProfileFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         id = getFirebaseUserAuthenticateId();
 
+
         FirebaseDatabaseHelper firebaseDatabaseHelper = new FirebaseDatabaseHelper();
         firebaseDatabaseHelper.isUserKeyExist(id, getActivity(), recyclerViewTrainerProfile);
 

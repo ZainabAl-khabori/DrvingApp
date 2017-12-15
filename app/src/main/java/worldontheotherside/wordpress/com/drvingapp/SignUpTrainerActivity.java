@@ -103,23 +103,24 @@ public class SignUpTrainerActivity extends AppCompatActivity {
                                     trainer.setGender("Male");
                                 trainer.setPassword(editTextPassword.getText().toString());
                                 trainer.setCarNo(editTextCarNo.getText().toString());
-                                if(radioButtonAutomatic.isChecked())
+                             /*   if(radioButtonAutomatic.isChecked())
                                     trainer.setVehicleType("Automatic");
                                 else if(radioButtonManual.isChecked())
-                                    trainer.setVehicleType("Manual");
+                                    trainer.setVehicleType("Manual");*/
 
                                 DatabaseManip.addData(AppAPI.TRAINERS, trainer, new DatabaseReference.CompletionListener() {
                                     @Override
                                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                                         Toast.makeText(SignUpTrainerActivity.this, "Trainer added", Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(SignUpTrainerActivity.this, TrainerProfileActivity.class);
+                                        startActivity(i);
+                                        finish();
 
                                     }
                                 });
 
 
-                                /*Intent i = new Intent(SignUpTrainerActivity.this, TrainerProfileActivity.class);
-                                startActivity(i);
-                                finish();*/
+
                             }
                             else
                             {

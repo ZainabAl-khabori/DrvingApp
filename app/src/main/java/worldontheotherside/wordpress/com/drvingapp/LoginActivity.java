@@ -20,7 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-import worldontheotherside.wordpress.com.drvingapp.Classes.PreviousTrainee;
+import worldontheotherside.wordpress.com.drvingapp.Classes.Trainer;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                             final FirebaseUser user = auth.getCurrentUser();
 
                             // I fixed getData method that includes a search parameter to become findData, included a search field as well
-                            DatabaseManip.findData(AppAPI.FORMER_TRAINEE_BY_ID, "civilNo", Long.valueOf(user.getDisplayName()), new ValueEventListener() {
+                          /*  DatabaseManip.findData(AppAPI.FORMER_TRAINEE_BY_ID, "civilNo", Long.valueOf(user.getDisplayName()), new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     PreviousTrainee previousTrainee = new PreviousTrainee(dataSnapshot);
@@ -69,8 +69,8 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onCancelled(DatabaseError databaseError) {
                                     Toast.makeText(LoginActivity.this, "Finding user failed", Toast.LENGTH_SHORT).show();
                                 }
-                            });
-                            /*DatabaseManip.findData(AppAPI.TRAINERS, "trainees", Long.valueOf(user.getDisplayName()), new ValueEventListener() {
+                            });*/
+                            DatabaseManip.findData(AppAPI.TRAINERS, "trainers", Long.valueOf(user.getDisplayName()), new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     Trainer trainer = new Trainer(dataSnapshot);
@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onCancelled(DatabaseError databaseError) {
                                     Toast.makeText(LoginActivity.this, "Finding user failed", Toast.LENGTH_SHORT).show();
                                 }
-                            });*/
+                            });
                         }
                         else
                         {

@@ -2,7 +2,6 @@ package worldontheotherside.wordpress.com.drvingapp.Classes;
 
 import com.google.firebase.database.DataSnapshot;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -29,6 +28,7 @@ public class Trainer {
     private String trainingAreas;
     private String hourPrice;
     private String contractPrice;
+    private String trainingTime;
 
     public Trainer()
     {
@@ -59,6 +59,7 @@ public class Trainer {
             trainingAreas=trainer.trainingAreas;
             hourPrice=trainer.hourPrice;
             contractPrice=trainer.contractPrice;
+            trainingTime=trainer.trainingTime;
         }
     }
 
@@ -131,5 +132,13 @@ public class Trainer {
 
     public void setContractPrice(String contractPrice) {
         this.contractPrice = contractPrice;
+    }
+
+    public String getTrainingTime() {
+        return trainingTime;
+    }
+
+    public void setTrainingTime(String trainingTime) {
+        this.trainingTime = trainingTime;
     }
 }

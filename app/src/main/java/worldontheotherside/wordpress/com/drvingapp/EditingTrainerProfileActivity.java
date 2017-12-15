@@ -1,21 +1,24 @@
 package worldontheotherside.wordpress.com.drvingapp;
 
+import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.LinearLayout;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.androidbuts.multispinnerfilter.KeyPairBoolData;
 import com.androidbuts.multispinnerfilter.MultiSpinnerSearch;
@@ -27,12 +30,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import worldontheotherside.wordpress.com.drvingapp.Classes.Areas;
 import worldontheotherside.wordpress.com.drvingapp.Classes.FirebaseDatabaseHelper;
 import worldontheotherside.wordpress.com.drvingapp.Classes.Languages;
-import worldontheotherside.wordpress.com.drvingapp.Classes.PreviousTrainee;
 import worldontheotherside.wordpress.com.drvingapp.Classes.Trainer;
 
 public class EditingTrainerProfileActivity extends AppCompatActivity {
@@ -44,8 +48,8 @@ public class EditingTrainerProfileActivity extends AppCompatActivity {
     private FirebaseUser user;
     private AppData appData;
     private MultiSpinnerSearch spinnerLanguages;
-    private Spinner spinnerVehicleType;
-    private Spinner spinnerContractType;
+    private MultiSpinnerSearch spinnerVehicleType;
+    private MultiSpinnerSearch spinnerContractType;
     private Trainer trainer;
     private String spokenLanguage;
     private String trainingAreas;
@@ -56,8 +60,20 @@ public class EditingTrainerProfileActivity extends AppCompatActivity {
     private EditText editTextHourPrice;
     private EditText editTextContractPrice;
     private Button save_edit_button;
-    private String nameFromDataB;
-
+    private String previousName;
+    private String previousPhone;
+    private Long civilNo;
+    private String gender;
+    private String previousVehiclePlate;
+    private Integer previousAge;
+    private LinearLayout linearLayoutHourPrice;
+    private LinearLayout linearLayoutContractPrice;
+    public static TimePicker timePicker;
+    public static String trainingTime ="";
+    public static String startTime ="";
+    public static String endTime ="";
+    public static String formattedTime ="";
+    public static Integer i =0;
 
 
     @Override
@@ -70,8 +86,8 @@ public class EditingTrainerProfileActivity extends AppCompatActivity {
 
         spinnerTrainingAreas = (MultiSpinnerSearch) findViewById(R.id.spinnerTrainingRegion);
         spinnerLanguages = (MultiSpinnerSearch) findViewById(R.id.spinnerLanguage);
-        spinnerVehicleType = (Spinner) findViewById(R.id.spinnerVehicleType);
-        spinnerContractType = (Spinner) findViewById(R.id.spinnerContractType);
+        spinnerVehicleType = (MultiSpinnerSearch) findViewById(R.id.spinnerVehicleType);
+        spinnerContractType = (MultiSpinnerSearch) findViewById(R.id.spinnerContractType);
         editTextProfileName = (EditText) findViewById(R.id.editTextProfileName);
         editTextAge = (EditText) findViewById(R.id.editTextAge);
         editTextVehiclePlate = (EditText) findViewById(R.id.editTextVehiclePlate);
@@ -80,27 +96,37 @@ public class EditingTrainerProfileActivity extends AppCompatActivity {
         editTextContractPrice = (EditText) findViewById(R.id.editTextContractPrice);
         save_edit_button = (Button) findViewById(R.id.buttonSaveEdit);
 
+        timePicker = (TimePicker) findViewById(R.id.timePicker);
+
+        linearLayoutHourPrice = (LinearLayout) findViewById(R.id.linearLayoutHourPrice);
+        linearLayoutContractPrice = (LinearLayout) findViewById(R.id.linearLayoutContractPrice);
+
+        linearLayoutContractPrice.setVisibility(View.GONE);
+        linearLayoutHourPrice.setVisibility(View.GONE);
 
         context = this;
-        //onItemClickListener = this;
         layoutManager = new LinearLayoutManager(this);
-        //recyclerViewMyInstructors.setLayoutManager(layoutManager);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         appData = new AppData(this);
 
-
-        DatabaseManip.findData(AppAPI.FORMER_TRAINEE_BY_ID, "civilNo", Long.valueOf(user.getDisplayName()), new ValueEventListener() {
+        DatabaseManip.getData(AppAPI.TRAINERS, new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                PreviousTrainee previousTrainee = new PreviousTrainee(dataSnapshot);
-                nameFromDataB = previousTrainee.getUsername();
-                //Toast.makeText(EditingTrainerProfileActivity.this, previousTrainee.getUsername(), Toast.LENGTH_LONG).show();
+
+                previousName = new Trainer(dataSnapshot).getName();
+                gender = new Trainer(dataSnapshot).getGender();
+                previousAge = new Trainer(dataSnapshot).getAge();
+                civilNo = new Trainer(dataSnapshot).getCivilId();
+                previousPhone = new Trainer(dataSnapshot).getPhone();
+                previousVehiclePlate = new Trainer(dataSnapshot).getCarNo();
+
+
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.v("Trainer_ERROR", databaseError.getMessage());
             }
         });
 
@@ -184,7 +210,7 @@ public class EditingTrainerProfileActivity extends AppCompatActivity {
 
         });
 
-        ArrayAdapter<String> vehicleTypeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item) {
+        /*ArrayAdapter<String> vehicleTypeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item) {
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
@@ -219,43 +245,79 @@ public class EditingTrainerProfileActivity extends AppCompatActivity {
 
             }
         });
+*/
 
+        final List<String> vehicleTypeList = Arrays.asList(getResources().getStringArray(R.array.vehicleTypes_array));
 
-        ArrayAdapter<String> contractTypeAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item) {
+        final List<KeyPairBoolData> vehicleTypeListListArray = new ArrayList<>();
+
+        for (int i = 0; i < vehicleTypeList.size(); i++) {
+            KeyPairBoolData h = new KeyPairBoolData();
+            h.setId(i + 1);
+            h.setName(vehicleTypeList.get(i));
+            h.setSelected(false);
+            vehicleTypeListListArray.add(h);
+        }
+
+        spinnerVehicleType.setItems(vehicleTypeListListArray, -1, new SpinnerListener() {
 
             @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
+            public void onItemsSelected(List<KeyPairBoolData> items) {
 
-                View v = super.getView(position, convertView, parent);
-                if (position == getCount()) {
-                    ((TextView) v.findViewById(android.R.id.text1)).setText("");
-                    ((TextView) v.findViewById(android.R.id.text1)).setHint(getItem(getCount()));
+                for (int i = 0; i < items.size(); i++) {
+                    if (items.get(i).isSelected()) {
+                        Log.i(TAG, i + " : " + items.get(i).getName() + " : " + items.get(i).isSelected());
+                        trainer.setVehicleType(items.get(i).getName());
+                    }
                 }
-                return v;
             }
+        });
+
+        final List<String> contractTypeList = Arrays.asList(getResources().getStringArray(R.array.contractTypes_array));
+
+        final List<KeyPairBoolData> contractTypeListListArray = new ArrayList<>();
+
+        for (int i = 0; i < contractTypeList.size(); i++) {
+            KeyPairBoolData h = new KeyPairBoolData();
+            h.setId(i + 1);
+            h.setName(contractTypeList.get(i));
+            h.setSelected(false);
+            contractTypeListListArray.add(h);
+        }
+
+        spinnerContractType.setItems(contractTypeListListArray, -1, new SpinnerListener() {
 
             @Override
-            public int getCount() {
-                return super.getCount() - 1;
-            }
-        };
-        contractTypeAdapter.setDropDownViewResource(R.layout.spinner_item);
-        contractTypeAdapter.add("By hours");
-        contractTypeAdapter.add("By duration");
-        contractTypeAdapter.add("Select Contract Type");
-        spinnerContractType.setAdapter(contractTypeAdapter);
-        spinnerContractType.setSelection(contractTypeAdapter.getCount());
-        spinnerContractType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                trainer.setContractType(spinnerContractType.getSelectedItem().toString());
-                //String itemValue= trainer.getContractType();
-                //Toast.makeText(context, itemValue, Toast.LENGTH_SHORT).show();
-            }
+            public void onItemsSelected(List<KeyPairBoolData> items) {
 
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
+                for (int i = 0; i < items.size(); i++) {
+                    if (items.get(i).isSelected()) {
+                        Log.i(TAG, i + " : " + items.get(i).getName() + " : " + items.get(i).isSelected());
 
+
+                        if (items.get(i).getId() == 1) {
+                            linearLayoutHourPrice.setVisibility(View.VISIBLE);
+                        }
+                        if (items.get(i).getId() == 2) {
+                            linearLayoutContractPrice.setVisibility(View.VISIBLE);
+                        } else {
+                            linearLayoutContractPrice.setVisibility(View.VISIBLE);
+                            linearLayoutHourPrice.setVisibility(View.VISIBLE);
+                        }
+
+
+                        //Toast.makeText(context, "ContractType:"+spinnerContractType.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        //trainer.setContractType(items.get(i).getName());
+                        trainer.setContractType(spinnerContractType.getSelectedItem().toString());
+
+                    } else {
+                        if (items.get(i).getId() == 1)
+                            linearLayoutHourPrice.setVisibility(View.GONE);
+                        if (items.get(i).getId() == 2)
+                            linearLayoutContractPrice.setVisibility(View.GONE);
+                    }
+
+                }
             }
         });
 
@@ -278,37 +340,131 @@ public class EditingTrainerProfileActivity extends AppCompatActivity {
                 //else {
 
 
-                  if (user == null) {
-                      Intent firebaseUserIntent = new Intent(EditingTrainerProfileActivity.this, LoginActivity.class);
-                      startActivity(firebaseUserIntent);
-                      finish();
-                  } else {
-                      String userId = user.getProviderId();
-                      String id = user.getUid();
-                      String profileEmail = user.getEmail();
+                if (user == null) {
+                    Intent firebaseUserIntent = new Intent(EditingTrainerProfileActivity.this, LoginActivity.class);
+                    startActivity(firebaseUserIntent);
+                    finish();
+                } else {
+                    String userId = user.getProviderId();
+                    String id = user.getUid();
+                    String profileEmail = user.getEmail();
 
 
-                      if (TextUtils.isEmpty(name))
-                          trainer.setName(nameFromDataB);
-                      else
-                          trainer.setName(name);
+                    if (TextUtils.isEmpty(name))
+                        trainer.setName(previousName);
+                    else
+                        trainer.setName(name);
 
-                      trainer.setEmail(profileEmail);
-                      trainer.setAge(Integer.valueOf(age));
-                      trainer.setVehicleType(vehiclePlate);
-                      trainer.setPhone(phone);
-                      trainer.setHourPrice(hourPrice);
-                      trainer.setContractPrice(contractPrice);
-                      FirebaseDatabaseHelper firebaseDatabaseHelper = new FirebaseDatabaseHelper();
-                      firebaseDatabaseHelper.createUserInFirebaseDatabase(id, trainer);
+                    if (TextUtils.isEmpty(phone))
+                        trainer.setPhone(previousPhone);
+                    else
+                        trainer.setPhone(phone);
+
+                    if (TextUtils.isEmpty(age))
+                        trainer.setAge(previousAge);
+                    else
+                        trainer.setAge(Integer.valueOf(age));
+
+                    if (TextUtils.isEmpty(vehiclePlate))
+                        trainer.setCarNo(previousVehiclePlate);
+                    else
+                        trainer.setCarNo(vehiclePlate);
+
+                    trainer.setEmail(profileEmail);
+                    trainer.setCivilId(civilNo);
+                    trainer.setGender(gender);
+                    trainer.setVehicleType(vehiclePlate);
+
+                    trainer.setTrainingTime(trainingTime);
+
+                    if (linearLayoutHourPrice.getVisibility() == View.VISIBLE) {
+                        SharedPreferences sharedPreferences = getSharedPreferences("myAppPrefs", Context.MODE_PRIVATE);
+                        sharedPreferences.edit().putInt("hour_price", 1).apply();
+                        if (TextUtils.isEmpty(hourPrice))
+                            Toast.makeText(context, "Hour Price cannot be empty!", Toast.LENGTH_SHORT).show();
+                        else
+                            trainer.setHourPrice(hourPrice);
+                    }
+
+                    if (linearLayoutContractPrice.getVisibility() == View.VISIBLE) {
+                        SharedPreferences sharedPreferences = getSharedPreferences("myAppPrefs", Context.MODE_PRIVATE);
+                        sharedPreferences.edit().putInt("contract_price", 1).apply();
+                        if (TextUtils.isEmpty(contractPrice))
+                            Toast.makeText(context, "Contract Price cannot be empty!", Toast.LENGTH_SHORT).show();
+                        else
+                            trainer.setContractPrice(contractPrice);
+                    }
+
+                    FirebaseDatabaseHelper firebaseDatabaseHelper = new FirebaseDatabaseHelper();
+                    firebaseDatabaseHelper.createUserInFirebaseDatabase(id, trainer);
 
                     Intent intent = new Intent(EditingTrainerProfileActivity.this, TrainerProfileActivity.class);
                     startActivity(intent);
                     finish();
-                  }
-              //}
+                }
+                //}
             }
 
         });
     }
+
+    public static class TimePickerFragment extends DialogFragment
+            implements TimePickerDialog.OnTimeSetListener {
+        final Calendar calender = Calendar.getInstance();
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            int hour = calender.get(Calendar.HOUR_OF_DAY);
+            int minute = calender.get(Calendar.MINUTE);
+            return new TimePickerDialog(getActivity(), this, hour, minute,
+                    DateFormat.is24HourFormat(getActivity()));
+        }
+
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            timePicker.setCurrentHour(hourOfDay);
+            timePicker.setCurrentMinute(minute);
+
+            String state = "";
+
+            if(hourOfDay > 12) {
+                hourOfDay -= 12;
+                state = "PM";
+            }
+            else
+                state="AM";
+
+            String sMinute = "00";
+            if(minute < 10){
+                sMinute = "0"+minute;
+            } else {
+                sMinute = String.valueOf(minute);
+            }
+
+            formattedTime = String.valueOf(hourOfDay)+":"+String.valueOf(sMinute)+" "+state;
+            if(i==0)
+                startTime = formattedTime;
+            if(i==1) {
+                endTime = formattedTime;
+                trainingTime = startTime +" - "+endTime;
+            }
+
+            i++;
+            //Toast.makeText(getContext(), formattedTime, Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+    public void setStartTime(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+
+    }
+
+    public void setEndTime(View v) {
+        DialogFragment Fragment = new TimePickerFragment();
+        Fragment.show(getSupportFragmentManager(), "timePicker2");
+
+    }
+
+
 }
