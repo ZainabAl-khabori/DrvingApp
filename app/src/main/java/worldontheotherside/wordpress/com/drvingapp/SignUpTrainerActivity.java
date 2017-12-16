@@ -103,10 +103,6 @@ public class SignUpTrainerActivity extends AppCompatActivity {
                                     trainer.setGender("Male");
                                 trainer.setPassword(editTextPassword.getText().toString());
                                 trainer.setCarNo(editTextCarNo.getText().toString());
-                                if(radioButtonAutomatic.isChecked())
-                                    trainer.setVehicleType("Automatic");
-                                else if(radioButtonManual.isChecked())
-                                    trainer.setVehicleType("Manual");
 
                                 DatabaseManip.addData(AppAPI.TRAINERS, trainer, new DatabaseReference.CompletionListener() {
                                     @Override

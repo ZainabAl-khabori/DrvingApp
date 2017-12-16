@@ -55,12 +55,15 @@ public class LoginActivity extends AppCompatActivity {
                             final FirebaseUser user = auth.getCurrentUser();
 
                             // I fixed getData method that includes a search parameter to become findData, included a search field as well
+
                             DatabaseManip.findData(AppAPI.FORMER_TRAINEE_BY_ID, "civilNo", Long.valueOf(user.getDisplayName()), new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    PreviousTrainee previousTrainee = new PreviousTrainee(dataSnapshot);
-                                    Toast.makeText(LoginActivity.this, "Name: "+previousTrainee.getUsername(), Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(LoginActivity.this, TrainerProfileActivity.class);
+                                    PreviousTrainee trainee = new PreviousTrainee(dataSnapshot);
+                                    Toast.makeText(LoginActivity.this, "Name: "+trainee.getUsername(), Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                    intent.putStringArrayListExtra("Areas", getIntent().getStringArrayListExtra("Areas"));
+                                    intent.putStringArrayListExtra("Languages", getIntent().getStringArrayListExtra("Languages"));
                                     startActivity(intent);
                                     finish();
                                 }
@@ -70,21 +73,6 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "Finding user failed", Toast.LENGTH_SHORT).show();
                                 }
                             });
-                            /*DatabaseManip.findData(AppAPI.TRAINERS, "trainees", Long.valueOf(user.getDisplayName()), new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    Trainer trainer = new Trainer(dataSnapshot);
-                                    Toast.makeText(LoginActivity.this, "Name: "+trainer.getName(), Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(LoginActivity.this, TrainerProfileActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-                                    Toast.makeText(LoginActivity.this, "Finding user failed", Toast.LENGTH_SHORT).show();
-                                }
-                            });*/
                         }
                         else
                         {
