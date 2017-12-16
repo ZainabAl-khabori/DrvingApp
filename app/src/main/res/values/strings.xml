@@ -48,5 +48,15 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string-array name="contractTypes_array">
+        <item>By hours</item>
+        <item>By duration</item>
+    </string-array>
+
+    <string-array name="vehicleTypes_array">
+        <item>Automatic</item>
+        <item>Manual</item>
+    </string-array>
+
 
 </resources>

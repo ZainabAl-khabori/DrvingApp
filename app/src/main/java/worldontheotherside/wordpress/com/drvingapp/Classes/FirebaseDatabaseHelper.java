@@ -84,6 +84,9 @@ public class FirebaseDatabaseHelper {
                 String getHourPrice = String.valueOf(trainerInfo.getHourPrice());
                 String getContractPrice = String.valueOf(trainerInfo.getContractPrice());
 
+
+
+
                 trainerData.add(new UserProfile(AppKeys.NAME, trainerInfo.getName()));
                 trainerData.add(new UserProfile(AppKeys.EMAIL, trainerInfo.getEmail()));
                 trainerData.add(new UserProfile(AppKeys.AGE, getAge));
@@ -95,8 +98,14 @@ public class FirebaseDatabaseHelper {
                 trainerData.add(new UserProfile(AppKeys.PLACES, trainerInfo.getTrainingAreas()));
                 trainerData.add(new UserProfile(AppKeys.VEHICLE_TYPE, trainerInfo.getVehicleType()));
                 trainerData.add(new UserProfile(AppKeys.CONTRACT_TYPE, trainerInfo.getContractType()));
-                trainerData.add(new UserProfile(AppKeys.CONTRACT_PRICE, getContractPrice));
-                trainerData.add(new UserProfile(AppKeys.HOUR_PRICE, getHourPrice));
+                trainerData.add(new UserProfile(AppKeys.TRAINING_TIME, trainerInfo.getTrainingTime()));
+
+                if(getHourPrice!=null)
+                    trainerData.add(new UserProfile(AppKeys.HOUR_PRICE, getHourPrice));
+
+                if(getContractPrice!=null)
+                    trainerData.add(new UserProfile(AppKeys.CONTRACT_PRICE, getContractPrice));
+
             }
             return trainerData;
         }

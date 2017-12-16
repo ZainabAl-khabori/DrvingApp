@@ -148,11 +148,13 @@
             android:layout_weight="1"
             />
 
-        <Spinner
+        <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
+            android:id="@+id/spinnerVehicleType"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.2"
-            android:id="@+id/spinnerVehicleType"/>
+            android:layout_weight="0.9"
+            app:hintText="Select Vehicle Type"
+            />
 
 
 
@@ -189,11 +191,15 @@
             android:layout_weight="1"
             />
 
-        <Spinner
+
+        <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
+            android:id="@+id/spinnerContractType"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.4"
-            android:id="@+id/spinnerContractType"/>
+            android:layout_weight="1"
+            app:hintText="Select Contract Type"
+            />
+
 
 
 
@@ -216,27 +222,58 @@
         android:paddingStart="15dp"
         >
 
-        <TextView
-            android:text="Training Time"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/staticTextViewTrainingTime"
-            android:textSize="16sp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_weight="1"
-            />
+            android:layout_weight="1">
+            <TextView
+                android:text="Training Time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/staticTextViewTrainingTime"
+                android:textSize="16sp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+
+                />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp">
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="25dp"
-            android:text="SET"
-            android:id="@+id/buttonSetTime"
+            android:text="From"
+            android:id="@+id/buttonStartSetTime"
             android:textAlignment="center"
             android:textColor="#fef4f4"
             android:background="#9D3F3F"
-            android:layout_weight="1"
-            android:onClick="setTrainingTime"
+            android:layout_marginStart="65dp"
+            android:onClick="setStartTime"
             />
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:text="To"
+            android:id="@+id/buttonSetEndTime"
+            android:textAlignment="center"
+            android:textColor="#fef4f4"
+            android:background="#9D3F3F"
+            android:layout_marginStart="50dp"
+            android:onClick="setEndTime"
+            />
+        <TimePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/timePicker"
+            android:visibility="gone" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
     <View
@@ -430,6 +467,8 @@
         android:background="#9D3F3F"
         android:onClick="save_edit"
         android:layout_below="@id/linearLayoutContractPrice"/>
+
+
 
 </RelativeLayout>
 

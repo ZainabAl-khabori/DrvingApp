@@ -32,6 +32,7 @@ public class AppKeys {
     public static final String CONTRACT_TYPE = "Contract Type";
     public static final String HOUR_PRICE = "Hour Price";
     public static final String CONTRACT_PRICE = "Contract Price";
+    public static final String TRAINING_TIME = "Training Time";
 
     public static boolean isValidEmail(String email){
         if(email.contains("@")){
