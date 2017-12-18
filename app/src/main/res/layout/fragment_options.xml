@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/linearLayoutEmail"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/imageViewEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:tint="@color/colorPrimary"
+            app:srcCompat="@drawable/ic_email" />
+
+        <TextView
+            android:id="@+id/textViewEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="With email"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/linearLayoutPhone"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/imageViewPhone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:tint="@color/ColorPrimary"
+            app:srcCompat="@drawable/ic_phone" />
+
+        <TextView
+            android:id="@+id/textViewPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="With mobile number"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/linearLayoutAnonymous"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/imageViewAnonymous"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:tint="@color/ColorPrimary"
+            app:srcCompat="@drawable/ic_anonymous" />
+
+        <TextView
+            android:id="@+id/textViewAnonymous"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="As guest"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+    </LinearLayout>
+</LinearLayout>

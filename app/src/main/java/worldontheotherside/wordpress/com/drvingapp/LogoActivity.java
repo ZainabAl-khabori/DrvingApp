@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import worldontheotherside.wordpress.com.drvingapp.Classes.Areas;
+import worldontheotherside.wordpress.com.drvingapp.Classes.Images;
 import worldontheotherside.wordpress.com.drvingapp.Classes.Languages;
 
 public class LogoActivity extends AppCompatActivity {
@@ -24,6 +25,8 @@ public class LogoActivity extends AppCompatActivity {
     private FirebaseUser user;
     private ArrayList<String> areasList;
     private ArrayList<String> languagesList;
+    private ArrayList<String> imagesList;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,33 +71,55 @@ public class LogoActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             if(user != null)
-            {
-                DatabaseManip.getData(AppAPI.AREAS, new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        areasList = new Areas(dataSnapshot).getAreas();
-                        areasList.add(0, "Any area");
-                    }
+                intent = new Intent(LogoActivity.this, HomeActivity.class);
+            else
+                intent = new Intent(LogoActivity.this, StartActivity.class);
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.v("AREAS_ERROR", databaseError.getMessage());
-                    }
-                });
+            DatabaseManip.getData(AppAPI.AREAS, new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    areasList = new Areas(dataSnapshot).getAreas();
+                    areasList.add(0, "Any area");
+                    intent.putStringArrayListExtra("Areas", areasList);
+                    Log.v("LISTS", areasList.toString());
+                }
 
-                DatabaseManip.getData(AppAPI.LANGUAGES, new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        languagesList = new Languages(dataSnapshot).getLanguages();
-                        languagesList.add(0, "Any language");
-                    }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.v("AREAS_ERROR", databaseError.getMessage());
+                }
+            });
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.v("LANGUAGES_ERROR", databaseError.getMessage());
-                    }
-                });
-            }
+            DatabaseManip.getData(AppAPI.LANGUAGES, new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    languagesList = new Languages(dataSnapshot).getLanguages();
+                    languagesList.add(0, "Any language");
+                    intent.putStringArrayListExtra("Languages", languagesList);
+                    Log.v("LISTS", languagesList.toString());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.v("LANGUAGES_ERROR", databaseError.getMessage());
+                }
+            });
+
+            DatabaseManip.getData(AppAPI.STARTUP_IMAGES, new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Images images = new Images(dataSnapshot);
+                    imagesList = images.getImages();
+                    intent.putStringArrayListExtra("Images", imagesList);
+                    Log.v("IMAGESLIST", String.valueOf(imagesList.size()));
+                    Log.v("LISTS", imagesList.toString());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.v("DATABASE_ERROR", databaseError.getMessage());
+                }
+            });
 
             return null;
         }
@@ -102,17 +127,6 @@ public class LogoActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-
-            final Intent intent;
-
-            if(user != null)
-            {
-                intent = new Intent(LogoActivity.this, HomeActivity.class);
-                intent.putStringArrayListExtra("Areas", areasList);
-                intent.putStringArrayListExtra("Languages", languagesList);
-            }
-            else
-                intent = new Intent(LogoActivity.this, StartupActivity.class);
 
             new Handler().postDelayed(new Runnable() {
                 @Override

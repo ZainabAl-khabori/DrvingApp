@@ -48,6 +48,8 @@ public class HomeActivity extends AppCompatActivity implements MyInstructorsRecy
     private RecyclerView.LayoutManager layoutManager;
     private Context context;
     private ArrayList<Contract> contractsList;
+    private ArrayList<String> areasList;
+    private ArrayList<String> languagesList;
 
     private FirebaseUser user;
     private AppData appData;
@@ -56,6 +58,9 @@ public class HomeActivity extends AppCompatActivity implements MyInstructorsRecy
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        if(StartActivity.startActivity != null)
+            StartActivity.startActivity.finish();
 
         spinnerTrainingAreas = (Spinner) findViewById(R.id.spinnerTrainingAreas);
         editTextAgeFrom = (EditText) findViewById(R.id.editTextAgeFrom);
@@ -77,35 +82,19 @@ public class HomeActivity extends AppCompatActivity implements MyInstructorsRecy
         user = FirebaseAuth.getInstance().getCurrentUser();
         appData = new AppData(this);
 
-        DatabaseManip.getData(AppAPI.AREAS, new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<String> areasList = new Areas(dataSnapshot).getAreas();
-                areasList.add(0, "Any area");
-                spinnerTrainingAreas.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item,
-                        areasList.toArray(new String[areasList.size()])));
-            }
+        Log.v("ZAINAB", "user type: "+appData.getUserType());
+        Log.v("USERTYPE", appData.getUserType());
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.v("AREAS_ERROR", databaseError.getMessage());
-            }
-        });
+        areasList = getIntent().getStringArrayListExtra("Areas");
+        languagesList = getIntent().getStringArrayListExtra("Languages");
 
-        DatabaseManip.getData(AppAPI.LANGUAGES, new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<String> languagesList = new Languages(dataSnapshot).getLanguages();
-                languagesList.add(0, "Any language");
-                spinnerLanguages.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item,
-                        languagesList.toArray(new String[languagesList.size()])));
-            }
+        Log.v("AREASLIST", getIntent().getStringArrayListExtra("Areas").toString());
+        Log.v("LANGUAGESLIST", getIntent().getStringArrayListExtra("Languages").toString());
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.v("LANGUAGES_ERROR", databaseError.getMessage());
-            }
-        });
+        spinnerTrainingAreas.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,
+                areasList.toArray(new String[areasList.size()])));
+        spinnerLanguages.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,
+                languagesList.toArray(new String[languagesList.size()])));
 
         if((appData.getUserType().equals(AppKeys.PREV_TRAINEE)) || (appData.getUserType().equals(AppKeys.NEW_TRAINEE)))
         {

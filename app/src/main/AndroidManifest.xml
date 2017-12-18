@@ -12,95 +12,77 @@
         <activity
             android:name=".HomeActivity"
             android:label="HomeActivity">
-         <!-- <intent-filter>
+
+            <!--
+                <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
-        <activity android:name=".SignUpNewTraineeActivity"
-            android:label="SignUpNewTraineeActivity">
+        <activity android:name=".SignUpNewTraineeActivity">
 
-           <!-- <intent-filter>
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
+        <activity android:name=".SignUpPrevTraineeActivity">
 
-        <activity android:name=".SignUpPrevTraineeActivity"
-            android:label="SignUpPrevTraineeActivity">
+            <!--
+                <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".SignUpTrainerActivity">
+
+            <!--
+                <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".LogoActivity"
+            android:label="LogoActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".SignUpTrainerActivity" />
-        <activity android:name=".LoginActivity" >
-          <!--  <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-
-            </activity>
         <activity
-            android:name=".LogoActivity"
-            android:label="LogoActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
-<!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-
-        </activity>
-       <activity
             android:name=".TrainerViewActivity"
             android:label="TrainerProfileActivity">
 
-<!--
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-
+            </intent-filter>
+            -->
         </activity>
-        <activity android:name=".EditingTrainerProfileActivity"
-            android:label="EditingTrainerProfileActivity">
+        <activity android:name=".EditingTrainerProfileActivity" />
+        <activity android:name=".TrainerProfileActivity" />
+        <!-- <activity android:name=".Fragments.TrainerProfileFragment"></activity> -->
 
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
-        <activity android:name=".TrainerProfileActivity"
-            android:label="TrainerProfileActivity"
+        <activity android:name=".TrainersActivity" />
+        <activity android:name=".StartActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-
-
-       <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
-
-
-        <activity android:name=".TrainersActivity">
-
-        </activity>
-
-        <activity android:name=".TrainerRating">
-
-          <!--  <intent-filter>
+<!--            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

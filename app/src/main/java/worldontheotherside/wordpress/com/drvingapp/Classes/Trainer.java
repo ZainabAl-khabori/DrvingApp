@@ -29,6 +29,7 @@ public class Trainer {
     private String hourPrice;
     private String contractPrice;
     private String trainingTime;
+    private String key;
 
     public Trainer()
     {
@@ -60,6 +61,7 @@ public class Trainer {
             hourPrice=trainer.hourPrice;
             contractPrice=trainer.contractPrice;
             trainingTime=trainer.trainingTime;
+            key = snapshot.getRef().getKey();
         }
     }
 
@@ -95,16 +97,14 @@ public class Trainer {
     public Price getPrice(){return price;}
     public String getContractType() {return contractType;}
 
-    ////
-    public void Login(){}
-    public void SignUp(){}
-    public void RequestAccept(){}
-    public void Rate(){}
-
 
     public String getSpokenLanguage() {
         return spokenLanguage;
     }
+
+    public long getCivilNo() { return civilNo; }
+
+    public void setCivilNo(long civilNo) { this.civilNo = civilNo; }
 
     public void setSpokenLanguage(String spokenLanguage) {
         this.spokenLanguage = spokenLanguage;
@@ -141,4 +141,6 @@ public class Trainer {
     public void setTrainingTime(String trainingTime) {
         this.trainingTime = trainingTime;
     }
+
+    public String getKey() { return key; }
 }
