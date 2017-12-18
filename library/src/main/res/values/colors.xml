@@ -22,7 +22,7 @@
 
     <color name="text_color">#686868</color>
     <color name="android_text_color">#747474</color>
-    <color name="app_topbar_color">#AAAAAA</color>
+    <color name="app_topbar_color">#aaaaaa</color>
 
     <color name="list_even">#AAAAAA</color>
     <color name="list_odd">#E1E2E2</color>

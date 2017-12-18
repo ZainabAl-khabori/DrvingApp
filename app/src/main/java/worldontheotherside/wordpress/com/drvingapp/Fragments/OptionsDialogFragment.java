@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import worldontheotherside.wordpress.com.drvingapp.HomeActivity;
 import worldontheotherside.wordpress.com.drvingapp.LoginActivity;
 import worldontheotherside.wordpress.com.drvingapp.R;
@@ -20,6 +22,7 @@ import worldontheotherside.wordpress.com.drvingapp.SignUpActivity;
 public class OptionsDialogFragment extends BottomSheetDialogFragment implements View.OnClickListener {
 
     private String action;
+    private FirebaseAuth auth;
 
     public OptionsDialogFragment()
     {
@@ -45,6 +48,7 @@ public class OptionsDialogFragment extends BottomSheetDialogFragment implements 
         super.onViewCreated(view, savedInstanceState);
 
         action = getArguments().getString("Action");
+        auth = FirebaseAuth.getInstance();
 
         view.findViewById(R.id.linearLayoutEmail).setOnClickListener(this);
         view.findViewById(R.id.linearLayoutPhone).setOnClickListener(this);
@@ -71,6 +75,8 @@ public class OptionsDialogFragment extends BottomSheetDialogFragment implements 
             intent.putExtra("type", "phone");
         else
         {
+            auth.signInAnonymously();
+
             intent = new Intent(getActivity(), HomeActivity.class);
             intent.putExtra("type", "anonymous");
         }

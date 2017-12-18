@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textInputLayoutEmail">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextViewEmail"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:drawableStart="@drawable/ic_email"
+            android:hint="@string/EmailAddress"
+            android:inputType="textEmailAddress"
+            android:textSize="16sp"
+            android:maxLines="1"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Password"
+        app:passwordToggleDrawable="@drawable/ic_show"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/android_text_color"
+        android:id="@+id/textInputLayoutPassword">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:drawableStart="@drawable/ic_pass"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textSize="16sp" />
+    </android.support.design.widget.TextInputLayout>
+
+</LinearLayout>

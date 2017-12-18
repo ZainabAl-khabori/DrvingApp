@@ -36,10 +36,14 @@ public class StartActivity extends AppCompatActivity {
     private ArrayList<String> imagesList;
     private int i = 0;
 
+    public static AppCompatActivity startActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        startActivity = this;
 
         imageViewBackground = (ImageView) findViewById(R.id.imageViewBackground);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);

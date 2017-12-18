@@ -81,6 +81,7 @@ public class LogoActivity extends AppCompatActivity {
                     areasList = new Areas(dataSnapshot).getAreas();
                     areasList.add(0, "Any area");
                     intent.putStringArrayListExtra("Areas", areasList);
+                    Log.v("LISTS", areasList.toString());
                 }
 
                 @Override
@@ -95,6 +96,7 @@ public class LogoActivity extends AppCompatActivity {
                     languagesList = new Languages(dataSnapshot).getLanguages();
                     languagesList.add(0, "Any language");
                     intent.putStringArrayListExtra("Languages", languagesList);
+                    Log.v("LISTS", languagesList.toString());
                 }
 
                 @Override
@@ -110,6 +112,7 @@ public class LogoActivity extends AppCompatActivity {
                     imagesList = images.getImages();
                     intent.putStringArrayListExtra("Images", imagesList);
                     Log.v("IMAGESLIST", String.valueOf(imagesList.size()));
+                    Log.v("LISTS", imagesList.toString());
                 }
 
                 @Override
