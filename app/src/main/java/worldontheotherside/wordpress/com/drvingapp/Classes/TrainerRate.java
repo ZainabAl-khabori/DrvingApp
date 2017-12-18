@@ -8,12 +8,13 @@ import com.google.firebase.database.DataSnapshot;
 
 public class TrainerRate {
 
-    private double attendance;
-    private double respectTime;
-    private double dealing;
-    private double learningEfficiency;
+    private Float attendance;
+    private Float respectTime;
+    private Float dealing;
+    private Float learningEfficiency;
     private String others;
-    private double ratingAverage;
+    private String ratingDate;
+    private Float ratingAverage;
 
     public TrainerRate() { /* */ }
 
@@ -26,23 +27,24 @@ public class TrainerRate {
         learningEfficiency = rate.learningEfficiency;
         others = rate.others;
         ratingAverage = rate.ratingAverage;
+        ratingDate = rate.ratingDate;
     }
 
 
     ////////
-    public void setAttendance(double attendance) {
+    public void setAttendance(Float attendance) {
         this.attendance = attendance;
     }
 
-    public void setRespectTime(double respectTime) {
+    public void setRespectTime(Float respectTime) {
         this.respectTime = respectTime;
     }
 
-    public void setDealing(double dealing) {
+    public void setDealing(Float dealing) {
         this.dealing = dealing;
     }
 
-    public void setLearningEfficiency(double learningEfficiency) {
+    public void setLearningEfficiency(Float learningEfficiency) {
         this.learningEfficiency = learningEfficiency;
     }
 
@@ -50,24 +52,24 @@ public class TrainerRate {
         this.others = others;
     }
 
-    public void setRatingAverage(double ratingAverage) {
+    public void setRatingAverage(Float ratingAverage) {
         this.ratingAverage = ratingAverage;
     }
 
     //////
-    public double getAttendance() {
+    public Float getAttendance() {
         return attendance;
     }
 
-    public double getRespectTime() {
+    public Float getRespectTime() {
         return respectTime;
     }
 
-    public double getDealing() {
+    public Float getDealing() {
         return dealing;
     }
 
-    public double getLearningEfficiency() {
+    public Float getLearningEfficiency() {
         return learningEfficiency;
     }
 
@@ -75,9 +77,16 @@ public class TrainerRate {
         return others;
     }
 
-    public double getRatingAverage() {
+    public Float getRatingAverage() {
         return ratingAverage;
     }
 
 
+    public String getRatingDate() {
+        return ratingDate;
+    }
+
+    public void setRatingDate(String ratingDate) {
+        this.ratingDate = ratingDate;
+    }
 }

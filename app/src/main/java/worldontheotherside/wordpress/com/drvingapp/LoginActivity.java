@@ -70,12 +70,12 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "Finding user failed", Toast.LENGTH_SHORT).show();
                                 }
                             });*/
-                            DatabaseManip.findData(AppAPI.TRAINERS, "trainers", Long.valueOf(user.getDisplayName()), new ValueEventListener() {
+                            DatabaseManip.findData(AppAPI.TRAINER_BY_ID, "civilNo", Long.valueOf(user.getDisplayName()), new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     Trainer trainer = new Trainer(dataSnapshot);
                                     Toast.makeText(LoginActivity.this, "Name: "+trainer.getName(), Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(LoginActivity.this, TrainerProfileActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, TrainerRating.class);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         else
                         {
-                            Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

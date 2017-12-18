@@ -381,7 +381,8 @@ public class EditingTrainerProfileActivity extends AppCompatActivity {
                         SharedPreferences sharedPreferences = getSharedPreferences("myAppPrefs", Context.MODE_PRIVATE);
                         sharedPreferences.edit().putInt("hour_price", 1).apply();
                         if (TextUtils.isEmpty(hourPrice))
-                            Toast.makeText(context, "Hour Price cannot be empty!", Toast.LENGTH_SHORT).show();
+                            editTextHourPrice.setError("Cannot be empty");
+                            //Toast.makeText(context, "Hour Price cannot be empty!", Toast.LENGTH_SHORT).show();
                         else
                             trainer.setHourPrice(hourPrice);
                     }

@@ -8,10 +8,19 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.RatingBar;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import worldontheotherside.wordpress.com.drvingapp.Classes.Trainer;
+import worldontheotherside.wordpress.com.drvingapp.Classes.TrainerRate;
 import worldontheotherside.wordpress.com.drvingapp.Fragments.InfoTabFragment;
 import worldontheotherside.wordpress.com.drvingapp.Fragments.ReviewsTabFragment;
 
@@ -21,10 +30,12 @@ public class TrainerViewActivity extends AppCompatActivity {
     //private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    /*private int[] tabIcons = {
-            R.drawable.ic_reviews,
-            R.drawable.ic_trainer_info
-    };*/
+    private TextView textViewTrainerName;
+    private  String trainerName;
+    private TrainerRate trainerRate;
+    private Float ratingAvg;
+    private String comments;
+    private RatingBar ratingBarTrainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +49,35 @@ public class TrainerViewActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(R.id.viewpagerTrainer);
+        textViewTrainerName = (TextView) findViewById(R.id.textViewTrainerName);
+        ratingBarTrainer = (RatingBar) findViewById(R.id.ratingBarTrainer);
+
+
+
         setupViewPager(viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         //setupTabIcons();
+
+        DatabaseManip.getData(AppAPI.TRAINERS, new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                trainerName = new Trainer(dataSnapshot).getName();
+                textViewTrainerName.setText(trainerName);
+                trainerRate = new Trainer(dataSnapshot).getRate();
+                comments = trainerRate.getOthers();
+                ratingAvg=trainerRate.getRatingAverage();
+
+                ratingBarTrainer.setRating(ratingAvg);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.v("Trainer_ERROR", databaseError.getMessage());
+            }
+        });
     }
 
     private void setupViewPager(ViewPager viewPager) {

@@ -16,6 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="20dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:paddingBottom="20dp">
 
 
@@ -83,7 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="86dp"
-                android:paddingStart="85dp"
+                android:paddingStart="93dp"
                 android:text="Respect Time"
                 android:textSize="16sp"
                 android:id="@+id/textViewRespectTime"
@@ -174,12 +176,15 @@
     <android.support.v7.widget.CardView
         android:id="@+id/cardViewReviews"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            >
 
 
             <RatingBar
@@ -188,7 +193,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:isIndicator="true"
-                android:rating="5"
+                android:rating="3.5"
                 android:progressBackgroundTint="@android:color/darker_gray"
                 android:progressTint="@color/colorPrimary"
                 android:secondaryProgressTint="@color/colorPrimary"
@@ -208,12 +213,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="30dp"
+            android:paddingStart="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textViewTraineeName"
+                android:id="@+id/textViewTrainerName"
                 android:textColor="@android:color/black"
                 android:text="Trainee name"
                 />
@@ -222,7 +228,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewComments"
-                android:text="comments"
+                android:text="No comments"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 />
