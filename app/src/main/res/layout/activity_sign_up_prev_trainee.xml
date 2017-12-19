@@ -4,10 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_centerInParent="true"
     tools:context="worldontheotherside.wordpress.com.drvingapp.SignUpPrevTraineeActivity">
-
-
-
 
     <EditText
         android:layout_width="250dp"
@@ -32,8 +30,7 @@
         android:inputType="textEmailAddress"
         android:drawableStart="@drawable/ic_email"
         android:layout_below="@+id/editTextUsername"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_centerHorizontal="true"/>
 
 
     <EditText
@@ -131,7 +128,8 @@
         android:textSize="16sp"
         android:layout_below="@+id/editTextMobileNo"
         android:layout_alignStart="@+id/editTextMobileNo"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"/>
 
     <EditText
         android:layout_width="250dp"
@@ -141,6 +139,7 @@
         android:drawableStart="@drawable/ic_civil"
         android:inputType="number"
         android:textSize="16sp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/editTextPassword"
         android:layout_alignStart="@+id/editTextPassword"
         />

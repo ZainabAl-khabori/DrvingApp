@@ -63,10 +63,10 @@ public class StartActivity extends AppCompatActivity {
 
                 Picasso.with(StartActivity.this).load(imagesList.get(i++))
                         .transform(new Scale(height)).into(imageViewBackground);
-                imageViewBackground.scrollTo(-width, 0);
+                imageViewBackground.scrollTo(-width/2, 0);
 
                 ObjectAnimator fadeAnimator = ObjectAnimator.ofFloat(imageViewBackground, View.ALPHA, 0, 1, 1, 1, 0);
-                ObjectAnimator xAnimator = ObjectAnimator.ofInt(imageViewBackground, "scrollX", -width, width);
+                ObjectAnimator xAnimator = ObjectAnimator.ofInt(imageViewBackground, "scrollX", -width/2, width/2);
                 AnimatorSet set = new AnimatorSet();
                 set.playTogether(fadeAnimator, xAnimator);
                 set.setDuration(10000);

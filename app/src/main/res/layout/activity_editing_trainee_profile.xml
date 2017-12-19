@@ -201,7 +201,7 @@
             android:layout_below="@id/linearLayoutPhone"
             />
 
-        <Button
+<!--        <Button
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:text="submit"
@@ -211,7 +211,7 @@
             android:textColor="#fef4f4"
             android:background="#9D3F3F"
             android:onClick="save_edit"
-            android:layout_below="@id/linearLayoutContractPrice"/>
+            android:layout_below="@id/linearLayoutContractPrice"/>-->
 
 
 

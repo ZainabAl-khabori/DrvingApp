@@ -38,37 +38,9 @@ public class Trainer {
 
     public Trainer(DataSnapshot dataSnapshot)
     {
-        if(dataSnapshot.getValue() instanceof DataSnapshot)
+        for(DataSnapshot snapshot: dataSnapshot.getChildren())
         {
-            for(DataSnapshot snapshot: dataSnapshot.getChildren())
-            {
-                Trainer trainer = snapshot.getValue(Trainer.class);
-
-                name = trainer.name;
-                civilNo = trainer.civilNo;
-                email = trainer.email;
-                age = trainer.age;
-                phone = trainer.phone;
-                gender = trainer.gender;
-                password = trainer.password;
-                carNo = trainer.carNo;
-                places = trainer.places;
-                vehicleType = trainer.vehicleType;
-                languages = trainer.languages;
-                rate = trainer.rate;
-                price = trainer.price;
-                contractType = trainer.contractType;
-                spokenLanguage = trainer.spokenLanguage;
-                trainingAreas=trainer.trainingAreas;
-                hourPrice=trainer.hourPrice;
-                contractPrice=trainer.contractPrice;
-                trainingTime=trainer.trainingTime;
-                key = snapshot.getRef().getKey();
-            }
-        }
-        else
-        {
-            Trainer trainer = dataSnapshot.getValue(Trainer.class);
+            Trainer trainer = snapshot.getValue(Trainer.class);
 
             name = trainer.name;
             civilNo = trainer.civilNo;
@@ -89,7 +61,7 @@ public class Trainer {
             hourPrice=trainer.hourPrice;
             contractPrice=trainer.contractPrice;
             trainingTime=trainer.trainingTime;
-            key = dataSnapshot.getRef().getKey();
+            key = snapshot.getRef().getKey();
         }
     }
 

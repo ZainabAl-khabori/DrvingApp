@@ -58,6 +58,30 @@ public class Contract {
     public boolean getSlopePass() {return slopePass;}
     public boolean getRoadPass() {return roadPass;}
 
+    public boolean isDrumsPass() {
+        return drumsPass;
+    }
+
+    public boolean isSlopePass() {
+        return slopePass;
+    }
+
+    public boolean isRoadPass() {
+        return roadPass;
+    }
+
+    public void setRoadPass(boolean roadPass) {
+        this.roadPass = roadPass;
+    }
+
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
+    }
+
     //////
     public void Select(){}
 }

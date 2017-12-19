@@ -73,6 +73,7 @@ public class SignUpNewTraineeActivity extends AppCompatActivity implements Verif
         textViewAlreadyHaveAccount = (TextView) findViewById(R.id.textViewAlreadyHaveAccount);
 
         auth = FirebaseAuth.getInstance();
+        appData = new AppData(this);
 
         if(getIntent().getStringExtra("type").equals("phone"))
         {
@@ -153,6 +154,39 @@ public class SignUpNewTraineeActivity extends AppCompatActivity implements Verif
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
                         {
+                            appData.setUserType(AppKeys.NEW_TRAINEE);
+
+                            FirebaseUser user = auth.getCurrentUser();
+
+                            DatabaseManip.updateUserProfile(user, editTextCivilNo.getText().toString(), null,
+                                    null, null, new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            //Do nothing
+                                        }
+                                    });
+
+                            NewTrainee newTrainee = new NewTrainee();
+                            newTrainee.setUsername(editTextUsername.getText().toString());
+                            newTrainee.setEmail(editTextEmail.getText().toString());
+                            newTrainee.setPhone(editTextMobileNo.getText().toString());
+                            if(radioFemale.isChecked())
+                                newTrainee.setGender("Female");
+                            else if(radioMale.isChecked())
+                                newTrainee.setGender("Male");
+                            newTrainee.setPassword(editTextPassword.getText().toString());
+                            newTrainee.setCivilNo(Long.valueOf(editTextCivilNo.getText().toString()));
+                            newTrainee.setDrivingLicense(Long.valueOf(editTextDrivingLicense.getText().toString()));
+
+                            DatabaseManip.addData(AppAPI.CURRENT_TRAINEES, newTrainee, new DatabaseReference
+                                    .CompletionListener() {
+                                @Override
+                                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                    Toast.makeText(SignUpNewTraineeActivity.this, "New trainee added", Toast.LENGTH_SHORT)
+                                            .show();
+                                }
+                            });
+
                             Intent intent = new Intent(SignUpNewTraineeActivity.this, HomeActivity.class);
                             intent.putStringArrayListExtra("Areas", getIntent()
                                     .getStringArrayListExtra("Areas"));
@@ -214,10 +248,12 @@ public class SignUpNewTraineeActivity extends AppCompatActivity implements Verif
 
                                         appData.setUserType(AppKeys.NEW_TRAINEE);
 
-                                        DatabaseManip.addData(AppAPI.FORMER_TRAINEES, newTrainee, new DatabaseReference.CompletionListener() {
+                                        DatabaseManip.addData(AppAPI.CURRENT_TRAINEES, newTrainee, new DatabaseReference
+                                                .CompletionListener() {
                                             @Override
                                             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                                                Toast.makeText(SignUpNewTraineeActivity.this, "New trainee added", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(SignUpNewTraineeActivity.this, "New trainee added", Toast.LENGTH_SHORT)
+                                                        .show();
                                             }
                                         });
                                     }
@@ -256,6 +292,10 @@ public class SignUpNewTraineeActivity extends AppCompatActivity implements Verif
     public void goLoginAction(View view)
     {
         Intent i = new Intent(this, LoginActivity.class);
+        i.putStringArrayListExtra("Areas", getIntent()
+                .getStringArrayListExtra("Areas"));
+        i.putStringArrayListExtra("Languages", getIntent()
+                .getStringArrayListExtra("Languages"));
         i.putExtra("type", getIntent().getStringExtra("type"));
         startActivity(i);
     }

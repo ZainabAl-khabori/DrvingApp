@@ -63,6 +63,10 @@ public class LogoActivity extends AppCompatActivity {
     // AsyncTask to display splash screen while app is loading
     private class Loading extends AsyncTask<Void, Void, Void>
     {
+        boolean areas = false;
+        boolean langs = false;
+        boolean imgs = false;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -75,51 +79,59 @@ public class LogoActivity extends AppCompatActivity {
             else
                 intent = new Intent(LogoActivity.this, StartActivity.class);
 
-            DatabaseManip.getData(AppAPI.AREAS, new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    areasList = new Areas(dataSnapshot).getAreas();
-                    areasList.add(0, "Any area");
-                    intent.putStringArrayListExtra("Areas", areasList);
-                    Log.v("LISTS", areasList.toString());
-                }
+            while(!areas || !langs || !imgs) {
+                DatabaseManip.getData(AppAPI.AREAS, new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        areasList = new Areas(dataSnapshot).getAreas();
+                        if (!areasList.isEmpty())
+                            areas = true;
+                        areasList.add(0, "Any area");
+                        intent.putStringArrayListExtra("Areas", areasList);
+                        Log.v("LISTS", areasList.toString());
+                    }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Log.v("AREAS_ERROR", databaseError.getMessage());
-                }
-            });
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.v("AREAS_ERROR", databaseError.getMessage());
+                    }
+                });
 
-            DatabaseManip.getData(AppAPI.LANGUAGES, new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    languagesList = new Languages(dataSnapshot).getLanguages();
-                    languagesList.add(0, "Any language");
-                    intent.putStringArrayListExtra("Languages", languagesList);
-                    Log.v("LISTS", languagesList.toString());
-                }
+                DatabaseManip.getData(AppAPI.LANGUAGES, new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        languagesList = new Languages(dataSnapshot).getLanguages();
+                        if(!languagesList.isEmpty())
+                            langs = true;
+                        languagesList.add(0, "Any language");
+                        intent.putStringArrayListExtra("Languages", languagesList);
+                        Log.v("LISTS", languagesList.toString());
+                    }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Log.v("LANGUAGES_ERROR", databaseError.getMessage());
-                }
-            });
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.v("LANGUAGES_ERROR", databaseError.getMessage());
+                    }
+                });
 
-            DatabaseManip.getData(AppAPI.STARTUP_IMAGES, new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Images images = new Images(dataSnapshot);
-                    imagesList = images.getImages();
-                    intent.putStringArrayListExtra("Images", imagesList);
-                    Log.v("IMAGESLIST", String.valueOf(imagesList.size()));
-                    Log.v("LISTS", imagesList.toString());
-                }
+                DatabaseManip.getData(AppAPI.STARTUP_IMAGES, new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Images images = new Images(dataSnapshot);
+                        imagesList = images.getImages();
+                        if(!imagesList.isEmpty())
+                            imgs = true;
+                        intent.putStringArrayListExtra("Images", imagesList);
+                        Log.v("IMAGESLIST", String.valueOf(imagesList.size()));
+                        Log.v("LISTS", imagesList.toString());
+                    }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Log.v("DATABASE_ERROR", databaseError.getMessage());
-                }
-            });
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.v("DATABASE_ERROR", databaseError.getMessage());
+                    }
+                });
+            }
 
             return null;
         }

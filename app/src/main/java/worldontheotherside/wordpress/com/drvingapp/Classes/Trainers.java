@@ -22,7 +22,7 @@ public class Trainers {
         trainers = new ArrayList<>();
 
         for(DataSnapshot snapshot: dataSnapshot.getChildren())
-            trainers.add(new Trainer(snapshot));
+            trainers.add(snapshot.getValue(Trainer.class));
     }
 
     public ArrayList<Trainer> getTrainers() {

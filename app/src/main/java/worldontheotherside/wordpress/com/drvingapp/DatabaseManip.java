@@ -12,6 +12,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
+import worldontheotherside.wordpress.com.drvingapp.Classes.NewTrainee;
+import worldontheotherside.wordpress.com.drvingapp.Classes.PreviousTrainee;
+import worldontheotherside.wordpress.com.drvingapp.Classes.Trainer;
+
 /**
  * Created by زينب on 11/20/2017.
  */
@@ -89,7 +93,27 @@ public class DatabaseManip {
     public static void addData(String url, Object data, DatabaseReference.CompletionListener completionListener)
     {
         db = FirebaseDatabase.getInstance().getReferenceFromUrl(url);
-        db.push().setValue(data, completionListener);
+
+        if(url.equals(AppAPI.TRAINERS) || url.equals(AppAPI.FORMER_TRAINEES) || url.equals(AppAPI.CURRENT_TRAINEES))
+        {
+            if(url.equals(AppAPI.TRAINERS))
+            {
+                Trainer trainer = (Trainer) data;
+                db.child(String.valueOf(trainer.getCivilNo())).setValue(data, completionListener);
+            }
+            else if(url.equals(AppAPI.FORMER_TRAINEES))
+            {
+                PreviousTrainee previousTrainee = (PreviousTrainee) data;
+                db.child(String.valueOf(previousTrainee.getCivilNo())).setValue(data, completionListener);
+            }
+            else
+            {
+                NewTrainee newTrainee = (NewTrainee) data;
+                db.child(String.valueOf(newTrainee.getCivilNo())).setValue(data, completionListener);
+            }
+        }
+        else
+            db.push().setValue(data, completionListener);
     }
 
     public static void updateData(String url, Object data, DatabaseReference.CompletionListener completionListener)

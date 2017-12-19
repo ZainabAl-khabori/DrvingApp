@@ -16,7 +16,7 @@ public class AppAPI {
     public static String CURRENT_TRAINEES = db.child("trainees").child("current_trainees").toString();
     public static String FORMER_TRAINEES = db.child("trainees").child("former_trainees").toString();
     public static String FORMER_TRAINEE_BY_ID = db.child("trainees").child("former_trainees").orderByChild("civilNo").getRef().toString();
-    //public static String CURRENT_TRAINEE_BY_NAME = db.child("trainees").child("current_trainees").orderByChild("name").getRef().toString();
+    public static String CURRENT_TRAINEE_BY_NAME = db.child("trainees").child("current_trainees").orderByChild("name").getRef().toString();
 
     public static String TRAINERS = db.child("trainers").toString();
    public static String TRAINER_RATE = db.child("trainers").child("trainer_rate").toString();

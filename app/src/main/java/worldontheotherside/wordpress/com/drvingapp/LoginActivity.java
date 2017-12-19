@@ -44,6 +44,8 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private AppData appData;
 
+    private String userType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -141,6 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                 emailLoginFragment.setErrorMessage("This field shouldn't be empty");
             else
             {
+                appData.addInputEmail(emailLoginFragment.getEmail());
                 auth.signInWithEmailAndPassword(emailLoginFragment.getEmail(), emailLoginFragment.getPassword())
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -176,9 +179,12 @@ public class LoginActivity extends AppCompatActivity {
                                                                     }
                                                                 }
 
-                                                                if(ids.contains(Long.valueOf(user.getDisplayName())))
+                                                                if(ids.contains(Long.valueOf(user.getDisplayName()))) {
                                                                     appData.setUserType(userTypes.get(ids.
                                                                             indexOf(Long.valueOf(user.getDisplayName()))));
+                                                                    userType = userTypes.get(ids.
+                                                                            indexOf(Long.valueOf(user.getDisplayName())));
+                                                                }
                                                             }
 
                                                             @Override
@@ -187,8 +193,10 @@ public class LoginActivity extends AppCompatActivity {
                                                             }
                                                         });
                                                     }
-                                                    else
+                                                    else {
                                                         appData.setUserType(AppKeys.INSTRUCTOR);
+                                                        userType = AppKeys.INSTRUCTOR;
+                                                    }
                                                 }
 
                                                 @Override
@@ -198,6 +206,7 @@ public class LoginActivity extends AppCompatActivity {
                                             });
 
                                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                    intent.putExtra("type", userType);
                                     intent.putStringArrayListExtra("Areas", getIntent()
                                             .getStringArrayListExtra("Areas"));
                                     intent.putStringArrayListExtra("Languages", getIntent()
@@ -258,7 +267,7 @@ public class LoginActivity extends AppCompatActivity {
                                 snapshots.add(snapshot);
 
                             ArrayList<String> numbers = new ArrayList<>();
-                            ArrayList<String> userTypes = new ArrayList<>();
+                            final ArrayList<String> userTypes = new ArrayList<>();
                             for(int i = 0; i < snapshots.size(); i++)
                             {
                                 for(DataSnapshot snapshot: snapshots.get(i).getChildren())
@@ -277,6 +286,7 @@ public class LoginActivity extends AppCompatActivity {
                             if(numbers.contains(phoneLoginFragment.getPhoneNumber()))
                             {
                                 appData.setUserType(userTypes.get(numbers.indexOf(phoneLoginFragment.getPhoneNumber())));
+                                userType = userTypes.get(numbers.indexOf(phoneLoginFragment.getPhoneNumber()));
                                 auth.signInWithCredential(credential)
                                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                             @Override
@@ -284,6 +294,7 @@ public class LoginActivity extends AppCompatActivity {
                                                 if(task.isSuccessful())
                                                 {
                                                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                                    intent.putExtra("type", userType);
                                                     intent.putStringArrayListExtra("Areas", getIntent()
                                                             .getStringArrayListExtra("Areas"));
                                                     intent.putStringArrayListExtra("Languages", getIntent()
@@ -314,6 +325,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(trainer.getEmail() == null)
                     {
                         appData.setUserType(AppKeys.INSTRUCTOR);
+                        userType = AppKeys.INSTRUCTOR;
                         auth.signInWithCredential(credential)
                                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                     @Override
@@ -321,6 +333,7 @@ public class LoginActivity extends AppCompatActivity {
                                         if(task.isSuccessful())
                                         {
                                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                            intent.putExtra("type", userType);
                                             intent.putStringArrayListExtra("Areas", getIntent()
                                                     .getStringArrayListExtra("Areas"));
                                             intent.putStringArrayListExtra("Languages", getIntent()

@@ -1,5 +1,8 @@
 package worldontheotherside.wordpress.com.drvingapp.Adapters;
 
+import android.content.Context;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +28,7 @@ import worldontheotherside.wordpress.com.drvingapp.Classes.NewTrainee;
 import worldontheotherside.wordpress.com.drvingapp.Classes.PreviousTrainee;
 import worldontheotherside.wordpress.com.drvingapp.Classes.Trainer;
 import worldontheotherside.wordpress.com.drvingapp.DatabaseManip;
+import worldontheotherside.wordpress.com.drvingapp.Fragments.ContractInfoFragment;
 import worldontheotherside.wordpress.com.drvingapp.R;
 
 /**
@@ -33,14 +37,12 @@ import worldontheotherside.wordpress.com.drvingapp.R;
 
 public class MyInstructorsRecyclerAdapter extends RecyclerView.Adapter<MyInstructorsRecyclerAdapter.ViewHolder> {
 
+    private FragmentManager fragmentManager;
     private ArrayList<Contract> contractsList;
     private String user;
     private OnItemClickListener onItemClickListener;
 
-    public interface OnItemClickListener { public void OnClick(View view, int position);
-
-        void onCreateOptionsMenu(Menu menu, MenuInflater inflater);
-    }
+    public interface OnItemClickListener { public void OnClick(View view, int position); }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -71,6 +73,13 @@ public class MyInstructorsRecyclerAdapter extends RecyclerView.Adapter<MyInstruc
         public void onClick(View view) {
             if(onItemClickListener != null)
                 onItemClickListener.OnClick(view, getAdapterPosition());
+
+            if(view.getId() == R.id.linearLayoutInfo)
+            {
+                ContractInfoFragment fragment = ContractInfoFragment
+                        .newContractInfoFragment(contractsList.get(getAdapterPosition()));
+                fragment.show(fragmentManager, "info");
+            }
         }
     }
 
@@ -78,7 +87,8 @@ public class MyInstructorsRecyclerAdapter extends RecyclerView.Adapter<MyInstruc
         this.onItemClickListener = onItemClickListener;
     }
 
-    public MyInstructorsRecyclerAdapter(ArrayList<Contract> data, String userType) {
+    public MyInstructorsRecyclerAdapter(FragmentManager fm, ArrayList<Contract> data, String userType) {
+        fragmentManager = fm;
         contractsList = data;
         user = userType;
     }
@@ -152,8 +162,13 @@ public class MyInstructorsRecyclerAdapter extends RecyclerView.Adapter<MyInstruc
         if(contractsList.get(position).getRoadPass())
             holder.imageViewRoadTest.setVisibility(View.VISIBLE);
 
+        holder.linearLayoutInfo.setOnClickListener(holder);
+
         if((user.equals(AppKeys.PREV_TRAINEE)) || (user.equals(AppKeys.INSTRUCTOR)))
+        {
             holder.linearLayoutRate.setVisibility(View.VISIBLE);
+            holder.linearLayoutRate.setOnClickListener(holder);
+        }
     }
 
     @Override
