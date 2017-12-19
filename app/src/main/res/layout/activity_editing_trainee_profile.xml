@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="worldontheotherside.wordpress.com.drvingapp.EditingTrainerProfileActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <LinearLayout
+            android:id="@+id/linearLayoutProfileHeader"
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="10dp"
+            android:background="@color/colorPrimary">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:maxHeight="100dp"
+                android:maxWidth="100dp"
+                android:layout_gravity="center"
+                android:src="@drawable/edit_profile_picture"
+                android:id="@+id/circleImageViewProfile"/>
+
+            <EditText
+                android:id="@+id/editTextProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:paddingTop="10dp"
+                android:hint="Edit Name"
+                android:drawableEnd="@drawable/ic_edit"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTrainingRegion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="10dp"
+            android:layout_below="@+id/linearLayoutProfileHeader"
+            >
+
+            <TextView
+                android:text="Training Region"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/staticTextViewTrainingRegion"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                />
+
+            <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.1"
+                app:hintText="Select Training Region"
+                android:id="@+id/spinnerTrainingRegion" />
+
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/viewHorizontalLine1"
+            android:background="#dfdbdb"
+            android:layout_below="@+id/linearLayoutTrainingRegion"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayoutLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="10dp"
+            android:layout_below="@+id/linearLayoutTrainingRegion"
+            >
+
+            <TextView
+                android:text="Language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/staticTextViewLanguage"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                />
+
+            <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
+                android:id="@+id/spinnerLanguage"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                app:hintText="Select Language"
+                />
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/viewHorizontalLine2"
+            android:background="#dfdbdb"
+            android:layout_below="@+id/linearLayoutLanguage"
+            />
+
+
+
+
+
+        <LinearLayout
+            android:id="@+id/linearLayoutAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutLanguage"
+            android:orientation="horizontal"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            >
+
+            <TextView
+                android:text="Age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/staticTextViewAge"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                />
+
+            <EditText
+                android:hint="age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextAge"
+                android:textSize="16sp"
+                android:inputType="number"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/viewHorizontalLine4"
+            android:background="#dfdbdb"
+            android:layout_below="@id/linearLayoutAge"
+            />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutAge"
+            android:orientation="horizontal"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            >
+
+            <TextView
+                android:text="Phone Number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/staticTextViewPhone"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                />
+
+            <EditText
+                android:hint="Phone Number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextPhone"
+                android:textSize="16sp"
+                android:inputType="phone"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dfdbdb"
+            android:layout_below="@id/linearLayoutPhone"
+            />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="submit"
+            android:id="@+id/buttonSaveEdit"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="25dp"
+            android:textColor="#fef4f4"
+            android:background="#9D3F3F"
+            android:onClick="save_edit"
+            android:layout_below="@id/linearLayoutContractPrice"/>
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

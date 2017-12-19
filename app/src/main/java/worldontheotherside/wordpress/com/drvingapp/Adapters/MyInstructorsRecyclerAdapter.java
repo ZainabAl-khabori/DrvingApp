@@ -3,6 +3,8 @@ package worldontheotherside.wordpress.com.drvingapp.Adapters;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -35,7 +37,10 @@ public class MyInstructorsRecyclerAdapter extends RecyclerView.Adapter<MyInstruc
     private String user;
     private OnItemClickListener onItemClickListener;
 
-    public interface OnItemClickListener { public void OnClick(View view, int position); }
+    public interface OnItemClickListener { public void OnClick(View view, int position);
+
+        void onCreateOptionsMenu(Menu menu, MenuInflater inflater);
+    }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
