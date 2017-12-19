@@ -26,6 +26,10 @@ public class SignUpActivity extends AppCompatActivity {
             intent = new Intent(this, SignUpTrainerActivity.class);
 
         intent.putExtra("type", getIntent().getStringExtra("type"));
+        intent.putStringArrayListExtra("Areas", getIntent()
+                .getStringArrayListExtra("Areas"));
+        intent.putStringArrayListExtra("Languages", getIntent()
+                .getStringArrayListExtra("Languages"));
         startActivity(intent);
     }
 }

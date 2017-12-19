@@ -98,7 +98,7 @@ public class InstructorsRecyclerAdapter extends RecyclerView.Adapter<Instructors
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.textViewName.setText(list.get(position).getName());
-        holder.ratingBarRating.setRating((float)list.get(position).getRate().getRatingAverage());
+        //holder.ratingBarRating.setRating((float)list.get(position).getRate().getRatingAverage());
     }
 
     @Override
