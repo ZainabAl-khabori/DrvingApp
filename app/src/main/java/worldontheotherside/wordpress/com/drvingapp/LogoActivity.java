@@ -88,12 +88,12 @@ public class LogoActivity extends AppCompatActivity {
                             areas = true;
                         areasList.add(0, "Any area");
                         intent.putStringArrayListExtra("Areas", areasList);
-                        Log.v("LISTS", areasList.toString());
+                        //Log.v("LISTS", areasList.toString());
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Log.v("AREAS_ERROR", databaseError.getMessage());
+                        //Log.v("AREAS_ERROR", databaseError.getMessage());
                     }
                 });
 
@@ -105,7 +105,7 @@ public class LogoActivity extends AppCompatActivity {
                             langs = true;
                         languagesList.add(0, "Any language");
                         intent.putStringArrayListExtra("Languages", languagesList);
-                        Log.v("LISTS", languagesList.toString());
+                        //Log.v("LISTS", languagesList.toString());
                     }
 
                     @Override
@@ -122,8 +122,8 @@ public class LogoActivity extends AppCompatActivity {
                         if(!imagesList.isEmpty())
                             imgs = true;
                         intent.putStringArrayListExtra("Images", imagesList);
-                        Log.v("IMAGESLIST", String.valueOf(imagesList.size()));
-                        Log.v("LISTS", imagesList.toString());
+                        //Log.v("IMAGESLIST", String.valueOf(imagesList.size()));
+                        //Log.v("LISTS", imagesList.toString());
                     }
 
                     @Override
@@ -143,6 +143,7 @@ public class LogoActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    Log.v("SPLASHSCREEN", "starting next activity");
                     startActivity(intent);
                     finish();
                 }

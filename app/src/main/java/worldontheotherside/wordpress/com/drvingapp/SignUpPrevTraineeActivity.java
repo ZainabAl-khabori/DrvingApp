@@ -180,7 +180,15 @@ public class SignUpPrevTraineeActivity extends AppCompatActivity implements Veri
                             previousTrainee.setPassword(editTextPassword.getText().toString());
                             previousTrainee.setCivilNo(Long.valueOf(editTextCivilNo.getText().toString()));
 
-                            appData.setUserType(AppKeys.NEW_TRAINEE);
+                            appData.setUserType(AppKeys.PREV_TRAINEE);
+
+                            DatabaseManip.updateData(AppAPI.USERTYPES, user.getDisplayName(), AppKeys.NEW_TRAINEE,
+                                    new DatabaseReference.CompletionListener() {
+                                        @Override
+                                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                            //
+                                        }
+                                    });
 
                             DatabaseManip.addData(AppAPI.FORMER_TRAINEES, previousTrainee, new DatabaseReference
                                     .CompletionListener() {
@@ -249,7 +257,15 @@ public class SignUpPrevTraineeActivity extends AppCompatActivity implements Veri
                                         previousTrainee.setPassword(editTextPassword.getText().toString());
                                         previousTrainee.setCivilNo(Long.valueOf(editTextCivilNo.getText().toString()));
 
-                                        appData.setUserType(AppKeys.NEW_TRAINEE);
+                                        appData.setUserType(AppKeys.PREV_TRAINEE);
+
+                                        DatabaseManip.updateData(AppAPI.USERTYPES, user.getDisplayName(), AppKeys.PREV_TRAINEE,
+                                                new DatabaseReference.CompletionListener() {
+                                                    @Override
+                                                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                                        //
+                                                    }
+                                                });
 
                                         DatabaseManip.addData(AppAPI.FORMER_TRAINEES, previousTrainee, new DatabaseReference
                                                 .CompletionListener() {
@@ -257,6 +273,14 @@ public class SignUpPrevTraineeActivity extends AppCompatActivity implements Veri
                                             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                                                 Toast.makeText(SignUpPrevTraineeActivity.this, "New trainee added", Toast.LENGTH_SHORT)
                                                         .show();
+
+                                                Intent intent = new Intent(SignUpPrevTraineeActivity.this, HomeActivity.class);
+                                                intent.putStringArrayListExtra("Areas", getIntent()
+                                                        .getStringArrayListExtra("Areas"));
+                                                intent.putStringArrayListExtra("Languages", getIntent()
+                                                        .getStringArrayListExtra("Languages"));
+                                                startActivity(intent);
+                                                finish();
                                             }
                                         });
                                     }

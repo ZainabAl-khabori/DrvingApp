@@ -150,63 +150,7 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful())
                                 {
-                                    final FirebaseUser user = auth.getCurrentUser();
-
-                                    DatabaseManip.findData(AppAPI.TRAINERS, "civilNo", user.getDisplayName(),
-                                            new ValueEventListener() {
-                                                @Override
-                                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                                    if(!dataSnapshot.hasChildren())
-                                                    {
-                                                        DatabaseManip.getData(AppAPI.TRAINEES, new ValueEventListener() {
-                                                            @Override
-                                                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                                                ArrayList<DataSnapshot> snapshots = new ArrayList<>();
-                                                                for(DataSnapshot snapshot: dataSnapshot.getChildren())
-                                                                    snapshots.add(snapshot);
-
-                                                                ArrayList<Long> ids = new ArrayList<>();
-                                                                ArrayList<String> userTypes = new ArrayList<>();
-                                                                for(int i = 0; i < snapshots.size(); i++)
-                                                                {
-                                                                    for(DataSnapshot snapshot: snapshots.get(i).getChildren())
-                                                                    {
-                                                                            if(snapshot.hasChild("drivingLicense"))
-                                                                                userTypes.add(AppKeys.NEW_TRAINEE);
-                                                                            else
-                                                                                userTypes.add(AppKeys.PREV_TRAINEE);
-                                                                            ids.add(snapshot.child("civilNo").getValue(Long.class));
-                                                                    }
-                                                                }
-
-                                                                if(ids.contains(Long.valueOf(user.getDisplayName()))) {
-                                                                    appData.setUserType(userTypes.get(ids.
-                                                                            indexOf(Long.valueOf(user.getDisplayName()))));
-                                                                    userType = userTypes.get(ids.
-                                                                            indexOf(Long.valueOf(user.getDisplayName())));
-                                                                }
-                                                            }
-
-                                                            @Override
-                                                            public void onCancelled(DatabaseError databaseError) {
-
-                                                            }
-                                                        });
-                                                    }
-                                                    else {
-                                                        appData.setUserType(AppKeys.INSTRUCTOR);
-                                                        userType = AppKeys.INSTRUCTOR;
-                                                    }
-                                                }
-
-                                                @Override
-                                                public void onCancelled(DatabaseError databaseError) {
-
-                                                }
-                                            });
-
                                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                                    intent.putExtra("type", userType);
                                     intent.putStringArrayListExtra("Areas", getIntent()
                                             .getStringArrayListExtra("Areas"));
                                     intent.putStringArrayListExtra("Languages", getIntent()

@@ -40,7 +40,7 @@ public class AppAPI {
 
     public static String LANGUAGES = db.child("languages").toString();
 
-
+    public static String USERTYPES = db.child("usertypes").toString();
 
     public static String STARTUP_IMAGES = db.child("startupImages").toString();
     //public static String TRAINER_NAME = db.child("trainerName").toString();

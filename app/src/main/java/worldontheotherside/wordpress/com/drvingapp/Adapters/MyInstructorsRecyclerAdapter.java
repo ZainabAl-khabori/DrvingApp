@@ -153,13 +153,13 @@ public class MyInstructorsRecyclerAdapter extends RecyclerView.Adapter<MyInstruc
             });
         }
 
-        Log.v("DRUMS", String.valueOf(contractsList.get(position).getDrumsPass()));
+        Log.v("DRUMS", String.valueOf(contractsList.get(position).isDrumsPass()));
 
-        if(contractsList.get(position).getDrumsPass())
+        if(contractsList.get(position).isDrumsPass())
             holder.imageViewDrumsTest.setVisibility(View.VISIBLE);
-        if(contractsList.get(position).getSlopePass())
+        if(contractsList.get(position).isSlopePass())
             holder.imageViewSlopeTest.setVisibility(View.VISIBLE);
-        if(contractsList.get(position).getRoadPass())
+        if(contractsList.get(position).isRoadPass())
             holder.imageViewRoadTest.setVisibility(View.VISIBLE);
 
         holder.linearLayoutInfo.setOnClickListener(holder);

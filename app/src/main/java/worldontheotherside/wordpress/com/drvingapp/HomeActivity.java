@@ -3,9 +3,11 @@ package worldontheotherside.wordpress.com.drvingapp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -73,6 +75,9 @@ public class HomeActivity extends AppCompatActivity implements MyInstructorsRecy
     private Trainer trainer;
     private String spokenLanguage;
 
+    private DrawerLayout drawerLayout;
+    private NavigationView navView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +96,7 @@ public class HomeActivity extends AppCompatActivity implements MyInstructorsRecy
         spinnerLanguages = (Spinner) findViewById(R.id.spinnerLanguages);
         buttonGetInstructors = (Button) findViewById(R.id.buttonGetInstructors);
         recyclerViewMyInstructors = (RecyclerView) findViewById(R.id.recyclerViewMyInstructors);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         context = this;
         onItemClickListener = this;
@@ -101,13 +107,6 @@ public class HomeActivity extends AppCompatActivity implements MyInstructorsRecy
         user = FirebaseAuth.getInstance().getCurrentUser();
         appData = new AppData(this);
 
-        userType = appData.getUserType();
-        if(getIntent().hasExtra("type")) {
-            userType = getIntent().getStringExtra("type");
-            appData.setUserType(userType);
-        }
-
-        Log.v("ZAINAB", "user type: "+userType);
         Log.v("USERTYPE", appData.getUserType());
 
         areasList = getIntent().getStringArrayListExtra("Areas");
@@ -116,135 +115,115 @@ public class HomeActivity extends AppCompatActivity implements MyInstructorsRecy
         Log.v("AREASLIST", getIntent().getStringArrayListExtra("Areas").toString());
         Log.v("LANGUAGESLIST", getIntent().getStringArrayListExtra("Languages").toString());
 
-        spinnerTrainingAreas.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,
+        spinnerTrainingAreas.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item,
                 areasList.toArray(new String[areasList.size()])));
-        spinnerLanguages.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,
+        spinnerLanguages.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item,
                 languagesList.toArray(new String[languagesList.size()])));
 
-/*        DatabaseManip.getData(AppAPI.AREAS, new ValueEventListener() {
+        DatabaseManip.getData(AppAPI.USERTYPES, user.getDisplayName(), new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                trainingAreas = "";
-                ArrayList<String> areasList = new Areas(dataSnapshot).getAreas();
-                final List<KeyPairBoolData> list0 = new ArrayList<>();
-                for (int i = 0; i < areasList.size(); i++) {
-                    KeyPairBoolData h = new KeyPairBoolData();
-                    h.setId(i + 1);
-                    h.setName(areasList.get(i));
-                    h.setSelected(false);
-                    list0.add(h);
+                userType = dataSnapshot.getValue(String.class);
+                appData.setUserType(userType);
+
+                if((userType.equals(AppKeys.PREV_TRAINEE)) || (userType.equals(AppKeys.NEW_TRAINEE)))
+                {
+                    DatabaseManip.findData(AppAPI.CONTRACT_BY_TRAINEE, "traineeId", Long.valueOf(user.getDisplayName()),
+                            new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    Contracts contracts = new Contracts(dataSnapshot);
+                                    contractsList = contracts.getContracts();
+
+                                    adapter = new MyInstructorsRecyclerAdapter(getSupportFragmentManager(),
+                                            contractsList, userType);
+                                    recyclerViewMyInstructors.setAdapter(adapter);
+                                    adapter.setOnItemClickListener(onItemClickListener);
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    Log.v("TRAINEE_FINDING_ERROR", databaseError.getMessage());
+                                }
+                            });
                 }
+                else if(appData.getUserType().equals(AppKeys.INSTRUCTOR))
+                {
+                    DatabaseManip.findData(AppAPI.CONTRACT_BY_TRAINER, "trainerId", Long.valueOf(user.getDisplayName()),
+                            new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    Contracts contracts = new Contracts(dataSnapshot);
+                                    contractsList = contracts.getContracts();
 
-                spinnerTrainingAreas.setItems(list0, -1, new SpinnerListener() {
+                                    adapter = new MyInstructorsRecyclerAdapter(getSupportFragmentManager(), contractsList,
+                                            userType);
+                                    recyclerViewMyInstructors.setAdapter(adapter);
+                                    adapter.setOnItemClickListener(onItemClickListener);
+                                }
 
-                    @Override
-                    public void onItemsSelected(List<KeyPairBoolData> items) {
-
-                        for (int i = 0; i < items.size(); i++) {
-                            if (items.get(i).isSelected()) {
-                                Log.i(TAG, i + " : " + items.get(i).getName() + " : " + items.get(i).isSelected());
-                                trainingAreas += items.get(i).getName() + ", ";
-
-                            }
-                        }
-                        String area = trainingAreas.substring(0, trainingAreas.length() - 2);
-                        //Toast.makeText(context, lang, Toast.LENGTH_SHORT).show();
-                        //trainer.setTrainingAreas(area);
-                    }
-                });
-
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    Log.v("INSTRUCTOR_FIND_ERROR", databaseError.getMessage());
+                                }
+                            });
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.v("AREAS_ERROR", databaseError.getMessage());
+                Log.v("USERTYPE_ERROE", databaseError.getMessage());
             }
-        });*/
+        });
 
+    }
 
-/*        DatabaseManip.getData(AppAPI.LANGUAGES, new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                spokenLanguage = "";
-                List<String> languagesList = new Languages(dataSnapshot).getLanguages();
-                final List<KeyPairBoolData> list1 = new ArrayList<>();
-                for (int i = 0; i < languagesList.size(); i++) {
-                    KeyPairBoolData h = new KeyPairBoolData();
-                    h.setId(i + 1);
-                    h.setName(languagesList.get(i));
-                    h.setSelected(false);
-                    list1.add(h);
-                }
-
-                spinnerLanguages.setItems(list1, -1, new SpinnerListener() {
-
-                    @Override
-                    public void onItemsSelected(List<KeyPairBoolData> items) {
-
-                        for (int i = 0; i < items.size(); i++) {
-                            if (items.get(i).isSelected()) {
-                                Log.i(TAG, i + " : " + items.get(i).getName() + " : " + items.get(i).isSelected());
-                                spokenLanguage += items.get(i).getName() + ", ";
-
-                            }
-                        }
-                        String lang = spokenLanguage.substring(0, spokenLanguage.length() - 2);
-                        //Toast.makeText(context, lang, Toast.LENGTH_SHORT).show();
-                       // trainer.setSpokenLanguage(lang);
-                    }
-                });
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.v("LANGUAGES_ERROR", databaseError.getMessage());
-            }
-
-        });*/
-
-
-
-        if((userType.equals(AppKeys.PREV_TRAINEE)) || (userType.equals(AppKeys.NEW_TRAINEE)))
-        {
-            DatabaseManip.findData(AppAPI.CONTRACT_BY_TRAINEE, "traineeId", Long.valueOf(user.getDisplayName()),
-                    new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Contracts contracts = new Contracts(dataSnapshot);
-                    contractsList = contracts.getContracts();
-
-                    adapter = new MyInstructorsRecyclerAdapter(getSupportFragmentManager(), contractsList, appData.getUserType());
-                    recyclerViewMyInstructors.setAdapter(adapter);
-                    adapter.setOnItemClickListener(onItemClickListener);
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Log.v("TRAINEE_FINDING_ERROR", databaseError.getMessage());
-                }
-            });
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
         }
-        else if(appData.getUserType().equals(AppKeys.INSTRUCTOR))
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void setupDrawerContent(NavigationView navigationView)
+    {
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                selectDrawerItem(item);
+                return true;
+            }
+        });
+    }
+
+    public void selectDrawerItem(MenuItem menuItem)
+    {
+        switch(menuItem.getItemId())
         {
-            DatabaseManip.findData(AppAPI.CONTRACT_BY_TRAINER, "trainerId", Long.valueOf(user.getDisplayName()),
-                    new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            Contracts contracts = new Contracts(dataSnapshot);
-                            contractsList = contracts.getContracts();
+            case R.id.nav_home:
 
-                            adapter = new MyInstructorsRecyclerAdapter(getSupportFragmentManager(), contractsList,
-                                    appData.getUserType());
-                            recyclerViewMyInstructors.setAdapter(adapter);
-                            adapter.setOnItemClickListener(onItemClickListener);
-                        }
+                break;
+            case R.id.nav_profile:
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Log.v("INSTRUCTOR_FIND_ERROR", databaseError.getMessage());
-                        }
-                    });
+                break;
+            case R.id.nav_notifications:
+
+                break;
+            case R.id.nav_about:
+
+                break;
+            default:
+
+                break;
         }
+
+        menuItem.setChecked(true);
+        setTitle(menuItem.getTitle());
+        drawerLayout.closeDrawers();
     }
 
     public void getInstructorsAction(View view)

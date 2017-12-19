@@ -45,7 +45,7 @@ public class Contract {
     public void setTrainerId(long trainerId){this.trainerId = trainerId;}
     public void setDrumsPass(boolean drumsPass) {this.drumsPass = drumsPass;}
     public void setSlopePass(boolean slopePass) {this.slopePass = slopePass;}
-    public void setRoadPass(Boolean roadPass) {this.roadPass = roadPass;}
+    public void setRoadPass(boolean roadPass) {this.roadPass = roadPass;}
 
     //////
     public double getPrice(){return price;}
@@ -54,9 +54,6 @@ public class Contract {
     public String getEnd(){return end;}
     public long getTraineeId(){return traineeId;}
     public long getTrainerId(){return trainerId;}
-    public boolean getDrumsPass() {return drumsPass;}
-    public boolean getSlopePass() {return slopePass;}
-    public boolean getRoadPass() {return roadPass;}
 
     public boolean isDrumsPass() {
         return drumsPass;
@@ -68,10 +65,6 @@ public class Contract {
 
     public boolean isRoadPass() {
         return roadPass;
-    }
-
-    public void setRoadPass(boolean roadPass) {
-        this.roadPass = roadPass;
     }
 
     public boolean isCancelled() {

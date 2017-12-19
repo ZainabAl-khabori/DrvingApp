@@ -30,6 +30,12 @@ public class DatabaseManip {
         db.addValueEventListener(valueEventListener);
     }
 
+    public static void getData(String url, String child, ValueEventListener valueEventListener)
+    {
+        db = FirebaseDatabase.getInstance().getReferenceFromUrl(url).child(child);
+        db.addValueEventListener(valueEventListener);
+    }
+
     public static void findData(String url, String field, String param, ValueEventListener valueEventListener)
     {
         db = FirebaseDatabase.getInstance().getReferenceFromUrl(url);

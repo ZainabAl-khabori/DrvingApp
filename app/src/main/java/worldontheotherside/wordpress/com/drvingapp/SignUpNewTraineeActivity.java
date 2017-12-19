@@ -248,12 +248,28 @@ public class SignUpNewTraineeActivity extends AppCompatActivity implements Verif
 
                                         appData.setUserType(AppKeys.NEW_TRAINEE);
 
+                                        DatabaseManip.updateData(AppAPI.USERTYPES, user.getDisplayName(), AppKeys.NEW_TRAINEE,
+                                                new DatabaseReference.CompletionListener() {
+                                                    @Override
+                                                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                                        //
+                                                    }
+                                                });
+
                                         DatabaseManip.addData(AppAPI.CURRENT_TRAINEES, newTrainee, new DatabaseReference
                                                 .CompletionListener() {
                                             @Override
                                             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                                                 Toast.makeText(SignUpNewTraineeActivity.this, "New trainee added", Toast.LENGTH_SHORT)
                                                         .show();
+
+                                                Intent intent = new Intent(SignUpNewTraineeActivity.this, HomeActivity.class);
+                                                intent.putStringArrayListExtra("Areas", getIntent()
+                                                        .getStringArrayListExtra("Areas"));
+                                                intent.putStringArrayListExtra("Languages", getIntent()
+                                                        .getStringArrayListExtra("Languages"));
+                                                startActivity(intent);
+                                                finish();
                                             }
                                         });
                                     }

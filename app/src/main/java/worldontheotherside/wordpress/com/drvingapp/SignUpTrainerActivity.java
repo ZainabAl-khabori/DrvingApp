@@ -179,6 +179,16 @@ public class SignUpTrainerActivity extends AppCompatActivity implements VerifyCo
                             trainer.setCivilNo(Long.valueOf(editTextCivilNo.getText().toString()));
                             trainer.setCarNo(editTextCarNo.getText().toString());
 
+                            appData.setUserType(AppKeys.INSTRUCTOR);
+
+                            DatabaseManip.updateData(AppAPI.USERTYPES, user.getDisplayName(), AppKeys.NEW_TRAINEE,
+                                    new DatabaseReference.CompletionListener() {
+                                        @Override
+                                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                            //
+                                        }
+                                    });
+
                             DatabaseManip.addData(AppAPI.CURRENT_TRAINEES, trainer, new DatabaseReference
                                     .CompletionListener() {
                                 @Override
@@ -248,7 +258,15 @@ public class SignUpTrainerActivity extends AppCompatActivity implements VerifyCo
                                         trainer.setCivilNo(Long.valueOf(editTextCivilNo.getText().toString()));
                                         trainer.setCarNo(editTextCarNo.getText().toString());
 
-                                        appData.setUserType(AppKeys.NEW_TRAINEE);
+                                        appData.setUserType(AppKeys.INSTRUCTOR);
+
+                                        DatabaseManip.updateData(AppAPI.USERTYPES, user.getDisplayName(), AppKeys.INSTRUCTOR,
+                                                new DatabaseReference.CompletionListener() {
+                                                    @Override
+                                                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                                        //
+                                                    }
+                                                });
 
                                         DatabaseManip.addData(AppAPI.TRAINERS, trainer, new DatabaseReference
                                                 .CompletionListener() {
@@ -256,6 +274,14 @@ public class SignUpTrainerActivity extends AppCompatActivity implements VerifyCo
                                             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                                                 Toast.makeText(SignUpTrainerActivity.this, "Trainer added", Toast.LENGTH_SHORT)
                                                         .show();
+
+                                                Intent intent = new Intent(SignUpTrainerActivity.this, HomeActivity.class);
+                                                intent.putStringArrayListExtra("Areas", getIntent()
+                                                        .getStringArrayListExtra("Areas"));
+                                                intent.putStringArrayListExtra("Languages", getIntent()
+                                                        .getStringArrayListExtra("Languages"));
+                                                startActivity(intent);
+                                                finish();
                                             }
                                         });
                                     }
