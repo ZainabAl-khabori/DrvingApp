@@ -3,6 +3,7 @@ package worldontheotherside.wordpress.com.drvingapp.Classes;
 import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -100,11 +101,18 @@ public class FirebaseDatabaseHelper {
                 trainerData.add(new UserProfile(AppKeys.CONTRACT_TYPE, trainerInfo.getContractType()));
                 trainerData.add(new UserProfile(AppKeys.TRAINING_TIME, trainerInfo.getTrainingTime()));
 
-                if(getHourPrice!=null)
+               /* if(getHourPrice!=null)
                     trainerData.add(new UserProfile(AppKeys.HOUR_PRICE, getHourPrice));
 
                 if(getContractPrice!=null)
                     trainerData.add(new UserProfile(AppKeys.CONTRACT_PRICE, getContractPrice));
+*/
+                if (!TextUtils.isEmpty(getHourPrice))
+                    trainerData.add(new UserProfile(AppKeys.HOUR_PRICE, getHourPrice));
+
+                if (!TextUtils.isEmpty(getContractPrice))
+                    trainerData.add(new UserProfile(AppKeys.CONTRACT_PRICE, getContractPrice));
+
 
             }
             return trainerData;

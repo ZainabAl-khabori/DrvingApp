@@ -1,6 +1,5 @@
 package worldontheotherside.wordpress.com.drvingapp;
 
-import android.os.Bundle;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -10,25 +9,24 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import worldontheotherside.wordpress.com.drvingapp.Fragments.TraineeProfileFragment;
 import worldontheotherside.wordpress.com.drvingapp.Fragments.TrainerProfileFragment;
 
-public class TrainerProfileActivity extends AppCompatActivity {
+public class TraineeProfileActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
     FirebaseAuth firebaseAuth;
     private Fragment fragment = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trainer_profile);
+        setContentView(R.layout.activity_trainee_profile);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -55,7 +53,7 @@ public class TrainerProfileActivity extends AppCompatActivity {
                 int id = item.getItemId();
 
                 if (id == R.id.nav_profile) {
-                    fragment = new TraineeProfileFragment();
+                    fragment = new TrainerProfileFragment();
                 } else if (id == R.id.nav_profile) {
 
                 } else if (id == R.id.nav_notifications) {
@@ -127,7 +125,4 @@ public class TrainerProfileActivity extends AppCompatActivity {
         }
         return userId;
     }
-
 }
-
-

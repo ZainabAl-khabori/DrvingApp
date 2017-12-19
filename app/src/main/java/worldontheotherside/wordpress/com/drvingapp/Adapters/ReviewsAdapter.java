@@ -80,7 +80,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ViewHold
 
             ratingBarReviews = (RatingBar) itemView.findViewById(R.id.ratingBarReviews);
             textViewCommentDate = (TextView) itemView.findViewById(R.id.textViewCommentDate);
-            textViewTraineeName = (TextView) itemView.findViewById(R.id.textViewTraineeName);
+            textViewTraineeName = (TextView) itemView.findViewById(R.id.textViewTrainerName);
             textViewComments = (TextView) itemView.findViewById(R.id.textViewComments);
 
             itemView.setOnClickListener(this);

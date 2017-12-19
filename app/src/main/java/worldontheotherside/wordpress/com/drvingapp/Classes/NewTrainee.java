@@ -19,6 +19,7 @@ public class NewTrainee {
     private Boolean slopePass;
     private Boolean roadPass;
     private Trainer currentTrainer;
+    private String language;
 
 
 
@@ -56,4 +57,12 @@ public class NewTrainee {
     public void BookTainer(){}
     public void Login(){}
     public void SignUp(){}
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 }

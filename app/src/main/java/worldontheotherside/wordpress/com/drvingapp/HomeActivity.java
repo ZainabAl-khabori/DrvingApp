@@ -2,33 +2,31 @@ package worldontheotherside.wordpress.com.drvingapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.design.internal.NavigationMenuView;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import worldontheotherside.wordpress.com.drvingapp.Adapters.MyInstructorsRecyclerAdapter;
-import worldontheotherside.wordpress.com.drvingapp.Classes.Areas;
 import worldontheotherside.wordpress.com.drvingapp.Classes.Contract;
-import worldontheotherside.wordpress.com.drvingapp.Classes.Contracts;
-import worldontheotherside.wordpress.com.drvingapp.Classes.Languages;
 
 public class HomeActivity extends AppCompatActivity implements MyInstructorsRecyclerAdapter.OnItemClickListener {
 
@@ -59,7 +57,47 @@ public class HomeActivity extends AppCompatActivity implements MyInstructorsRecy
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        if(StartActivity.startActivity != null)
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        disableNavigationViewScrollbars(navigationView);
+
+
+       /* navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                int id = item.getItemId();
+
+                if (id == R.id.nav_home) {
+
+
+                } else if (id == R.id.nav_profile) {
+                    Intent i = new Intent(HomeActivity.this, TrainerProfileActivity.class);
+                    startActivity(i);
+                    finish();
+
+                } else if (id == R.id.nav_notifications) {
+
+                } else if (id == R.id.nav_about) {
+
+                }
+
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                assert drawer != null;
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            }
+
+
+        });*/
+
+              /*  if(StartActivity.startActivity != null)
             StartActivity.startActivity.finish();
 
         spinnerTrainingAreas = (Spinner) findViewById(R.id.spinnerTrainingAreas);
@@ -135,7 +173,7 @@ public class HomeActivity extends AppCompatActivity implements MyInstructorsRecy
                             Log.v("INSTRUCTOR_FIND_ERROR", databaseError.getMessage());
                         }
                     });
-        }
+        }*/
     }
 
     @Override
@@ -168,4 +206,61 @@ public class HomeActivity extends AppCompatActivity implements MyInstructorsRecy
         intent.putExtra("InstructorSearchParams", hashMap);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        //getMenuInflater().inflate(R.menu.profile, menu);
+        inflater.inflate(R.menu.edit_profile, menu);
+       // return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //super.onOptionsItemSelected(item);
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.nav_home) {
+
+
+        } else if (id == R.id.nav_profile) {
+            Intent i = new Intent(HomeActivity.this, TrainerProfileActivity.class);
+            startActivity(i);
+            finish();
+            return true;
+        } else if (id == R.id.nav_notifications) {
+
+        } else if (id == R.id.nav_about) {
+
+        }
+
+        //noinspection SimplifiableIfStatement
+       /* if (id == R.id.action_settings) {
+            return true;
+        }*/
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void disableNavigationViewScrollbars(NavigationView navigationView) {
+        if (navigationView != null) {
+            NavigationMenuView navigationMenuView = (NavigationMenuView) navigationView.getChildAt(0);
+            if (navigationMenuView != null) {
+                navigationMenuView.setVerticalScrollBarEnabled(false);
+            }
+        }
+    }
+
 }

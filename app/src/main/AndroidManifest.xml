@@ -11,17 +11,17 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".HomeActivity"
-            android:label="HomeActivity">
-
-            <!--
-                <intent-filter>
+            android:label="HomeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
-        <activity android:name=".SignUpNewTraineeActivity">
+        <activity
+            android:name=".SignUpNewTraineeActivity"
+            android:label="SignUpNewTraineeActivity">
 
             <!--
             <intent-filter>
@@ -31,10 +31,12 @@
             </intent-filter>
             -->
         </activity>
-        <activity android:name=".SignUpPrevTraineeActivity">
+        <activity
+            android:name=".SignUpPrevTraineeActivity"
+            android:label="SignUpPrevTraineeActivity">
 
             <!--
-                <intent-filter>
+        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -45,27 +47,14 @@
         <activity android:name=".SignUpTrainerActivity">
 
             <!--
-                <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             -->
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity
-            android:name=".LogoActivity"
-            android:label="LogoActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".TrainerViewActivity"
-            android:label="TrainerProfileActivity">
+        <activity android:name=".LoginActivity">
 
             <!--
             <intent-filter>
@@ -75,19 +64,72 @@
             </intent-filter>
             -->
         </activity>
-        <activity android:name=".EditingTrainerProfileActivity" />
-        <activity android:name=".TrainerProfileActivity" />
-        <!-- <activity android:name=".Fragments.TrainerProfileFragment"></activity> -->
-
-        <activity android:name=".TrainersActivity" />
-        <activity android:name=".StartActivity"
+        <activity
+            android:name=".LogoActivity"
+            android:label="LogoActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-<!--            <intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
+
         </activity>
+        <activity
+            android:name=".TrainerViewActivity"
+            android:label="TrainerViewActivity">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+
+        </activity>
+        <activity
+            android:name=".EditingTrainerProfileActivity"
+            android:label="EditingTrainerProfileActivity">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".TrainerProfileActivity"
+            android:label="TrainerProfileActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+
+            <!--
+           <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name=".TrainersActivity" />
+        <activity android:name=".TrainerRating">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name=".TraineeProfileActivity" />
+        <activity android:name=".Fragments.TraineeProfileFragment" />
+        <activity android:name=".EditingTraineeProfileActivity"></activity>
     </application>
 
 </manifest>
