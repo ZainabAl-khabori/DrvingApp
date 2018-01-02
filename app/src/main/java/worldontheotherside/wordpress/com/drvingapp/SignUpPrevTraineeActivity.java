@@ -242,7 +242,7 @@ public class SignUpPrevTraineeActivity extends AppCompatActivity implements Veri
                                                 null, null, new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
-                                                        //Do nothing
+                                                        Log.v("PROFILE", "profile updated");
                                                     }
                                                 });
 
@@ -259,11 +259,11 @@ public class SignUpPrevTraineeActivity extends AppCompatActivity implements Veri
 
                                         appData.setUserType(AppKeys.PREV_TRAINEE);
 
-                                        DatabaseManip.updateData(AppAPI.USERTYPES, user.getDisplayName(), AppKeys.PREV_TRAINEE,
-                                                new DatabaseReference.CompletionListener() {
+                                        DatabaseManip.updateData(AppAPI.USERTYPES, editTextCivilNo.getText().toString(),
+                                                AppKeys.PREV_TRAINEE, new DatabaseReference.CompletionListener() {
                                                     @Override
                                                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                                                        //
+                                                        Log.v("USERTYPE", "added");
                                                     }
                                                 });
 
